@@ -1,9 +1,14 @@
 class TexterController < ApplicationController
-  # Our config action authenticates against the AnyPresence parameters sent
-  before_filter :authenticate_from_anypresence, :only => :settings
+  # We can do SSO from the hash AnyPresence sends
+  before_filter :authenticate_from_anypresence, :only => [:settings, :deprovision]
   
   # Normal Devise authentication logic
-  before_filter :authenticate_account!, :except => :provision
+  before_filter :authenticate_account!, :except => [:unauthorized, :provision]
+
+  # Just something for root_path for Devise.
+  def unauthorized
+    render :text => "Unauthorized.", :status => :unauthorized
+  end
 
   # This creates an account on our side tied to the application and renders back the expected result to create a new add on instance.
   def provision
@@ -31,6 +36,12 @@ class TexterController < ApplicationController
     end
   end
   
+  # This deprovisions the current account. We can't get here unless we're signed in, so we know it's a valid request.
+  def deprovision
+    current_account.destroy
+    render :json => { :success => true }
+  end
+  
   # This renders our settings page and handles updates of the account.
   def settings
     if request.put?
@@ -51,9 +62,9 @@ class TexterController < ApplicationController
     else
       begin
         twilio_account.sms.messages.create(:from => "4155992671", :to => current_account.phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created")
-        render :text => "sent!"
+        render :json => { :success => true }
       rescue
-        render :text => "Error! #{$!.message}"
+        render :json => { :success => false, :error => $!.message }
       end
     end
   end
