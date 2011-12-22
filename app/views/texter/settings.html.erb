@@ -1,0 +1,12 @@
+<%= flash[:notice] %>
+<%= flash[:alert] %>
+
+<%= form_for(current_account, :url => settings_path) do |f| %>
+  <%= f.label :phone_number, "Phone number to text" %>
+  <%= f.text_field :phone_number %>
+  <br/>
+  <%= f.label :field_name, "Name of field to include in text" %>
+  <%= f.text_field :field_name %>
+  <br/>
+  <%= f.submit %>
+<% end %>
