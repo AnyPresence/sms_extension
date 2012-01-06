@@ -1,4 +1,5 @@
 class TexterController < ApplicationController
+    
   # We can do SSO from the hash AnyPresence sends
   before_filter :authenticate_from_anypresence, :only => [:settings, :deprovision]
   
@@ -61,7 +62,7 @@ class TexterController < ApplicationController
       render :text => "Not yet set up!"
     else
       begin
-        twilio_account.sms.messages.create(:from => "4155992671", :to => current_account.phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created")
+        twilio_account.sms.messages.create(:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => current_account.phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created")
         render :json => { :success => true }
       rescue
         render :json => { :success => false, :error => $!.message }
@@ -71,15 +72,17 @@ class TexterController < ApplicationController
 
   # Twilio sends a post to this endpoint
   def consume
-    @message = Message.new(:SmsMessageSid => params[:SmsMessageSid], :AccountSid => params[:AccountSid], :Body => params[:Body], :From => params[:From], :To =>params[:To])
+    message = Message.new(:smsMessageSid => params[:smsMessageSid], :accountSid => params[:accountSid], :body => params[:body], :from => params[:from], :to =>params[:to])
 
-    respond_to do |format|
-      if @message.save
-        format.xml { head :ok }
-      else
-        format.xml { render :xml => @message.errors, :status => :unprocessable_entiity }
-      end
+    if message.save
+      # Parse the message and decide what message to send back (if any)
+      parse_message(message)
+      
+      render :json => { :success => true }
+    else
+      render :json => { :success => false, :error => message.errors }
     end
+
   end
   
 protected
@@ -93,6 +96,7 @@ protected
   
   # A request is valid if it is both recent and was properly signed with our shared secret.
   def valid_request?
+    Rails.logger.info "expecting: " + Digest::SHA1.hexdigest("#{ENV['SHARED_SECRET']}-#{params[:application_id]}-#{params[:timestamp]}")
     recent_request? && params[:anypresence_auth] == Digest::SHA1.hexdigest("#{ENV['SHARED_SECRET']}-#{params[:application_id]}-#{params[:timestamp]}")
   end
   
@@ -105,4 +109,10 @@ protected
       false
     end
   end
+
+  # Parse the message and decide what to send back
+  # TODO -- functionality to be decided shortly
+  def parse_message(message)
+  end
+  
 end
