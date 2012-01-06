@@ -69,6 +69,19 @@ class TexterController < ApplicationController
     end
   end
 
+  # Twilio sends a post to this endpoint
+  def consume
+    @message = Message.new(:SmsMessageSid => params[:SmsMessageSid], :AccountSid => params[:AccountSid], :Body => params[:Body], :From => params[:From], :To =>params[:To])
+
+    respond_to do |format|
+      if @message.save
+        format.xml { head :ok }
+      else
+        format.xml { render :xml => @message.errors, :status => :unprocessable_entiity }
+      end
+    end
+  end
+  
 protected
   # If the request is valid, we log in as the account tied to the application that was passed.
   def authenticate_from_anypresence
