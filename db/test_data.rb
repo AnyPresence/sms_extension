@@ -1,0 +1,1 @@
+users.create! :email => "test@foo.com", :password => "foobar", :password_confirmation => "foobar"

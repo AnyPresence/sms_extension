@@ -32,9 +32,10 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :text, :development do
+group :test, :development do
   gem 'local-env'
   gem 'sqlite3'
+  gem 'rspec-rails', '~> 2.5'
 end
 
 group :production do
@@ -43,5 +44,7 @@ end
 
 group :test do
   # Pretty printed test output
-  gem 'turn', '0.8.2', :require => false
+  gem 'factory_girl'
+  gem 'capybara'
+  gem 'database_cleaner'
 end
