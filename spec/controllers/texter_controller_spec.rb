@@ -30,13 +30,17 @@ describe TexterController do
       
       it "should login unsuccessfully with different application_id" do
         timestamp = Time.now.to_i
+        app_id = @account.application_id
+        secure_parameters = {timestamp: timestamp.to_s, application_id: app_id, anypresence_auth: Digest::SHA1.hexdigest("#{ENV['SHARED_SECRET']}-#{app_id}-#{timestamp}") }
+        
         app_id = @account.application_id.to_i + 1;
         app_id = app_id.to_s
-        secure_parameters = {timestamp: timestamp.to_s, application_id: app_id, anypresence_auth: Digest::SHA1.hexdigest("#{ENV['SHARED_SECRET']}-#{app_id}-#{timestamp}") }
+        
+        post :provision, :application_id => app_id, :anypresence_auth => secure_parameters[:anypresence_auth], :timestamp => secure_parameters[:timestamp]
+        parsed_body = JSON.parse(response.body)
+        parsed_body["success"].should == false 
+      end  
       
-        post :provision, :application_id => secure_parameters[:application_id], :anypresence_auth => secure_parameters[:anypresence_auth], :timestamp => secure_parameters[:timestamp]
-        response.body.should 
-      end    
     end
   end
     
