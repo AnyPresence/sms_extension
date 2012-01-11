@@ -1,12 +1,35 @@
 <%= flash[:notice] %>
 <%= flash[:alert] %>
 
+<div id="consume_phone_number_region">
 <%= form_for(current_account, :url => settings_path) do |f| %>
-  <%= f.label :phone_number, "Phone number to text" %>
+  <%= f.label :phone_number, "Phone number to text:" %>
   <%= f.text_field :phone_number %>
   <br/>
-  <%= f.label :field_name, "Name of field to include in text" %>
+  <%= f.label :field_name, "Name of field to include in text:" %>
   <%= f.text_field :field_name %>
+  <br/>
+
+  <%= f.label :consume_phone_number, "Phone number to consume text:" %>
+<% if !current_account.consume_phone_number.nil? %>
+  <%= f.text_field :consume_phone_number, :readonly => true %>
+<% else %>
+  <%= f.text_field :consume_phone_number, :readonly => true, :value => "N/A"%>
+<% end %>
   <br/>
   <%= f.submit %>
 <% end %>
+</div>
+<br/>
+
+<div id="generate_consume_phone_number_region">
+<% if current_account.consume_phone_number.nil? %>
+    <p>Enter area code to generate phone number to consume text</p>
+    <%= form_for current_account,:url => generate_consume_phone_number_path, :remote => true do %> 
+      <%= text_field_tag :area_code, params[:area_code], :size => 3 %>
+      <%= submit_tag "Generate", :name => nil %>
+    <% end %>
+<% end %>
+</div>
+
+

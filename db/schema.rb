@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120106040842) do
+ActiveRecord::Schema.define(:version => 20120110061023) do
 
   create_table "accounts", :force => true do |t|
     t.datetime "remember_created_at"
@@ -26,17 +26,18 @@ ActiveRecord::Schema.define(:version => 20120106040842) do
     t.string   "field_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "consume_phone_number"
   end
 
   add_index "accounts", ["application_id"], :name => "index_accounts_on_application_id", :unique => true
   add_index "accounts", ["authentication_token"], :name => "index_accounts_on_authentication_token", :unique => true
 
   create_table "messages", :force => true do |t|
-    t.string   "SmsMessageSid"
-    t.string   "AccountSid"
-    t.string   "Body"
-    t.string   "From"
-    t.string   "To"
+    t.string   "sms_message_sid"
+    t.string   "account_sid"
+    t.string   "body"
+    t.string   "from"
+    t.string   "to"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

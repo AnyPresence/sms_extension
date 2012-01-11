@@ -46,11 +46,36 @@ class TexterController < ApplicationController
   # This renders our settings page and handles updates of the account.
   def settings
     if request.put?
+      consume_phone_number = params[:account][:consume_phone_number]
+
+      # Check if we should provision this phone number, or if we own it already.
+      if current_account.consume_phone_number.nil? && !consume_phone_number.nil?
+        accounts = Account.all
+        used_numbers = []
+        accounts.each {|x| used_numbers << x.consume_phone_number }
+        used_numbers << consume_phone_number
+        twilio_account = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account 
+        
+        # Check to see if there are numbers that we own that are not being used by any account
+        twilio_owned_numbers = twilio_account.incoming_phone_numbers.list
+        first_available_owned_number = Account::phone_number_used(twilio_owned_numbers, used_numbers)
+        
+        # We do not own this number yet. Let's buy it.
+        if first_available_owned_number.nil?
+          begin
+            twilio_account.incoming_phone_numbers.create(:phone_number => consume_phone_number)
+          rescue
+            current_account.consume_phone_number = nil
+          end 
+        end
+      end
+      
       if current_account.update_attributes params[:account]
         flash[:notice] = "Account updated."
       else
         flash[:alert] = "Account could not be updated."
       end
+      
       redirect_to settings_path
     end
   end
@@ -58,6 +83,7 @@ class TexterController < ApplicationController
   # This is the endpoint for the web service our add on creates.
   def text
     twilio_account = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account
+
     if current_account.phone_number.blank? || current_account.field_name.blank?
       render :text => "Not yet set up!"
     else
@@ -72,15 +98,54 @@ class TexterController < ApplicationController
 
   # Twilio sends a post to this endpoint
   def consume
-    message = Message.new(:smsMessageSid => params[:smsMessageSid], :accountSid => params[:accountSid], :body => params[:body], :from => params[:from], :to =>params[:to])
+    message = Message.new(:sms_message_sid => params[:sms_message_sid], :account_sid => params[:account_sid], :body => params[:body], :from => params[:from], :to => params[:to])
+    twilio_account = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account
 
     if message.save
       # Parse the message and decide what message to send back (if any)
-      parse_message(message)
+      # TODO: Hooks must be created in the exposed API so that we know what the latest published app is
+      consumer = ConsumeSms::Consumer.new(current_account.application_id, current_account.field_name, "v8")
+      outbound_message = consumer.consume_sms(message)
       
-      render :json => { :success => true }
+      begin
+        twilio_account.sms.messages.create(:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => message.from, :body => outbound_message)
+        render :json => { :success => true }
+      rescue
+        render :json => { :success => false, :error => $!.message }
+      end
     else
       render :json => { :success => false, :error => message.errors }
+    end
+  end
+  
+  # Generates a phone number to consume SMS
+  def generate_consume_phone_number
+    if current_account.consume_phone_number.nil?
+      accounts = Account.all
+      used_numbers = []
+      accounts.each {|x| used_numbers << x.consume_phone_number }
+     
+      twilio_client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+      twilio_account = twilio_client.account
+      
+      # Check to see if there are numbers that we own that are not being used by any account
+      twilio_owned_numbers = twilio_account.incoming_phone_numbers.list
+      first_available_owned_number = Account::phone_number_used(twilio_owned_numbers, used_numbers)
+      
+      # Try to obtain a new number from Twilio
+      if first_available_owned_number.nil?
+        area_code = params[:area_code]
+        # Get available numbers in area code
+        local_numbers = twilio_account.available_phone_numbers.get('US').local
+        numbers = local_numbers.list(:area_code => area_code)
+        first_available_owned_number = numbers.first.phone_number if !numbers.nil?
+      end
+
+      current_account.consume_phone_number = first_available_owned_number
+    end
+    
+    respond_to do |format|  
+      format.js
     end
 
   end
@@ -90,13 +155,15 @@ protected
   def authenticate_from_anypresence
     if valid_request?
       account = Account.find_by_application_id params[:application_id]
+      if account.nil?
+        return  
+      end
       sign_in account
     end
   end
   
   # A request is valid if it is both recent and was properly signed with our shared secret.
   def valid_request?
-    Rails.logger.info "expecting: " + Digest::SHA1.hexdigest("#{ENV['SHARED_SECRET']}-#{params[:application_id]}-#{params[:timestamp]}")
     recent_request? && params[:anypresence_auth] == Digest::SHA1.hexdigest("#{ENV['SHARED_SECRET']}-#{params[:application_id]}-#{params[:timestamp]}")
   end
   
@@ -110,9 +177,4 @@ protected
     end
   end
 
-  # Parse the message and decide what to send back
-  # TODO -- functionality to be decided shortly
-  def parse_message(message)
-  end
-  
 end

@@ -34,8 +34,9 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem 'local-env'
-  gem 'sqlite3'
+  gem 'pg'
   gem 'rspec-rails', '~> 2.5'
+  gem 'ruby-debug19'
 end
 
 group :production do
@@ -43,7 +44,6 @@ group :production do
 end
 
 group :test do
-  # Pretty printed test output
   gem 'factory_girl'
   gem 'capybara'
   gem 'database_cleaner'
