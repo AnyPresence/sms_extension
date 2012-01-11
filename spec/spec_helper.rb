@@ -37,12 +37,6 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   
   config.include Devise::TestHelpers, :type => :controller
-  
-  # Setting these variables for testing Twilio
-  TWILIO_ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID'] ||= 'AC8787e2cd208549c7afa37054abd346c7'
-  TWILIO_AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN'] ||= '213fefe477dbeaab4c461bfc2e9a0512'
-  TWILIO_FROM_SMS_NUMBER = ENV['TWILIO_FROM_SMS_NUMBER'] ||= '19783194410'
-  SHARED_SECRET = ENV['SHARED_SECRET'] ||= '123ccd367902f593b8169d026bd9daad'
 end
 
 class Capybara::Server
