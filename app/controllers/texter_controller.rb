@@ -1,10 +1,10 @@
 class TexterController < ApplicationController
-    
+  include ConsumeSms
   # We can do SSO from the hash AnyPresence sends
   before_filter :authenticate_from_anypresence, :only => [:settings, :deprovision]
   
   # Normal Devise authentication logic
-  before_filter :authenticate_account!, :except => [:unauthorized, :provision]
+  before_filter :authenticate_account!, :except => [:unauthorized, :provision, :consume]
 
   # Just something for root_path for Devise.
   def unauthorized
@@ -98,9 +98,10 @@ class TexterController < ApplicationController
 
   # Twilio sends a post to this endpoint
   def consume
-    message = Message.new(:sms_message_sid => params[:sms_message_sid], :account_sid => params[:account_sid], :body => params[:body], :from => params[:from], :to => params[:to])
+    message = Message.new(:sms_message_sid => params[:SmsMessageSid], :account_sid => params[:AccountSid], :body => params[:Body], :from => params[:From], :to => params[:To])
     twilio_account = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account
-
+    
+    Rails.logger.info "Received message: " + message.inspect
     if message.save
       # Parse the message and decide what message to send back (if any)
       # TODO: Hooks must be created in the exposed API so that we know what the latest published app is
@@ -108,6 +109,7 @@ class TexterController < ApplicationController
       outbound_message = consumer.consume_sms(message)
       
       begin
+        Rails.logger.info "Sending message to " + message.from + " : " + outbound_message
         twilio_account.sms.messages.create(:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => message.from, :body => outbound_message)
         render :json => { :success => true }
       rescue
