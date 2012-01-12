@@ -9,13 +9,15 @@
   <%= f.label :field_name, "Name of field to include in text:" %>
   <%= f.text_field :field_name %>
   <br/>
-
+  <%= f.label :permitted_phone_numbers, "Permitted phone numbers for incoming text:"%>
+  <%= f.text_area :permitted_phone_numbers %>
+  <br/>
   <%= f.label :consume_phone_number, "Phone number to consume text:" %>
-<% if !current_account.consume_phone_number.nil? %>
-  <%= f.text_field :consume_phone_number, :readonly => true %>
-<% else %>
-  <%= f.text_field :consume_phone_number, :readonly => true, :value => "N/A"%>
-<% end %>
+  <% if !current_account.consume_phone_number.nil? %>
+    <%= f.text_field :consume_phone_number, :readonly => true %>
+  <% else %>
+    <%= f.text_field :consume_phone_number, :readonly => true, :value => "N/A"%>
+  <% end %>
   <br/>
   <%= f.submit %>
 <% end %>

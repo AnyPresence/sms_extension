@@ -104,9 +104,11 @@ class TexterController < ApplicationController
     Rails.logger.info "Received message: " + message.inspect
     if message.save
       # Parse the message and decide what message to send back (if any)
-      # TODO: Hooks must be created in the exposed API so that we know what the latest published app is
-      consumer = ConsumeSms::Consumer.new(current_account.application_id, current_account.field_name, "v8")
-      outbound_message = consumer.consume_sms(message)
+      # TODO: Hooks must be created in the exposed API so that we know what the latest published app is.
+      incoming_phone_number = Message::strip_phone_number_prefix(params[:From])
+      accounts = Account.where("accounts.permitted_phone_numbers like '%#{incoming_phone_number}%'").limit(1)
+      consumer = ConsumeSms::Consumer.new(accounts.first.application_id, accounts.first.field_name)
+      outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
       
       begin
         Rails.logger.info "Sending message to " + message.from + " : " + outbound_message

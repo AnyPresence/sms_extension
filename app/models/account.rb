@@ -4,7 +4,21 @@ class Account < ActiveRecord::Base
   
   validates_presence_of :application_id
 
-  attr_accessible :remember_me, :phone_number, :field_name, :consume_phone_number, :application_id
+  attr_accessible :remember_me, :phone_number, :field_name, :consume_phone_number, :application_id, :permitted_phone_numbers
+  
+  # Builds the message options that is available for the account.
+  # For example, #0 for menu screen
+  #              #1 for information about objectA (e.g. outage)
+  #              #2 for information about objectA
+  # TODO: This will need to be pulled from the database once we're able to obtain availabe objects from the API
+  def text_message_options
+    options = {}
+    options["#0"] = "menu"
+    options["#1"] = "outage"
+    options["#2"] = "other_object"
+    
+    options
+  end
   
   # Gets the first available phone number if any
   def self.phone_number_used(twilio_owned_numbers, used_numbers)

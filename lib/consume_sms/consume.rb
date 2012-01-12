@@ -1,23 +1,34 @@
-
 module ConsumeSms
   class Consumer
     
-    NUM_ENTRIES = 2
+    NUM_ENTRIES = 1
     TWILIO_SMS_CHAR_PAGE_SIZE = 150
      
-    def initialize(application_id, field_name, version)
+    def initialize(application_id, field_name)
       @application_id = application_id
       @field_name = field_name
-      @version = version
+    end
+    
+    # Accesses the API for the latest application version
+    def get_latest_app_version
+      # TODO: requires hooks in the API for this functionality
+      "v8"
     end
     
     # Consumes the message and returns a message to send back to the client.
-    def consume_sms(message)
-      if message.body.strip=="#1"
-        url = "#{ENV['CHAMELEON_HOST']}/applications/#{@application_id}/api/versions/#{@version}/objects/outage/instances.json"
-      else
-        info_message = "text #1 for outage information"
+    def consume_sms(message, text_message_options)
+      latest_appplication_version = get_latest_app_version
+      object_name = text_message_options[message.body.strip]
+      if message.body.strip=="#0" || object_name.nil?
+        keys = text_message_options.keys
+        info_message = ""
+        keys.each do |x|
+          info_message << "text #{x} for #{text_message_options[x]}\n"
+        end
+        Rails.logger.info "return message: " + info_message
         return info_message
+      else
+        url = "#{ENV['CHAMELEON_HOST']}/applications/#{@application_id}/api/versions/#{latest_appplication_version}/objects/#{object_name}/instances.json"
       end
       # Currently, I think that there's no API exposed to see what objects are available. We'll hardcode the below for demoing for now.
       uri = URI(url)
@@ -29,7 +40,7 @@ module ConsumeSms
         begin
           parsed_json = ActiveSupport::JSON.decode(response.body)
         rescue MultiJson::DecodeError
-          raise MalformedProvisioningResponseError
+          raise "hell"
         end
       when Net::HTTPRedirection
         # TODO: Handle redirection

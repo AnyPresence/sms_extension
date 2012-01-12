@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120110061023) do
+ActiveRecord::Schema.define(:version => 20120112040706) do
 
   create_table "accounts", :force => true do |t|
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",        :default => 0
+    t.integer  "sign_in_count",           :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20120110061023) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "consume_phone_number"
+    t.text     "permitted_phone_numbers"
   end
 
   add_index "accounts", ["application_id"], :name => "index_accounts_on_application_id", :unique => true

@@ -143,7 +143,7 @@ describe TexterController do
       sms = double('sms')
       twilio_account.stub_chain(:sms,:messages,:create).and_return(sms)
       
-      post :consume, :sms_message_sid => '1234', :account_sid => '1234', :body => '0', :from => '+19789445741', :to => '+19783194410'
+      post :consume, :SmsMessageSid => '1234', :AccountSid => '1234', :Body => '0', :From => '+19783194410', :To => '+19783194410'
       
       parsed_body = JSON.parse(response.body)
       parsed_body["success"].should == true
