@@ -1,4 +1,18 @@
 module ConsumeSms
+  def self.connect_to_api(url)
+    uri = URI.parse(url)
+    http = Net::HTTP.new(uri.host, uri.port)
+    
+    response = nil
+    if uri.scheme == "https"
+      http.use_ssl = true
+      # Might want to use another solution here for SSL.
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    end
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = http.request(request)
+  end
+  
   class Consumer
     
     NUM_ENTRIES = 1
@@ -19,7 +33,7 @@ module ConsumeSms
     def consume_sms(message, text_message_options)
       latest_appplication_version = get_latest_app_version
       object_name = text_message_options[message.body.strip]
-      if message.body.strip=="#0" || object_name.nil?
+      if message.body.strip == "#0" || object_name.nil?
         keys = text_message_options.keys
         info_message = ""
         keys.each do |x|
@@ -30,24 +44,21 @@ module ConsumeSms
       else
         url = "#{ENV['CHAMELEON_HOST']}/applications/#{@application_id}/api/versions/#{latest_appplication_version}/objects/#{object_name}/instances.json"
       end
-      # Currently, I think that there's no API exposed to see what objects are available. We'll hardcode the below for demoing for now.
-      uri = URI(url)
-      response = Net::HTTP.get_response uri
-      
+
+      response = ConsumeSms::connect_to_api(url)
+ 
       parsed_json = []
       case response
       when Net::HTTPSuccess
         begin
           parsed_json = ActiveSupport::JSON.decode(response.body)
         rescue MultiJson::DecodeError
-          raise "hell"
+          raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to decode the JSON message for url: #{url}"
         end
       when Net::HTTPRedirection
-        # TODO: Handle redirection
-        raise 'hell'
+        raise ConsumeSms::GeneralTextMessageNotifierException, "Unexpected redirection occurred for url: #{url}"
       else
-        # TODO: Handle error
-        raise 'hell'
+        raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response from for url: #{url}"
       end        
 
       # Parse through the object instances and pull out the latest data.
@@ -59,12 +70,12 @@ module ConsumeSms
         objs[time] << x["attributes"]
       end
 
-      msg_for_client = [];
+      msg_for_client = []
       keys = objs.keys.sort.reverse
       
       # Note: this is hardcoded for outage-reports. Chameleon's exposed API must be expanded first 
       # to allow more dynamic functionality.
-      count = 0;
+      count = 0
       keys.each do |k|
         val = objs[k]
         val.each do |v|
@@ -77,7 +88,9 @@ module ConsumeSms
       
       return msg_for_client.join("\n")
     end
-    
   end
+  
+  # General Exception
+  class GeneralTextMessageNotifierException < Exception; end
    
 end
