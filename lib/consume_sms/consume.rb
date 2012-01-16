@@ -1,6 +1,6 @@
 module ConsumeSms
   def self.connect_to_api(url)
-    url = url + "?auth_token#{ENV['AUTH_TOKEN']}"
+    url = url + "?auth_token=#{ENV['AUTH_TOKEN']}"
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
     
@@ -11,6 +11,7 @@ module ConsumeSms
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     end
     request = Net::HTTP::Get.new(uri.request_uri)
+
     response = http.request(request)
   end
   
@@ -36,11 +37,11 @@ module ConsumeSms
       
         return info_message
       else
-        url = "#{ENV['CHAMELEON_HOST']}/applications/#{@application_id}/objects/#{object_name}/instances.json"
+        url = "#{ENV['CHAMELEON_HOST']}/applications/#{@application_id}/api/versions/v1/objects/#{object_name}/instances.json"
       end
-
+      
       response = ConsumeSms::connect_to_api(url)
- 
+      
       parsed_json = []
       case response
       when Net::HTTPSuccess
@@ -54,30 +55,15 @@ module ConsumeSms
       else
         raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response from for url: #{url}"
       end        
-
-      # Parse through the object instances and pull out the latest data.
-      obj_def = []
-      objs = {}
-      parsed_json.each do |x| 
-        time = Time.parse(x["object_definition"]["created_at"]).to_i
-        objs[time] ||= []
-        objs[time] << x["attributes"]
-      end
-
-      msg_for_client = []
-      keys = objs.keys.sort.reverse
       
       # Note: this is hardcoded for outage-reports. Chameleon's exposed API must be expanded first 
       # to allow more dynamic functionality.
+      msg_for_client = []
       count = 0
-      keys.each do |k|
-        val = objs[k]
-        val.each do |v|
+      parsed_json.each do |x|
           break if count == NUM_ENTRIES
-          count = count +1;
-          time = Time.at(k).strftime('%F %T')
-          msg_for_client << "#{time} : #{v['title']} : #{v[@field_name]}"
-        end
+          count += 1
+          msg_for_client << x["title"] + " : " + x["description"]
       end
       
       return msg_for_client.join("\n")

@@ -113,8 +113,9 @@ class TexterController < ApplicationController
       consumer = ConsumeSms::Consumer.new(accounts.first.application_id, accounts.first.field_name)
       
       begin
+
         outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
-    
+
         Rails.logger.info "Sending message to " + message.from + " : " + outbound_message
         twilio_account.sms.messages.create(:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => message.from, :body => outbound_message)
         render :json => { :success => true }

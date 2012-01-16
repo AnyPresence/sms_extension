@@ -20,12 +20,11 @@ class Account < ActiveRecord::Base
     options
   end
   
-  # Gets object definition mappings
-  def get_object_definition_mappings
-    url = "#{ENV['CHAMELEON_HOST']}/applications/#{@application_id}/objects.json"
+  # Gets object definition names for an application
+  def get_object_definition_mappings(application_name)
+    url = "#{ENV['CHAMELEON_HOST']}/applications/#{application_name}/objects.json"
     
-    uri = URI(url)
-    response = Net::HTTP.get_response uri
+    response = ConsumeSms::connect_to_api(url)
 
     parsed_json = []
 
@@ -41,6 +40,13 @@ class Account < ActiveRecord::Base
     else
       raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response from for url: #{url}"
     end
+    
+    object_names = []
+    parsed_json.each do |x|
+      object_names << x["mapping"]
+    end
+    
+    object_names
   end
   
   # Gets the first available phone number if any
