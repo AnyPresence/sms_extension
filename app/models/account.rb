@@ -20,6 +20,29 @@ class Account < ActiveRecord::Base
     options
   end
   
+  # Gets object definition mappings
+  def get_object_definition_mappings
+    url = "#{ENV['CHAMELEON_HOST']}/applications/#{@application_id}/objects.json"
+    
+    uri = URI(url)
+    response = Net::HTTP.get_response uri
+
+    parsed_json = []
+
+    case response
+    when Net::HTTPSuccess
+      begin
+        parsed_json = ActiveSupport::JSON.decode(response.body)
+      rescue MultiJson::DecodeError
+        raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to decode the JSON message for url: #{url}"
+      end
+    when Net::HTTPRedirection
+      raise ConsumeSms::GeneralTextMessageNotifierException, "Unexpected redirection occurred for url: #{url}"
+    else
+      raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response from for url: #{url}"
+    end
+  end
+  
   # Gets the first available phone number if any
   def self.phone_number_used(twilio_owned_numbers, used_numbers)
     available_phone_number = nil

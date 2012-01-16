@@ -65,8 +65,10 @@ class TexterController < ApplicationController
           begin
             twilio_account.incoming_phone_numbers.create(:phone_number => consume_phone_number)
           rescue
-            current_account.consume_phone_number = nil
-          end 
+            params[:account][:consume_phone_number] = nil
+          end
+        else
+          params[:account][:consume_phone_number] = first_available_owned_number
         end
       end
       
@@ -78,6 +80,7 @@ class TexterController < ApplicationController
       
       redirect_to settings_path
     end
+
   end
   
   # This is the endpoint for the web service our add on creates.
@@ -108,9 +111,10 @@ class TexterController < ApplicationController
       incoming_phone_number = Message::strip_phone_number_prefix(params[:From])
       accounts = Account.where("accounts.permitted_phone_numbers like '%#{incoming_phone_number}%'").limit(1)
       consumer = ConsumeSms::Consumer.new(accounts.first.application_id, accounts.first.field_name)
-      outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
       
       begin
+        outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
+    
         Rails.logger.info "Sending message to " + message.from + " : " + outbound_message
         twilio_account.sms.messages.create(:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => message.from, :body => outbound_message)
         render :json => { :success => true }
@@ -160,7 +164,7 @@ protected
     if valid_request?
       account = Account.find_by_application_id params[:application_id]
       if account.nil?
-        return  
+        return false
       end
       sign_in account
     end

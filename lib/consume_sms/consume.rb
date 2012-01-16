@@ -1,5 +1,6 @@
 module ConsumeSms
   def self.connect_to_api(url)
+    url = url + "?auth_token#{ENV['AUTH_TOKEN']}"
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
     
@@ -23,15 +24,8 @@ module ConsumeSms
       @field_name = field_name
     end
     
-    # Accesses the API for the latest application version
-    def get_latest_app_version
-      # TODO: requires hooks in the API for this functionality
-      "v8"
-    end
-    
     # Consumes the message and returns a message to send back to the client.
     def consume_sms(message, text_message_options)
-      latest_appplication_version = get_latest_app_version
       object_name = text_message_options[message.body.strip]
       if message.body.strip == "#0" || object_name.nil?
         keys = text_message_options.keys
@@ -39,10 +33,10 @@ module ConsumeSms
         keys.each do |x|
           info_message << "text #{x} for #{text_message_options[x]}\n"
         end
-        Rails.logger.info "return message: " + info_message
+      
         return info_message
       else
-        url = "#{ENV['CHAMELEON_HOST']}/applications/#{@application_id}/api/versions/#{latest_appplication_version}/objects/#{object_name}/instances.json"
+        url = "#{ENV['CHAMELEON_HOST']}/applications/#{@application_id}/objects/#{object_name}/instances.json"
       end
 
       response = ConsumeSms::connect_to_api(url)

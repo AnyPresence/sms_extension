@@ -27,7 +27,7 @@ describe TexterController do
     it "should render settings with valid parameters" do
         secure_parameters = generate_secure_parameters
         get :settings, :application_id => secure_parameters[:application_id], :anypresence_auth => secure_parameters[:anypresence_auth], :timestamp => secure_parameters[:timestamp]
-        response.should render_template(:settings)
+        response.should be_redirect
     end  
   end
   
