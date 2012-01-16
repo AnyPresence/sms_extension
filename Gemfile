@@ -7,8 +7,8 @@ gem 'rails', '3.1.3'
 
 
 gem 'twilio-ruby'
-
 gem 'devise'
+gem 'liquid'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -47,4 +47,6 @@ group :test do
   gem 'factory_girl'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'webmock'
+  gem 'vcr'
 end

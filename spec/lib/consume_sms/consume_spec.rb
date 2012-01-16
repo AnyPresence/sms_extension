@@ -17,6 +17,9 @@ describe ConsumeSms::Consumer do
       message.body = "#1"
       expect {@consumer.consume_sms(message, text_message_options)}.should raise_error(ConsumeSms::GeneralTextMessageNotifierException)
     end
+  end
+  
+  describe "liquidify" do
     
   end
   
