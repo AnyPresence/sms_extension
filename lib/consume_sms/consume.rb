@@ -38,7 +38,6 @@ module ConsumeSms
       
         return info_message
       else
-        #url = "#{ENV['CHAMELEON_HOST']}/applications/#{@application_id}/api/versions/v1/objects/#{object_name}/instances.json"
         application_name = Account::get_application_name(@application_id)
         url = "#{ENV['CHAMELEON_HOST']}/applications/#{application_name}/objects/#{object_name}/instances.json"
       end
@@ -67,7 +66,6 @@ module ConsumeSms
           break if count == NUM_ENTRIES
           count += 1
           msg_for_client << MenuOption::parse_format_string(format, x)
-          #msg_for_client << x["title"] + " : " + x["description"]
       end
   
       return msg_for_client.join("\n")
