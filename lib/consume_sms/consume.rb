@@ -27,17 +27,20 @@ module ConsumeSms
     
     # Consumes the message and returns a message to send back to the client.
     def consume_sms(message, text_message_options)
-      object_name = text_message_options[message.body.strip]
+      object_name = text_message_options[message.body.strip][0]
+      format = text_message_options[message.body.strip][1]
       if message.body.strip == "#0" || object_name.nil?
         keys = text_message_options.keys
         info_message = ""
         keys.each do |x|
-          info_message << "text #{x} for #{text_message_options[x]}\n"
+          info_message << "#{x} for #{text_message_options[x][0]}\n"
         end
       
         return info_message
       else
-        url = "#{ENV['CHAMELEON_HOST']}/applications/#{@application_id}/api/versions/v1/objects/#{object_name}/instances.json"
+        #url = "#{ENV['CHAMELEON_HOST']}/applications/#{@application_id}/api/versions/v1/objects/#{object_name}/instances.json"
+        application_name = Account::get_application_name(@application_id)
+        url = "#{ENV['CHAMELEON_HOST']}/applications/#{application_name}/objects/#{object_name}/instances.json"
       end
       
       response = ConsumeSms::connect_to_api(url)
@@ -63,9 +66,10 @@ module ConsumeSms
       parsed_json.each do |x|
           break if count == NUM_ENTRIES
           count += 1
-          msg_for_client << x["title"] + " : " + x["description"]
+          msg_for_client << MenuOption::parse_format_string(format, x)
+          #msg_for_client << x["title"] + " : " + x["description"]
       end
-      
+  
       return msg_for_client.join("\n")
     end
   end

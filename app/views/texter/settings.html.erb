@@ -1,6 +1,7 @@
+<h4>
 <%= flash[:notice] %>
 <%= flash[:alert] %>
-
+</h4>
 <div id="consume_phone_number_region">
 <%= form_for(current_account, :url => settings_path) do |f| %>
   <%= f.label :phone_number, "Phone number to text:" %>
@@ -19,6 +20,8 @@
   <br/>
   <% if !current_account.consume_phone_number.nil? %>
     <%= f.text_field :consume_phone_number, :readonly => true %>
+    <br/>
+    <%= link_to "View menu options", account_menu_options_path(current_account) %>
   <% else %>
     <%= f.text_field :consume_phone_number, :readonly => true, :value => "N/A"%>
     <div id="generate_consume_phone_number_region">

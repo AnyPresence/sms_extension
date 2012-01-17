@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120112040706) do
+ActiveRecord::Schema.define(:version => 20120116192337) do
 
   create_table "accounts", :force => true do |t|
     t.datetime "remember_created_at"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20120112040706) do
 
   add_index "accounts", ["application_id"], :name => "index_accounts_on_application_id", :unique => true
   add_index "accounts", ["authentication_token"], :name => "index_accounts_on_authentication_token", :unique => true
+
+  create_table "menu_options", :force => true do |t|
+    t.string   "name"
+    t.string   "format"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", :force => true do |t|
     t.string   "sms_message_sid"

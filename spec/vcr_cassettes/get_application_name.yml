@@ -1,0 +1,33 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://localhost:5000/applications/4f10c435772c96fc04000006.json?auth_token=xs3xQAkNYqsgcDq8LzKk
+    body: !!null 
+    headers: !!null 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+      x-ua-compatible:
+      - IE=Edge
+      etag:
+      - ! '"0ba083b2dbfc843509c0abf476a43e2d"'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      x-runtime:
+      - '0.451976'
+      content-length:
+      - '790'
+      server:
+      - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
+      date:
+      - Mon, 16 Jan 2012 23:05:48 GMT
+      set-cookie:
+      - _session_id=d8b33295d0c9ba3887afeb39584bbbee; path=/; HttpOnly
+    body: ! '{"_id":"4f10c435772c96fc04000006","account_id":"4f10c435772c96fc04000001","application_theme":{"_id":"4f10c436772c96fc04000008","active_color":null,"base_color":null,"base_gradient":null,"body_color":null,"button_color":null,"list_active_color":null,"tabs_active_color":null,"tabs_color":null},"created_at":"2012-01-13T18:54:30-05:00","icon_content_type":"image/png","icon_file_name":"test_icon.png","icon_file_size":10931,"icon_meta":null,"icon_updated_at":"2012-01-13T23:54:29+00:00","logo_content_type":"image/png","logo_file_name":"test_logo.png","logo_file_size":28405,"logo_meta":null,"logo_updated_at":"2012-01-13T23:54:29+00:00","name":"Outage
+      Reporter","published":true,"s3_asset_path":"foo/outage-reporter/master","slug":"outage-reporter","updated_at":"2012-01-16T12:26:18-05:00"}'
+    http_version: '1.1'

@@ -4,7 +4,7 @@ class TexterController < ApplicationController
   before_filter :authenticate_from_anypresence, :only => [:settings, :deprovision]
   
   # Normal Devise authentication logic
-  before_filter :authenticate_account!, :except => [:unauthorized, :provision, :consume]
+  before_filter :authenticate_account!, :except => [:unauthorized, :provision, :consume, :generate_consume_phone_number]
 
   # Just something for root_path for Devise.
   def unauthorized
@@ -103,7 +103,6 @@ class TexterController < ApplicationController
   def consume
     message = Message.new(:sms_message_sid => params[:SmsMessageSid], :account_sid => params[:AccountSid], :body => params[:Body], :from => params[:From], :to => params[:To])
     twilio_account = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account
-    
     Rails.logger.info "Received message: " + message.inspect
     if message.save
       # Parse the message and decide what message to send back (if any)
@@ -113,8 +112,13 @@ class TexterController < ApplicationController
       consumer = ConsumeSms::Consumer.new(accounts.first.application_id, accounts.first.field_name)
       
       begin
-
-        outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
+        outbound_message = ""
+        begin
+          outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
+        rescue
+          outbound_message = "Unable to obtain data at this time. Please try again later."
+          #TODO: raise another exception here instead of muffing out
+        end
 
         Rails.logger.info "Sending message to " + message.from + " : " + outbound_message
         twilio_account.sms.messages.create(:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => message.from, :body => outbound_message)

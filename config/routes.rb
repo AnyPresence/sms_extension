@@ -1,5 +1,5 @@
 ChameleonTextMessageNotifier::Application.routes.draw do
-
+  
   post 'provision' => 'texter#provision'
   post 'deprovision' => 'texter#deprovision'
   match 'settings' => 'texter#settings'
@@ -11,4 +11,8 @@ ChameleonTextMessageNotifier::Application.routes.draw do
   
   devise_for :accounts
   devise_for :users
+  
+  resources :accounts do
+    resources :menu_options
+  end
 end
