@@ -55,11 +55,9 @@ module ConsumeSms
       when Net::HTTPRedirection
         raise ConsumeSms::GeneralTextMessageNotifierException, "Unexpected redirection occurred for url: #{url}"
       else
-        raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response from for url: #{url}"
+        raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response for url: #{url}"
       end        
       
-      # Note: this is hardcoded for outage-reports. Chameleon's exposed API must be expanded first 
-      # to allow more dynamic functionality.
       msg_for_client = []
       count = 0
       parsed_json.each do |x|

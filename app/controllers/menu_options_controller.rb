@@ -49,10 +49,15 @@ class MenuOptionsController < ApplicationController
 private
   # Helper to build drop down menu with object names
   def find_available_objects
-    application_name = Account::get_application_name(current_account.application_id)
-    @available_objects = current_account.get_object_definition_mappings(application_name)
-    if @available_objects.nil?
-      flash[:alert] = "Unable to find any available objects. Please create objects for application #{application_name}."
+    begin
+      application_name = Account::get_application_name(current_account.application_id)
+      @available_objects = current_account.get_object_definition_mappings(application_name)
+      if @available_objects.nil?
+        flash[:alert] = "Unable to find any available objects. Please create objects for application #{application_name}."
+        redirect_to settings_path
+      end
+    rescue ConsumeSms::GeneralTextMessageNotifierException
+      flash[:alert] = "Unable to retrieve object names for building a menu."
       redirect_to settings_path
     end
   end

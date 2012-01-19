@@ -42,7 +42,7 @@ class Account < ActiveRecord::Base
     when Net::HTTPRedirection
       raise ConsumeSms::GeneralTextMessageNotifierException, "Unexpected redirection occurred for url: #{url}"
     else
-      raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response from for url: #{url}"
+      raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response for url: #{url}"
     end
     
     object_names = []
@@ -72,9 +72,10 @@ class Account < ActiveRecord::Base
     when Net::HTTPRedirection
       raise ConsumeSms::GeneralTextMessageNotifierException, "Unexpected redirection occurred for url: #{url}"
     else
-      raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response from for url: #{url}"
+      raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response for url: #{url}"
     end
     
+    # Grab the human readable name
     parsed_json["slug"]
   end
   
