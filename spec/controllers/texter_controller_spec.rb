@@ -26,13 +26,12 @@ describe TexterController do
     it "should render settings with valid parameters" do
         secure_parameters = generate_secure_parameters
         get :settings, :application_id => secure_parameters[:application_id], :anypresence_auth => secure_parameters[:anypresence_auth], :timestamp => secure_parameters[:timestamp]
-        response.should be_redirect
+        response.should render_template "settings"
     end  
   end
   
   describe 'PUT settings' do
     before(:each) do
-      # create an account for testing
       @account = Factory.create(:account)
       sign_in @account     
     end  
@@ -49,7 +48,6 @@ describe TexterController do
   
   describe "verify login" do
     before(:each) do
-      # create an account for testing
       @account = Factory.build(:account)
       sign_in @account
     end
@@ -79,7 +77,6 @@ describe TexterController do
     
   describe 'perform text' do
     before(:each) do
-      # create an account for testing
       @account = Factory.create(:account)
       sign_in @account
     end
