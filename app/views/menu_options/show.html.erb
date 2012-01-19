@@ -1,8 +1,0 @@
-<%= link_to "Go back to settings", settings_path %>
-<br/>
-<div id='menu_option'>
-  <small><%= @menu_option.name %> - <%= @menu_option.format %></small>
-</div>
-<br/>
-<small><%= link_to "Edit", edit_account_menu_option_path(current_account, @menu_option) %></small>
-<small><%= link_to "Delete", [current_account, @menu_option], :method => :delete, :confirm => "Are you sure you want to delete this menu option?" %></small>
