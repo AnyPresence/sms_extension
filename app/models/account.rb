@@ -2,7 +2,8 @@ class Account < ActiveRecord::Base
   devise :token_authenticatable, :rememberable, :trackable
   before_save :ensure_authentication_token
   
-  validates_presence_of :application_id
+  validates :application_id, :presence => true
+  validates :consume_phone_number, :uniqueness => true
 
   attr_accessible :remember_me, :phone_number, :field_name, :consume_phone_number, :application_id, :permitted_phone_numbers
   
@@ -53,6 +54,10 @@ class Account < ActiveRecord::Base
     object_names
   end
   
+  def self.find_by_consume_phone_number(phone_number)
+    Account.find_by_consume_phone_number(phone_number)
+  end
+  
   # Gets the application name from the application id
   #
   # TODO: this will need to be replaced by getting the information from meta-data 
@@ -89,5 +94,9 @@ class Account < ActiveRecord::Base
       end
     end
     return available_phone_number
+  end
+  
+  def self.get_used_phone_numbers
+    Account.all.map {|x| x.consume_phone_number }
   end
 end

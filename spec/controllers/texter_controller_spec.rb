@@ -44,6 +44,23 @@ describe TexterController do
         subject.current_account.phone_number.should == new_phone_number
     end
     
+    it "should update account with new consume_phone_number" do
+        new_phone_number = "9789445742"
+        new_field_name = "description"
+        
+        twilio_client = mock_twilio_client
+        twilio_account = mock_twilio_account
+        
+        Twilio::REST::Client.should_receive(:new).with(any_args()).and_return(twilio_client)
+        twilio_client.stub(:account).and_return(twilio_account)
+        twilio_account.stub_chain(:incoming_phone_numbers, :list).and_return([])
+        twilio_account.stub_chain(:incoming_phone_numbers, :create).with(any_args()).and_return(true)
+
+        subject.current_account.consume_phone_number = nil
+        
+        put :settings, :commit => "Update Account", :account => {:phone_number => new_phone_number, :field_number => new_field_name, :consume_phone_number => "9783194410"}
+    end
+    
   end
   
   describe "verify login" do
@@ -121,31 +138,52 @@ describe TexterController do
   end
   
   describe 'perform sms consumption' do
- 
     before(:each) do
       # create an account for testing
-      @account = Factory.create(:account)
+      @consume_phone_number = "6178613962"
+      @account = Factory.create(:account, {:consume_phone_number => @consume_phone_number})
       sign_in @account
     end     
      
-    it "should consume and text" do
+    it "should consume and text successfully" do
       Message.any_instance.stub(:save).and_return(true)
       twilio_client = mock_twilio_client
       twilio_account = mock_twilio_account
       subject.current_account.phone_number = "+19783194410" # a state rejection number
+      
       Twilio::REST::Client.should_receive(:new).with(any_args()).and_return(twilio_client)
 
       twilio_client.stub(:account).and_return(twilio_account)
       sms = double('sms')
-      twilio_account.stub_chain(:sms,:messages,:create).and_return(sms)
+      twilio_account.stub_chain(:sms, :messages, :create).and_return(sms)
       
-      post :consume, :SmsMessageSid => '1234', :AccountSid => '1234', :Body => '0', :From => '+19783194410', :To => '+19783194410'
+      post :consume, :SmsMessageSid => '1234', :AccountSid => '1234', :Body => '#1', :From => '+19783194410', :To => @consume_phone_number
       
       parsed_body = JSON.parse(response.body)
       parsed_body["success"].should == true
     end
+    
+    it "should know to send default error message for a phone number it can't find an account for" do
+      Message.any_instance.stub(:save).and_return(true)
+      twilio_client = mock_twilio_client
+      twilio_account = mock_twilio_account
+      subject.current_account.phone_number = "+19783194410"
+      
+      Twilio::REST::Client.should_receive(:new).with(any_args()).and_return(twilio_client)
 
+      twilio_client.stub(:account).and_return(twilio_account)
+      sms = double('sms')
+      
+      twilio_account.stub_chain(:sms, :messages, :create).with(any_args())  do |x| 
+        x[:body].should == "The extension is not configured for your account." 
+      end
+      
+      # Post with different 'To' phone number
+      post :consume, :SmsMessageSid => '1234', :AccountSid => '1234', :Body => '0', :From => '+19783194410', :To => "+16179999999"
+
+      parsed_body = JSON.parse(response.body)
+      parsed_body["success"].should == true
+    end
   end
  
-
 end

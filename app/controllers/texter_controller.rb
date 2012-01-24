@@ -1,5 +1,5 @@
 class TexterController < ApplicationController
-  include ConsumeSms
+
   # We can do SSO from the hash AnyPresence sends
   before_filter :authenticate_from_anypresence, :only => [:settings, :deprovision]
   
@@ -50,9 +50,7 @@ class TexterController < ApplicationController
 
       # Check if we should provision this phone number, or if we own it already.
       if current_account.consume_phone_number.nil? && !consume_phone_number.nil?
-        accounts = Account.all
-        used_numbers = []
-        accounts.each {|x| used_numbers << x.consume_phone_number }
+        used_numbers = Account::get_used_phone_numbers
         used_numbers << consume_phone_number
         twilio_account = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account 
         
@@ -68,7 +66,7 @@ class TexterController < ApplicationController
             params[:account][:consume_phone_number] = nil
           end
         else
-          params[:account][:consume_phone_number] = first_available_owned_number
+          params[:account][:consume_phone_number] = consume_phone_number
         end
       end
       
@@ -85,6 +83,8 @@ class TexterController < ApplicationController
   
   # This is the endpoint for the web service our add on creates.
   def text
+    api_version = env["HTTP_X_API_VERSION"]
+    
     twilio_account = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account
 
     if current_account.phone_number.blank? || current_account.field_name.blank?
@@ -108,19 +108,28 @@ class TexterController < ApplicationController
       # Parse the message and decide what message to send back (if any)
       # TODO: Hooks must be created in the exposed API so that we know what the latest published app is.
       incoming_phone_number = Message::strip_phone_number_prefix(params[:From])
-      accounts = Account.where("accounts.permitted_phone_numbers like '%#{incoming_phone_number}%'").limit(1)
-      consumer = ConsumeSms::Consumer.new(accounts.first.application_id, accounts.first.field_name)
+      
+      consume_phone_number = Message::strip_phone_number_prefix(params[:To])
+      accounts = Account.where("consume_phone_number like ?", "%#{consume_phone_number}")
       
       begin
         outbound_message = ""
-        begin
-          outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
-        rescue
-          outbound_message = "Unable to obtain data at this time. Please try again later."
-          #TODO: raise another exception here instead of muffing out
+        
+        if !accounts.blank?
+          consumer = ConsumeSms::Consumer.new(accounts.first.application_id, accounts.first.field_name)
+        
+          begin
+            outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
+          rescue
+            outbound_message = "Unable to obtain data at this time. Please try again later."
+            #TODO: raise another exception here instead of muffing out
+          end
+        else
+          outbound_message = "The extension is not configured for your account."
         end
 
         Rails.logger.info "Sending message to " + message.from + " : " + outbound_message
+    
         twilio_account.sms.messages.create(:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => message.from, :body => outbound_message)
         render :json => { :success => true }
       rescue
@@ -134,9 +143,7 @@ class TexterController < ApplicationController
   # Generates a phone number to consume SMS
   def generate_consume_phone_number
     if current_account.consume_phone_number.nil?
-      accounts = Account.all
-      used_numbers = []
-      accounts.each {|x| used_numbers << x.consume_phone_number }
+      used_numbers = Account::get_used_phone_numbers
      
       twilio_client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
       twilio_account = twilio_client.account

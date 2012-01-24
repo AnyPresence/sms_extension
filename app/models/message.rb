@@ -3,11 +3,11 @@ class Message < ActiveRecord::Base
      
   attr_accessible :sms_message_sid, :account_sid, :body, :from, :to
   
-  # Strips the phone number prefix such as +1 from +12345678.
+  # Strips the phone number prefix such as +1 from +16172345678.
   # Twilio does not currently support toll-free number texting; and texting internationally is in beta.
   def self.strip_phone_number_prefix(phone_number)
     num = phone_number.strip
-    num[-7..-1] if num.size >= 8
+    num[-10..-1] if num.size >= 10
   end
   
   # Paginates text if they exceed max_text_length.
