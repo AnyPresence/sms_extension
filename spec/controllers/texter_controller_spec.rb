@@ -99,19 +99,27 @@ describe TexterController do
     end
   end
   
+  describe "publish" do
+    it "should require authentication" do
+      post :publish
+      response.status.should_not == 200
+    end
+  end
+  
   describe "publish new api version" do 
     before(:each) do
       @account = Factory.create(:account, :api_version => "v1")
       sign_in @account
     end
-    
-    it "should use the new api version" do 
-       request.env['X_AP_API_VERSION'] = 'v2'
-       post :publish
+  
+    it "should use the new api version" do
+      secure_parameters = generate_secure_parameters
+      request.env['X_AP_API_VERSION'] = 'v2'
+      post :publish, :application_id => secure_parameters[:application_id], :anypresence_auth => secure_parameters[:anypresence_auth], :timestamp => secure_parameters[:timestamp]
        
-       parsed_body = JSON.parse(response.body)
-       parsed_body["success"].should == true
-       subject.current_account.api_version.should == "v2"
+      parsed_body = JSON.parse(response.body)
+      parsed_body["success"].should == true
+      subject.current_account.api_version.should == "v2"
     end
     
     it "should display error without api_version as post parameter" do
