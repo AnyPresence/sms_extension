@@ -6,6 +6,8 @@ class TexterController < ApplicationController
   # Normal Devise authentication logic
   before_filter :authenticate_account!, :except => [:unauthorized, :provision, :consume, :generate_consume_phone_number]
 
+  before_filter :find_api_version, :only => [:provision, :text, :publish]
+  
   # Just something for root_path for Devise.
   def unauthorized
     render :text => "Unauthorized.", :status => :unauthorized
@@ -16,6 +18,7 @@ class TexterController < ApplicationController
     if valid_request?
       account = Account.new
       account.application_id = params[:application_id]
+      account.api_version = @api_version
       account.save!
       
       render :json => {
@@ -81,10 +84,24 @@ class TexterController < ApplicationController
 
   end
   
+  # This is the endpoint for when new applications are published
+  def publish
+    new_api_version = @api_version
+    
+    if new_api_version.nil?
+       render :json => { :success => false } 
+    elsif new_api_version > current_account.api_version
+      current_account.api_version = new_api_version
+      current_account.save!
+      debugger
+      render :json => { :success => true, :message => "The extensions will now use the latest version."}
+    else
+      render :json => { :success => true }
+    end
+  end
+  
   # This is the endpoint for the web service our add on creates.
   def text
-    api_version = env["HTTP_X_API_VERSION"]
-    
     twilio_account = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account
 
     if current_account.phone_number.blank? || current_account.field_name.blank?
@@ -194,6 +211,14 @@ protected
       Time.at(params[:timestamp].to_i) > 30.seconds.ago
     rescue
       false
+    end
+  end
+  
+  def find_api_version
+    if Rails.env.test?
+      @api_version = request.env["X_AP_API_VERSION"]
+    else
+      @api_version = request.env["HTTP_X_AP_API_VERSION"]
     end
   end
 

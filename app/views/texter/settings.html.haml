@@ -3,6 +3,11 @@
   = flash[:alert]
 #consume_phone_number_region
   = form_for(current_account, :url => settings_path) do |f|
+    - if current_account.api_version.nil?
+      %small
+        Please publish the application for more configuration options.
+    %p
+      API version: #{current_account.api_version}
     = f.label :phone_number, "Phone number to text:"
     %br/
     = f.text_field :phone_number

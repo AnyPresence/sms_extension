@@ -60,16 +60,14 @@ describe TexterController do
         
         put :settings, :commit => "Update Account", :account => {:phone_number => new_phone_number, :field_number => new_field_name, :consume_phone_number => "9783194410"}
     end
-    
   end
   
-  describe "verify login" do
+  describe "login" do
     before(:each) do
       @account = Factory.build(:account)
-      sign_in @account
     end
     
-    describe 'validate provision' do
+    describe 'provision' do
       it "should login successfully" do
         secure_parameters = generate_secure_parameters
         
@@ -87,8 +85,40 @@ describe TexterController do
         post :provision, :application_id => app_id, :anypresence_auth => secure_parameters[:anypresence_auth], :timestamp => secure_parameters[:timestamp]
         parsed_body = JSON.parse(response.body)
         parsed_body["success"].should == false 
-      end  
+      end
       
+      it "should know to save the current api version information" do
+        secure_parameters = generate_secure_parameters
+        
+        request.env['X_AP_API_VERSION'] = "v1"
+        post :provision, :application_id => secure_parameters[:application_id], :anypresence_auth => secure_parameters[:anypresence_auth], :timestamp => secure_parameters[:timestamp]
+        parsed_body = JSON.parse(response.body)
+        parsed_body["success"].should == true
+        Account.first.api_version.should == "v1"
+      end
+    end
+  end
+  
+  describe "publish new api version" do 
+    before(:each) do
+      @account = Factory.create(:account, :api_version => "v1")
+      sign_in @account
+    end
+    
+    it "should use the new api version" do 
+       request.env['X_AP_API_VERSION'] = 'v2'
+       post :publish
+       
+       parsed_body = JSON.parse(response.body)
+       parsed_body["success"].should == true
+       subject.current_account.api_version.should == "v2"
+    end
+    
+    it "should display error without api_version as post parameter" do
+      post :publish
+      
+      parsed_body = JSON.parse(response.body)
+      parsed_body["success"].should == false
     end
   end
     
