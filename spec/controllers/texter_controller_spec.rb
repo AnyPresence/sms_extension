@@ -40,6 +40,7 @@ describe TexterController do
         #secure_parameters = generate_secure_parameters
         new_phone_number = "9789445742"
         new_field_name = "description"
+        subject.current_account.consume_phone_number = nil
         put :settings, :commit => "Update Account", :account => {:phone_number => new_phone_number, :field_number => new_field_name}
         subject.current_account.phone_number.should == new_phone_number
     end
@@ -55,10 +56,9 @@ describe TexterController do
         twilio_client.stub(:account).and_return(twilio_account)
         twilio_account.stub_chain(:incoming_phone_numbers, :list).and_return([])
         twilio_account.stub_chain(:incoming_phone_numbers, :create).with(any_args()).and_return(true)
-
         subject.current_account.consume_phone_number = nil
-        
         put :settings, :commit => "Update Account", :account => {:phone_number => new_phone_number, :field_number => new_field_name, :consume_phone_number => "9783194410"}
+        response.body.should redirect_to(:settings)
     end
   end
   

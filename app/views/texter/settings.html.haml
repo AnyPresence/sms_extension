@@ -9,12 +9,9 @@
     %p
       API version: #{current_account.api_version}
     = f.label :phone_number, "Phone number to text:"
-    %br/
+    %br
     = f.text_field :phone_number
-    %br/
-    = f.label :field_name, "Name of field to include in text:"
-    %br/
-    = f.text_field :field_name
+
     %br/
     = f.label :consume_phone_number, "Phone number to consume text:"
     %br/

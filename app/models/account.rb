@@ -99,4 +99,10 @@ class Account < ActiveRecord::Base
   def self.get_used_phone_numbers
     Account.all.map {|x| x.consume_phone_number }
   end
+  
+  def self.generate_secure_parameters
+    timestamp = Time.now.to_i
+    application_id = @account.application_id
+    {timestamp: timestamp.to_s, application_id: application_id, anypresence_auth: Digest::SHA1.hexdigest("#{ENV['SHARED_SECRET']}-#{application_id}-#{timestamp}") } 
+  end
 end

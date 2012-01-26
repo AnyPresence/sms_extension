@@ -60,19 +60,30 @@ class TexterController < ApplicationController
         # Check to see if there are numbers that we own that are not being used by any account
         twilio_owned_numbers = twilio_account.incoming_phone_numbers.list
         first_available_owned_number = Account::phone_number_used(twilio_owned_numbers, used_numbers)
-        
-        # We do not own this number yet. Let's buy it.
+
+        # Check if we have a phone number available. 
         if first_available_owned_number.nil?
           begin
-            twilio_account.incoming_phone_numbers.create(:phone_number => consume_phone_number)
+            # Let's buy this phone number.
+            twilio_account.incoming_phone_numbers.create({:phone_number => consume_phone_number, :sms_url => ENV['SMS_CONSUME_URL']})
           rescue
             params[:account][:consume_phone_number] = nil
           end
         else
-          params[:account][:consume_phone_number] = consume_phone_number
+          # Use the phone number we already own but update the sms url.
+          sid = ""
+          twilio_owned_numbers.each do |x|
+            sid = x.sid if x.phone_number.match(Message::strip_phone_number_prefix(consume_phone_number))
+          end
+          
+          begin
+            twilio_account.incoming_phone_numbers.get(sid).update({:sms_url => ENV['SMS_CONSUME_URL']})
+          rescue
+            flash[:alert] = "Unable to update the url to consume SMS on Twilio."
+          end
         end
       end
-      
+
       if current_account.update_attributes params[:account]
         flash[:notice] = "Account updated."
       else
@@ -93,7 +104,7 @@ class TexterController < ApplicationController
     elsif new_api_version > current_account.api_version
       current_account.api_version = new_api_version
       current_account.save!
-      debugger
+      
       render :json => { :success => true, :message => "The extensions will now use the latest version."}
     else
       render :json => { :success => true }
