@@ -12,6 +12,5 @@ describe MenuOption do
       rendered_text = MenuOption::parse_format_string("{{title}} : {{description}}", attr_map)
       rendered_text.should =~ /#{title} : undefined/
     end
-    
   end
 end

@@ -4,4 +4,8 @@ class OutgoingTextOption < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => true
   validates :format, :presence => true
     
+  # Builds the outgoing text message.
+  def build_text(attr_map)
+    MenuOption::parse_format_string(format, attr_map)
+  end
 end
