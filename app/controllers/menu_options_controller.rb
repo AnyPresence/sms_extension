@@ -50,8 +50,7 @@ private
   # Helper to build drop down menu with object names
   def find_available_objects
     begin
-      application_name = Account::get_application_name(current_account.application_id)
-      @available_objects = current_account.get_object_definition_mappings(application_name)
+      @available_objects = current_account.get_object_definition_mappings
       if @available_objects.nil?
         flash[:alert] = "Unable to find any available objects. Please create objects for application #{application_name}."
         redirect_to settings_path

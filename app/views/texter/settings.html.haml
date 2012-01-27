@@ -11,21 +11,26 @@
     = f.label :phone_number, "Phone number to text:"
     %br
     = f.text_field :phone_number
-
-    %br/
+    %br
+    = f.label :field_name, "Field name to text:"
+    %br
+    = f.text_field :field_name
+    %br
+    %small= link_to "Build text options", account_outgoing_text_options_path(current_account)
+    %br
     = f.label :consume_phone_number, "Phone number to consume text:"
-    %br/
+    %br
     - if !current_account.consume_phone_number.nil?
       = f.text_field :consume_phone_number, :readonly => true
-      %br/
+      %br
       %small= link_to "View/Update menu options", account_menu_options_path(current_account)
-      %br/
+      %br
     - else
       = f.text_field :consume_phone_number, :readonly => true, :value => "N/A"
       #generate_consume_phone_number_region
         %p Enter area code to generate phone number to consume text
         = text_field_tag :area_code, params[:area_code], :size => 3
         = link_to "Generate", generate_consume_phone_number_path, :remote => true
-    %br/
+    %br
     = f.submit
-%br/
+%br

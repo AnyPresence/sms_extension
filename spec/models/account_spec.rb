@@ -26,14 +26,7 @@ describe Account do
         object_names.should include("outage")
       end
     end
-    
-    it "should have get 'application name' from application_id" do
-      VCR.use_cassette('get_application_name') do
-        object_names = Account::get_application_name(@account.application_id)
-        
-        object_names.should include("outage-reporter")
-      end
-    end
+
   end
   
   describe "validations" do 

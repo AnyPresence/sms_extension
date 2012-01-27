@@ -15,5 +15,6 @@ ChameleonTextMessageNotifier::Application.routes.draw do
   
   resources :accounts do
     resources :menu_options
+    resources :outgoing_text_options
   end
 end
