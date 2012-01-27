@@ -14,16 +14,20 @@ describe Account do
     end
   end
   
-  describe "VCR recording" do
+  describe "query for metadata" do
     before(:each) do
       @account = Factory.build(:account)
     end
     
-    it "should have outage as an object definition in the list of objects" do
-      VCR.use_cassette('list_objects_for_outage_app') do
-        object_names = @account.get_object_definition_mappings('outage-reporter')
-        
-        object_names.should include("outage")
+    def object_definition_mappings_response
+        [['Outage', 'outage'], ['IncomingContact', 'incomingcontact']]
+    end
+    
+    it "should be able to find objects in the metadata" do
+      VCR.use_cassette('list_objects_for_outage_app', :erb => {:body => object_definition_mappings_response} ) do
+        @account.api_version = "v10"
+        object_names = @account.get_object_definition_metadata
+        object_names.should include(['Outage', 'outage'])
       end
     end
 

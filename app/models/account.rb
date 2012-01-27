@@ -34,8 +34,8 @@ class Account < ActiveRecord::Base
     url = "#{ENV['CHAMELEON_HOST']}/applications/#{application_id}/api/versions/#{api_version}/objects.json"
 
     time = Time.now
-    generated_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
-    response = ConsumeSms::connect_to_api(url, generated_secret)
+    signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
+    response = ConsumeSms::connect_to_api(url, signed_secret)
 
     parsed_json = []
     case response
@@ -50,7 +50,7 @@ class Account < ActiveRecord::Base
     else
       raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response for url: #{url}"
     end
-
+ 
     parsed_json
   end
 
@@ -58,7 +58,9 @@ class Account < ActiveRecord::Base
   def get_field_definition(object_definition_name)
     url = "#{ENV['CHAMELEON_HOST']}/applications/#{application_id}/api/versions/#{api_version}/objects/#{object_definition_name}.json"
 
-    response = ConsumeSms::connect_to_api(url)
+    time = Time.now
+    signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
+    response = ConsumeSms::connect_to_api(url, signed_secret)
 
     parsed_json = []
     case response

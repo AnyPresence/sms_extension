@@ -7,8 +7,9 @@ class TexterController < ApplicationController
   before_filter :authenticate_account!, :except => [:unauthorized, :provision, :consume, :generate_consume_phone_number]
 
   before_filter :find_api_version, :only => [:provision, :text, :publish]
+  before_filter :find_object_definition_name, :only => [:text]
   before_filter :build_consumer, :only => [:settings, :text, :consume, :generate_consume_phone_number]
-  
+
   # Just something for root_path for Devise.
   def unauthorized
     render :text => "Unauthorized.", :status => :unauthorized
@@ -109,6 +110,8 @@ class TexterController < ApplicationController
       render :text => "Not yet set up!"
     else
       begin
+        outgoing_text_option = current_account.outgoing_text_options.where(:name => @object_definition_name.downcase)
+        
         @consumer.text({:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => current_account.phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created"})
         render :json => { :success => true }
       rescue
@@ -120,7 +123,6 @@ class TexterController < ApplicationController
   # Twilio sends a post to this endpoint
   def consume
     message = Message.new(:sms_message_sid => params[:SmsMessageSid], :account_sid => params[:AccountSid], :body => params[:Body], :from => params[:From], :to => params[:To])
-    #twilio_account = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account
     Rails.logger.info "Received message: " + message.inspect
     if message.save
       incoming_phone_number = Message::strip_phone_number_prefix(params[:From])
@@ -200,7 +202,16 @@ protected
       @api_version = request.env["HTTP_X_AP_API_VERSION"]
     end
   end
+  
+  def find_object_definition_name
+    if Rails.env.test?
+      @object_definition_name = request.env["X_AP_OBJECT_DEFINITION_NAME"]
+    else
+      @object_definition_name = request.env["HTTP_X_AP_OBJECT_DEFINITION_NAME"]
+    end
+  end
 
+  # Builds the +Consumer+ which accesses Twilio.
   def build_consumer
     @consumer = ConsumeSms::Consumer.new(current_account)
   end

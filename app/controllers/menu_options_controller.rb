@@ -7,6 +7,11 @@ class MenuOptionsController < ApplicationController
   
   def new
     @menu_option = current_account.menu_options.build
+    
+    menu_options = current_account.menu_options.all
+    menu_options.each do |x|
+      @available_objects.delete(x.name)
+    end
   end
   
   def edit
@@ -46,18 +51,4 @@ class MenuOptionsController < ApplicationController
     redirect_to settings_path
   end
 
-private
-  # Helper to build drop down menu with object names
-  def find_available_objects
-    begin
-      @available_objects = current_account.get_object_definition_mappings
-      if @available_objects.nil?
-        flash[:alert] = "Unable to find any available objects. Please create objects for application #{application_name}."
-        redirect_to settings_path
-      end
-    rescue ConsumeSms::GeneralTextMessageNotifierException
-      flash[:alert] = "Unable to retrieve object names for building a menu."
-      redirect_to settings_path
-    end
-  end
 end
