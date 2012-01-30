@@ -1,10 +1,10 @@
 %small= link_to "Go back to settings", settings_path
-%br/
-%br/
+%br
+%br
 #outgoing_text_option
   %small
     = @outgoing_text_option.name
     \- #{@outgoing_text_option.format}
-%br/
+%br
 %small= link_to "Edit", edit_account_outgoing_text_option_path(current_account, @outgoing_text_option)
 %small= link_to "Delete", [current_account, @outgoing_text_option], :method => :delete, :confirm => "Are you sure you want to delete this option?"

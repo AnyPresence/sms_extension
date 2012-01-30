@@ -2,8 +2,8 @@
   %small= f.error_messages
   %small 
     = f.label :name
-    = f.select :name, @available_objects
-  %br/
+    = f.select :name, @available_objects, { :selected => :display_arms }
+  %br
   %small
     = f.label :format
     = f.text_field :format

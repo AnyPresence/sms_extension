@@ -6,7 +6,7 @@ class TexterController < ApplicationController
   # Normal Devise authentication logic
   before_filter :authenticate_account!, :except => [:unauthorized, :provision, :consume, :generate_consume_phone_number]
 
-  before_filter :find_api_version, :only => [:provision, :publish]
+  before_filter :find_api_version, :only => [:provision, :text, :publish]
   before_filter :find_object_definition_name, :only => [:text]
   before_filter :build_consumer, :only => [:settings, :text, :generate_consume_phone_number]
 
@@ -107,11 +107,12 @@ class TexterController < ApplicationController
   
   # This is the endpoint for the web service our add on creates.
   def text
-    if current_account.phone_number.blank? || current_account.field_name.blank?
+    if current_account.phone_number.blank? || current_account.outgoing_text_options.blank?
+      Rails.logger.error "Not able to send text. The account is either missing a phone number to text to, or there are no outgoing text options."
       render :text => "Not yet set up!"
     else
       begin
-        # The attributes of the object are in params, so we'll just pass that over
+        # The attribute s of the object are in params, so we'll just pass that over
         @consumer.text({:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => current_account.phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created"}, params, @object_definition_name.downcase)
         render :json => { :success => true }
       rescue
