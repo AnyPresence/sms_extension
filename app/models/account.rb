@@ -1,11 +1,16 @@
 class Account < ActiveRecord::Base
+  NUM_ENTRIES = 4
+  TWILIO_SMS_CHAR_PAGE_SIZE = 150
+      
   devise :token_authenticatable, :rememberable, :trackable
   before_save :ensure_authentication_token
   
   validates :application_id, :presence => true
   validates :consume_phone_number, :uniqueness => true
+  
+  attr_accessor :account
 
-  attr_accessible :remember_me, :phone_number, :field_name, :consume_phone_number, :application_id, :permitted_phone_numbers
+  attr_accessible :remember_me, :phone_number, :field_name, :consume_phone_number, :application_id, :extension_id, :permitted_phone_numbers
   
   has_many :menu_options, :dependent => :destroy
   has_many :outgoing_text_options, :dependent => :destroy
@@ -35,7 +40,7 @@ class Account < ActiveRecord::Base
 
     time = Time.now
     signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
-    response = ConsumeSms::connect_to_api(url, signed_secret)
+    response = ConsumeSms::connect_to_api(url, signed_secret.merge(:add_on_id => self.extension_id))
 
     parsed_json = []
     case response
@@ -50,17 +55,17 @@ class Account < ActiveRecord::Base
     else
       raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response for url: #{url}"
     end
- 
+  
     parsed_json
   end
 
-  # Gets queryable field names using API call.
-  def get_field_definition(object_definition_name)
+  # Gets field names using API call.
+  def get_field_definition_mappings(object_definition_name)
     url = "#{ENV['CHAMELEON_HOST']}/applications/#{application_id}/api/versions/#{api_version}/objects/#{object_definition_name}.json"
 
     time = Time.now
     signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
-    response = ConsumeSms::connect_to_api(url, signed_secret)
+    response = ConsumeSms::connect_to_api(url, signed_secret.merge(:add_on_id => self.extension_id))
 
     parsed_json = []
     case response
@@ -76,7 +81,14 @@ class Account < ActiveRecord::Base
       raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response for url: #{url}"
     end
 
-    parsed_json
+    attribute_names = []
+    parsed_json.each do |object_definition|
+      field_definitions = object_definition["field_definitions"]
+      field_definitions.each do |field_definition|
+        attribute_names << field_definition["name"]
+      end
+    end
+    attribute_names
   end
   
   # Gets object definition names for an application
@@ -85,11 +97,41 @@ class Account < ActiveRecord::Base
     parsed_json = get_object_definition_metadata
 
     object_names = []
+    parsed_json.each do |object_definition|
+      object_names << object_definition["name"].downcase
+    end
+    object_names
+  end
+  
+  # Gets object instances 
+  def get_object_instances(object_name, format)
+    url = "#{ENV['CHAMELEON_HOST']}/applications/#{application_id}/api/versions/#{api_version}/objects/#{object_name}/instances.json"
+    time = Time.now
+    signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
+    response = ConsumeSms::connect_to_api(url, signed_secret.merge(:add_on_id => self.extension_id))
+    parsed_json = []
+    case response
+    when Net::HTTPSuccess
+      begin
+        parsed_json = ActiveSupport::JSON.decode(response.body)
+      rescue MultiJson::DecodeError
+        raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to decode the JSON message for url: #{url}"
+      end
+    when Net::HTTPRedirection
+      raise ConsumeSms::GeneralTextMessageNotifierException, "Unexpected redirection occurred for url: #{url}"
+    else
+      raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response for url: #{url}"
+    end        
+    
+    msg_for_client = []
+    count = 0
     parsed_json.each do |x|
-      object_names << x[0].downcase
+        break if count == NUM_ENTRIES
+        count += 1
+        msg_for_client << "#{count}) " + MenuOption::parse_format_string(format, x).to_s
     end
     
-    object_names
+    Message::paginate_text(msg_for_client.join("\n"), TWILIO_SMS_CHAR_PAGE_SIZE).join("\n")
   end
   
   def self.find_by_consume_phone_number(phone_number)

@@ -16,12 +16,15 @@
     %br
     = f.text_field :field_name
     %br
-    %small= link_to "Build text options", account_outgoing_text_options_path(current_account)
+    %br
+    %small= link_to "Build outgoing text options", account_outgoing_text_options_path(current_account)
+    %br
     %br
     = f.label :consume_phone_number, "Phone number to consume text:"
     %br
     - if !current_account.consume_phone_number.nil?
       = f.text_field :consume_phone_number, :readonly => true
+      %br
       %br
       %small= link_to "View/Update menu options", account_menu_options_path(current_account)
       %br

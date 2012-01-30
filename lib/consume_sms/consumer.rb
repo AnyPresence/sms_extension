@@ -11,22 +11,19 @@ module ConsumeSms
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       end
       request = Net::HTTP::Get.new(uri.request_uri)
-      request.set_form_data parameters if !parameters.nil?
+      request.set_form_data parameters[0] if !parameters.nil?
       response = http.request request
     end
     
     def sign_secret(shared_secret_key, application_id, timestamp)
       anypresence_auth = Digest::SHA1.hexdigest("#{shared_secret_key}-#{application_id}-#{timestamp}")
       
-      {:anypresence_auth => anypresence_auth, :application_id => application_id, :timestamp => timestamp}
+      {:anypresence_auth => anypresence_auth, :application_id => application_id, :timestamp => timestamp.to_s}
     end
     
   end
   
   class Consumer
-    
-    NUM_ENTRIES = 1
-    TWILIO_SMS_CHAR_PAGE_SIZE = 150
      
     def initialize(account)
       @account = account
@@ -67,11 +64,6 @@ module ConsumeSms
       numbers.first.phone_number if !numbers.nil?
     end
     
-    # Sends text.
-    def text(options={})
-      @twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => options[:body])
-    end
-    
     # Updates SMS_URL for phone number
     def update_sms_url(phone_number)
       twilio_owned_numbers = @twilio_account.incoming_phone_numbers.list
@@ -95,37 +87,26 @@ module ConsumeSms
         end
       
         return info_message
-      else
-        url = "#{ENV['CHAMELEON_HOST']}/applications/#{@account.application_id}/api/versions/#{@account.api_version}/objects/#{object_name}/instances.json"
       end
-      
-      response = ConsumeSms::connect_to_api(url)
-      
-      parsed_json = []
-      case response
-      when Net::HTTPSuccess
-        begin
-          parsed_json = ActiveSupport::JSON.decode(response.body)
-        rescue MultiJson::DecodeError
-          raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to decode the JSON message for url: #{url}"
-        end
-      when Net::HTTPRedirection
-        raise ConsumeSms::GeneralTextMessageNotifierException, "Unexpected redirection occurred for url: #{url}"
-      else
-        raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to get a response for url: #{url}"
-      end        
-      
-      msg_for_client = []
-      count = 0
-      parsed_json.each do |x|
-          break if count == NUM_ENTRIES
-          count += 1
-          msg_for_client << MenuOption::parse_format_string(format, x)
-      end
-  
-      return msg_for_client.join("\n")
+
+      @account.get_object_instances(object_name, format)
     end
     
+    # Builds text message to send out.
+    def text(options={}, params, object_name)
+      outgoing_text_option = @account.outgoing_text_options.where(:name => object_name).first
+      # Find the format string
+      body = outgoing_text_option.build_text(params)
+     
+      Consumer::send_sms(options.merge(:body => body))
+    end
+    
+    # Sends text.
+    def self.send_sms(options={})
+      @twilio_account ||= Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account
+
+      @twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => options[:body])
+    end
   end
   
   # General Exception

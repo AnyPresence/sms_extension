@@ -6,9 +6,9 @@ class TexterController < ApplicationController
   # Normal Devise authentication logic
   before_filter :authenticate_account!, :except => [:unauthorized, :provision, :consume, :generate_consume_phone_number]
 
-  before_filter :find_api_version, :only => [:provision, :text, :publish]
+  before_filter :find_api_version, :only => [:provision, :publish]
   before_filter :find_object_definition_name, :only => [:text]
-  before_filter :build_consumer, :only => [:settings, :text, :consume, :generate_consume_phone_number]
+  before_filter :build_consumer, :only => [:settings, :text, :generate_consume_phone_number]
 
   # Just something for root_path for Devise.
   def unauthorized
@@ -20,6 +20,7 @@ class TexterController < ApplicationController
     if valid_request?
       account = Account.new
       account.application_id = params[:application_id]
+      account.extension_id = params[:add_on_id]
       account.api_version = @api_version
       account.save!
       
@@ -110,11 +111,11 @@ class TexterController < ApplicationController
       render :text => "Not yet set up!"
     else
       begin
-        outgoing_text_option = current_account.outgoing_text_options.where(:name => @object_definition_name.downcase)
-        
-        @consumer.text({:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => current_account.phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created"})
+        # The attributes of the object are in params, so we'll just pass that over
+        @consumer.text({:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => current_account.phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created"}, params, @object_definition_name.downcase)
         render :json => { :success => true }
       rescue
+        Rails.logger.error "Unable to send out text: " + $!.message
         render :json => { :success => false, :error => $!.message }
       end
     end
@@ -133,8 +134,9 @@ class TexterController < ApplicationController
         outbound_message = ""
         if !accounts.blank?
           begin
-            outbound_message = @consumer.consume_sms(message, accounts.first.text_message_options)
-          rescue => e
+            consumer = ConsumeSms::Consumer.new(accounts.first)
+            outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
+          rescue
             Rails.logger.error "Not able to consume the text: " 
             outbound_message = "Unable to obtain data at this time. Please try again later."
           end
@@ -143,7 +145,7 @@ class TexterController < ApplicationController
         end
 
         Rails.logger.info "Sending message to " + message.from + " : " + outbound_message
-        @consumer.text({:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => message.from, :body => outbound_message})
+        ConsumeSms::Consumer.send_sms({:from => consume_phone_number, :to => message.from, :body => outbound_message})
         render :json => { :success => true }
       rescue
         render :json => { :success => false, :error => $!.message }

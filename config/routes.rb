@@ -2,11 +2,11 @@ ChameleonTextMessageNotifier::Application.routes.draw do
   
   post 'provision' => 'texter#provision'
   post 'deprovision' => 'texter#deprovision'
-  match 'settings' => 'texter#settings'
   post 'text' => 'texter#text'
   post 'consume' => 'texter#consume'
   post 'publish' => 'texter#publish'
   match 'generate_consume_phone_number' => 'texter#generate_consume_phone_number'
+  match 'settings' => 'texter#settings'
 
   root :to => 'texter#unauthorized'
   
