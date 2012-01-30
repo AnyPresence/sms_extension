@@ -1,8 +1,24 @@
 FactoryGirl.define do
   factory :account do
     application_id "4f204040772c96c4d3000006"
-    phone_number nil
-    field_name "description"
-    permitted_phone_numbers "9783194410"
+    phone_number "9789445741"
+    
+    after_build do |o|
+      outgoing_text_option =  Factory.build(:outgoing_text_option)
+      o.outgoing_text_options << outgoing_text_option
+    end
   end
+  
+  factory :fully_assembled_account, :class => Account do
+    application_id "4f204040772c96c4d3000007"
+    phone_number "9789445741"
+    after_build do |o|
+      outgoing_text_option =  Factory.build(:outgoing_text_option)
+      o.outgoing_text_options << outgoing_text_option
+      
+      menu_option = Factory.build(:menu_option)
+      o.menu_options << menu_option
+    end
+  end
+
 end

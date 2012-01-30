@@ -98,14 +98,14 @@ module ConsumeSms
       # Find the format string
       body = outgoing_text_option.build_text(params)
      
-      Consumer::send_sms(options.merge(:body => body))
+      @twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => body)
     end
     
     # Sends text.
     def self.send_sms(options={})
-      @twilio_account ||= Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account
+      twilio_account = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account
 
-      @twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => options[:body])
+      twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => options[:body])
     end
   end
   

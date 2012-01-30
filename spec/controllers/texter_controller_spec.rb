@@ -132,7 +132,8 @@ describe TexterController do
     
   describe 'perform text' do
     before(:each) do
-      @account = Factory.create(:account)
+      @account = Factory.create(:fully_assembled_account)
+     
       sign_in @account
     end
 
@@ -145,6 +146,9 @@ describe TexterController do
       twilio_client.stub(:account).and_return(twilio_account)
       sms = double('sms')
       twilio_account.stub_chain(:sms,:messages,:create).and_return(sms)
+      
+      controller.should_receive(:find_object_definition_name)
+      controller.instance_variable_set(:@object_definition_name, 'Outage')
       
       post :text
       
