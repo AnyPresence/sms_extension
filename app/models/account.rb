@@ -131,7 +131,7 @@ class Account < ActiveRecord::Base
         msg_for_client << "#{count}) " + MenuOption::parse_format_string(format, x).to_s
     end
     
-    Message::paginate_text(msg_for_client.join("\n"), TWILIO_SMS_CHAR_PAGE_SIZE).join("\n")
+    Message::paginate_text(msg_for_client.join("\n"), TWILIO_SMS_CHAR_PAGE_SIZE)
   end
   
   def self.find_by_consume_phone_number(phone_number)

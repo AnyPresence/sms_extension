@@ -12,9 +12,11 @@
     %br
     = f.text_field :phone_number
     %br
-    %br
-    %small= link_to "Build outgoing text options", account_outgoing_text_options_path(current_account)
-    %br
+
+    - if !current_account.api_version.nil?
+      %br
+      %small= link_to "Build outgoing text options", account_outgoing_text_options_path(current_account)
+      %br
     %br
     = f.label :consume_phone_number, "Phone number to consume text:"
     %br

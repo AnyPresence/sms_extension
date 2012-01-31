@@ -27,7 +27,13 @@ describe TexterController do
         secure_parameters = generate_secure_parameters
         get :settings, :application_id => secure_parameters[:application_id], :anypresence_auth => secure_parameters[:anypresence_auth], :timestamp => secure_parameters[:timestamp]
         response.should render_template "settings"
-    end  
+    end
+    
+    it "should tell user to publish application for more configuration options" do
+        secure_parameters = generate_secure_parameters
+        get :settings, :application_id => secure_parameters[:application_id], :anypresence_auth => secure_parameters[:anypresence_auth], :timestamp => secure_parameters[:timestamp]
+        response.should render_template "settings"
+    end
   end
   
   describe 'PUT settings' do
@@ -132,12 +138,11 @@ describe TexterController do
     
   describe 'perform text' do
     before(:each) do
-      @account = Factory.create(:fully_assembled_account)
-     
+      @account = Factory.create(:fully_assembled_account) 
       sign_in @account
     end
 
-    it "should text sucessfully with phone number" do
+    it "should text sucessfully when @object_definition_name is available" do
       twilio_client = mock_twilio_client
       twilio_account = mock_twilio_account
       subject.current_account.phone_number = "+16178613962" # a state rejection number
@@ -156,17 +161,8 @@ describe TexterController do
       parsed_body["success"].should == true
     end
 
-    it "should text unsuccessfully with json error message when exception is thrown" do
-      twilio_client = mock_twilio_client
-      twilio_account = mock_twilio_account
-      subject.current_account.phone_number = "+16178613962" # a state rejection number
-      Twilio::REST::Client.should_receive(:new).with(any_args()).and_return(twilio_client)
-
-      twilio_client.stub(:account).and_return(twilio_account)
-      
-      twilio_account.stub_chain(:sms,:messages,:create).and_raise("Error when trying to text.")
-      
-      post :text  
+    it "should text unsuccessfully with json error message when there's no @object_defintion_name defined" do
+      post :text
       parsed_body = JSON.parse(response.body)
       parsed_body["success"].should == false      
     end

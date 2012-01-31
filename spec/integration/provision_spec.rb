@@ -22,14 +22,16 @@ describe "client provisions new account" do
   
   describe "settings page" do 
     before(:each) do
+      page.driver.header("X_AP_OBJECT_DEFINITION_NAME", "v2")
       page.driver.post("/provision", generate_secure_parameters)
     end
     
     it "should know how to update settings without filling in incoming phone number" do
       Twilio::REST::Client.any_instance.stub_chain(:incoming_phone_numbers, :create).and_return(true)
       page.driver.get("/settings", generate_secure_parameters)
+      page.body.should match(/Please publish the application for more configuration options./)
+      page.should_not have_content("Build outgoing text options")
       fill_in 'account[phone_number]', :with => '9789445741'
-      fill_in 'account[field_name]', :with => 'description'
       
       click_button 'Update Account'
       
