@@ -10,6 +10,7 @@ module ConsumeSms
         # Might want to use another solution here for SSL.
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       end
+      
       request = Net::HTTP::Get.new(uri.request_uri)
       request.set_form_data parameters[0] if !parameters.nil?
       response = http.request request
@@ -81,7 +82,6 @@ module ConsumeSms
     
     # Consumes the message and returns a message to send back to the client.
     def consume_sms(message, text_message_options)
-      debugger
       object_name = text_message_options[message.body.strip] ? text_message_options[message.body.strip][0] : nil
       format = !object_name.nil? ? text_message_options[message.body.strip][1] : ""
       if message.body.strip == "#0" || object_name.nil?

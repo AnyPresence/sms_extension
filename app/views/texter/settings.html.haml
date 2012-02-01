@@ -33,5 +33,9 @@
         = text_field_tag :area_code, params[:area_code], :size => 3
         = link_to "Generate", generate_consume_phone_number_path, :remote => true
     %br
+    = f.label :api_host, "AnyPresence host:"
+    %br
+    = f.text_field :api_host
+    %br
     = f.submit
 %br

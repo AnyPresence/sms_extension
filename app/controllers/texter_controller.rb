@@ -18,12 +18,17 @@ class TexterController < ApplicationController
   # This creates an account on our side tied to the application and renders back the expected result to create a new add on instance.
   def provision
     if valid_request?
-      account = Account.new
-      account.application_id = params[:application_id]
+      account = Account.where(:application_id => params[:application_id]).first
+      if account.nil?
+        account = Account.new
+        account.application_id = params[:application_id]
+      end
       account.extension_id = params[:add_on_id]
       account.api_version = @api_version
-      account.save!
+      account.api_host = "#{ENV['CHAMELEON_HOST']}".strip.gsub(/\/+$/, '')
       
+      account.save!
+        
       render :json => {
         :success => true,
         :build_objects => [
@@ -92,10 +97,9 @@ class TexterController < ApplicationController
   # This is the endpoint for when new applications are published
   def publish
     new_api_version = @api_version
-    
     if new_api_version.nil?
        render :json => { :success => false } 
-    elsif new_api_version > current_account.api_version
+    elsif current_account.api_version.nil? || new_api_version > current_account.api_version
       current_account.api_version = new_api_version
       current_account.save!
       
@@ -209,6 +213,7 @@ protected
     end
   end
   
+  # Finds the object definition name.
   def find_object_definition_name
     if Rails.env.test?
       @object_definition_name = request.env["X_AP_OBJECT_DEFINITION_NAME"]

@@ -7,10 +7,8 @@ class Account < ActiveRecord::Base
   
   validates :application_id, :presence => true
   validates :consume_phone_number, :uniqueness => true
-  
-  attr_accessor :account
 
-  attr_accessible :remember_me, :phone_number, :field_name, :consume_phone_number, :application_id, :extension_id, :permitted_phone_numbers
+  attr_accessible :remember_me, :phone_number, :field_name, :consume_phone_number, :application_id, :extension_id, :api_host
   
   has_many :menu_options, :dependent => :destroy
   has_many :outgoing_text_options, :dependent => :destroy
@@ -36,7 +34,7 @@ class Account < ActiveRecord::Base
 
   # Gets object definition metadata using API call.
   def get_object_definition_metadata
-    url = "#{ENV['CHAMELEON_HOST']}/applications/#{application_id}/api/versions/#{api_version}/objects.json"
+    url = "#{api_host}/applications/#{application_id}/api/versions/#{api_version}/objects.json"
 
     time = Time.now
     signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
@@ -61,7 +59,7 @@ class Account < ActiveRecord::Base
 
   # Gets field names using API call.
   def get_field_definition_mappings(object_definition_name)
-    url = "#{ENV['CHAMELEON_HOST']}/applications/#{application_id}/api/versions/#{api_version}/objects/#{object_definition_name}.json"
+    url = "#{api_host}/applications/#{application_id}/api/versions/#{api_version}/objects/#{object_definition_name}.json"
 
     time = Time.now
     signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
@@ -105,7 +103,8 @@ class Account < ActiveRecord::Base
   
   # Gets object instances 
   def get_object_instances(object_name, format)
-    url = "#{ENV['CHAMELEON_HOST']}/applications/#{application_id}/api/versions/#{api_version}/objects/#{object_name}/instances.json"
+    # Access the latest version.
+    url = "#{api_host}/applications/#{application_id}/api/versions/latest/objects/#{object_name}/instances.json"
     time = Time.now
     signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
     response = ConsumeSms::connect_to_api(url, signed_secret.merge(:add_on_id => self.extension_id))

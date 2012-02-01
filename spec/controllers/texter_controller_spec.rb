@@ -68,12 +68,26 @@ describe TexterController do
     end
   end
   
-  describe "login" do
+  describe "setup extensions" do
     before(:each) do
       @account = Factory.build(:account)
     end
     
     describe 'provision' do
+      it "should update old account that exists already" do
+        @account0 = Factory.create(:account)
+        sign_in @account0
+        Account.where(:application_id => @account0.application_id).size.should == 1
+        
+        secure_parameters = generate_secure_parameters
+        
+        post :provision, :application_id => @account0.application_id, :anypresence_auth => secure_parameters[:anypresence_auth], :timestamp => secure_parameters[:timestamp]
+        parsed_body = JSON.parse(response.body)
+        parsed_body["success"].should == true
+        
+        Account.all.size.should == 1
+      end
+      
       it "should login successfully" do
         secure_parameters = generate_secure_parameters
         

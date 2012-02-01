@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120130044358) do
+ActiveRecord::Schema.define(:version => 20120131190820) do
 
   create_table "accounts", :force => true do |t|
     t.datetime "remember_created_at"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120130044358) do
     t.text     "permitted_phone_numbers"
     t.string   "api_version"
     t.string   "extension_id"
+    t.string   "api_host"
   end
 
   add_index "accounts", ["application_id"], :name => "index_accounts_on_application_id", :unique => true
