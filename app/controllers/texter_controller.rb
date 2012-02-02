@@ -1,7 +1,7 @@
 class TexterController < ApplicationController
 
   # We can do SSO from the hash AnyPresence sends
-  before_filter :authenticate_from_anypresence, :only => [:settings, :deprovision, :publish]
+  before_filter :authenticate_from_anypresence, :only => [:deprovision, :publish]
   
   # Normal Devise authentication logic
   before_filter :authenticate_account!, :except => [:unauthorized, :provision, :consume, :generate_consume_phone_number]
