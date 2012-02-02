@@ -182,9 +182,11 @@ protected
     if valid_request?
       account = Account.find_by_application_id params[:application_id]
       if account.nil?
-        return false
+        raise "Unable to find the account."
       end
       sign_in account
+    else
+      raise "Unable to sign user in"
     end
   end
   

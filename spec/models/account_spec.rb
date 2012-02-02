@@ -20,14 +20,14 @@ describe Account do
     end
     
     def object_definition_mappings_response
-        [['Outage', 'outage'], ['IncomingContact', 'incomingcontact']]
+        %q([{"name":"Outage", "mapping":"outage"}, {"name":"foo", "mapping":"bar"}])
     end
     
     it "should be able to find objects in the metadata" do
       VCR.use_cassette('list_objects_for_outage_app', :erb => {:body => object_definition_mappings_response} ) do
         @account.api_version = "v10"
         object_names = @account.get_object_definition_metadata
-        object_names.should include(['Outage', 'outage'])
+        object_names.should include({"name" => "Outage", "mapping" => "outage"})
       end
     end
 

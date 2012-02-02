@@ -29,9 +29,9 @@
     - else
       = f.text_field :consume_phone_number, :readonly => true, :value => "N/A"
       #generate_consume_phone_number_region
-        %p Enter area code to generate phone number to consume text
+        %p Enter area code to generate phone number to consume text:
         = text_field_tag :area_code, params[:area_code], :size => 3
-        = link_to "Generate", generate_consume_phone_number_path, :remote => true
+        %small= link_to "Generate", generate_consume_phone_number_path, :remote => true
     %br
     = f.label :api_host, "AnyPresence host:"
     %br
