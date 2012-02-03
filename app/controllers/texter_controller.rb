@@ -1,7 +1,7 @@
 class TexterController < ApplicationController
 
   # We can do SSO from the hash AnyPresence sends
-  before_filter :authenticate_from_anypresence, :only => [:deprovision, :publish]
+  before_filter :authenticate_from_anypresence, :only => [:deprovision, :settings, :publish]
   
   # Normal Devise authentication logic
   before_filter :authenticate_account!, :except => [:unauthorized, :provision, :consume, :generate_consume_phone_number]
@@ -175,7 +175,7 @@ class TexterController < ApplicationController
       format.js
     end
   end
-  
+
 protected
   # If the request is valid, we log in as the account tied to the application that was passed.
   def authenticate_from_anypresence
@@ -185,8 +185,10 @@ protected
         raise "Unable to find the account."
       end
       sign_in account
+    elsif current_account
+      true
     else
-      raise "Unable to sign user in"
+      unauthorized 
     end
   end
   
