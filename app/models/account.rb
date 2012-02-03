@@ -101,10 +101,13 @@ class Account < ActiveRecord::Base
     object_names
   end
   
-  # Gets object instances 
+  # Gets object instances.
+  #
+  # TODO: may want to sort in desc order to pick of last items.
   def get_object_instances(object_name, format)
     # Access the latest version.
-    url = "#{api_host}/applications/#{application_id}/api/versions/latest/objects/#{object_name}/instances.json"
+    url = "#{api_host}/applications/#{application_id}/api/versions/latest/objects/#{object_name}/instances.json?order_desc=created_at"
+    
     time = Time.now
     signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
     response = ConsumeSms::connect_to_api(url, signed_secret.merge(:add_on_id => self.extension_id))
@@ -124,7 +127,7 @@ class Account < ActiveRecord::Base
     
     msg_for_client = []
     count = 0
-    parsed_json.each do |x|
+    parsed_json.reverse.each do |x|
         break if count == NUM_ENTRIES
         count += 1
         msg_for_client << "#{count}) " + MenuOption::parse_format_string(format, x).to_s
@@ -137,11 +140,13 @@ class Account < ActiveRecord::Base
     Account.find_by_consume_phone_number(phone_number)
   end
   
-  # Gets the first available phone number if any
+  # Gets the first available phone number if any.
+  # An available phone number must be a number in Twilio that we are not using and
+  # it must not have an SMS_URL associated with it.
   def self.phone_number_used(twilio_owned_numbers, used_numbers)
     available_phone_number = nil
     twilio_owned_numbers.each do |x|
-      if !used_numbers.include?(x.phone_number)
+      if x.sms_url.empty? && !used_numbers.include?(x.phone_number)
         available_phone_number = x.phone_number
         break
       end
