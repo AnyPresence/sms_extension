@@ -33,6 +33,35 @@ describe Account do
 
   end
   
+  describe "query for object instances" do
+    
+    def get_object_instances
+      %q([{"title":"Cleveland Abbe House","description":"1 customer affected.","latitude":"38.901444","longitude":"-77.046167","created_at":"2012-02-01"},
+        {"title":"Outage","description":"Outage"}])
+    end
+    
+    it "should be able to find object instances" do 
+      @account = Factory.build(:account, :application_id => "outage-reporter")
+        VCR.use_cassette('list_object_instances', :erb => {:body => get_object_instances} ) do
+          @account.api_version = "v4"
+          outgoing_text_message = @account.get_object_instances("outage", "{{description}}")
+          outgoing_text_message[0].should =~ /Outage/
+        end
+    end
+    
+    it "should be able to use existing liquid filters" do 
+      @account = Factory.build(:account, :application_id => "outage-reporter")
+        VCR.use_cassette('list_object_instances', :erb => {:body => get_object_instances} ) do
+          @account.api_version = "v4"
+          outgoing_text_message = @account.get_object_instances("outage", "{{outage.description | upcase}}")
+          outgoing_text_message[0].should =~ /OUTAGE/
+          
+          outgoing_text_message = @account.get_object_instances("outage", "{% if outage.description == 'Outage' %} Howdy {% endif %}")
+          outgoing_text_message[0].should =~ /Howdy/
+        end
+    end
+  end
+  
   describe "validations" do 
     before(:each) do
       @consume_phone_number = "+16178613962"
@@ -43,7 +72,6 @@ describe Account do
       other_account = Factory.build(:account, {:application_id => @account.application_id.to_s + "99", :consume_phone_number => @consume_phone_number})
       expect { other_account.save! }.should raise_error(ActiveRecord::RecordInvalid)
     end
-    
   end
   
 end

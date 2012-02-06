@@ -127,10 +127,10 @@ class Account < ActiveRecord::Base
     
     msg_for_client = []
     count = 0
-    parsed_json.reverse.each do |x|
+    parsed_json.each do |x|
         break if count == NUM_ENTRIES
         count += 1
-        msg_for_client << "#{count}) " + MenuOption::parse_format_string(format, x).to_s
+        msg_for_client << "#{count}) " + MenuOption::parse_format_string(format, object_name, x).to_s
     end
     
     Message::paginate_text(msg_for_client.join("\n"), TWILIO_SMS_CHAR_PAGE_SIZE)
