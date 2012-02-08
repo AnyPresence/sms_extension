@@ -3,6 +3,7 @@ class MenuOption < ActiveRecord::Base
   
   validates :name, :presence => true
   validates :format, :presence => true
+
   
   # Parse format string from menu options
   # The input string uses the Liquid template format, e.g. "Outage: {{title}} : {{description}}".
@@ -23,8 +24,6 @@ class MenuOption < ActiveRecord::Base
     liquid_hash[object_name.downcase] = klass_instance
     Liquid::Template.parse(format).render(liquid_hash)
   end
-
-private
 
   # Builds a liquid drop class from the object_name
   def self.build_liquid_drop_class(object_name, fields)

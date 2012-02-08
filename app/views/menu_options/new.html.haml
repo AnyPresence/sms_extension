@@ -4,4 +4,4 @@
 = render "note"
 %br
 %br
-= render "form"
+= render :partial => "form", :locals => { :menu_option => @menu_option }

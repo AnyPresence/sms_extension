@@ -18,7 +18,6 @@ module ConsumeSms
     
     def sign_secret(shared_secret_key, application_id, timestamp)
       anypresence_auth = Digest::SHA1.hexdigest("#{shared_secret_key}-#{application_id}-#{timestamp}")
-      
       {:anypresence_auth => anypresence_auth, :application_id => application_id, :timestamp => timestamp.to_s}
     end
     
@@ -28,7 +27,6 @@ module ConsumeSms
      
     def initialize(account)
       @account = account
-      #@twilio_account = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account 
     end
     
     def twilio_account
@@ -94,16 +92,26 @@ module ConsumeSms
         return info_message
       end
 
-      @account.get_object_instances(object_name, format)
+      @account.object_instances_as_sms(object_name, format)
     end
     
     # Builds text message to send out.
     def text(options={}, params, object_name)
       outgoing_text_option = @account.outgoing_text_options.where(:name => object_name).first
-      # Find the format string
-      body = outgoing_text_option.build_text(params)
-     
-      twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => body)
+      # Find the format string from fields that were passed.
+      body = outgoing_text_option.build_text(object_name, params)
+      
+      # Find the phone number to text to
+      bulk_text_phone_number = @account.bulk_text_phone_number
+      unless bulk_text_phone_number.blank?
+        format = @account.bulk_text_phone_number.format
+        object_name_with_phone_number = @account.bulk_text_phone_number.name
+        options["body"] = body
+        Resque.enqueue(LifecycleTriggeredSms, options, @account.id, object_name_with_phone_number, format)
+      else
+        # TODO: move this to resque as well.
+        twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => body)
+      end
     end
     
     # Sends text.

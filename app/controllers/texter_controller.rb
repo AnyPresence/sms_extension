@@ -121,6 +121,7 @@ class TexterController < ApplicationController
         render :json => { :success => true }
       rescue
         Rails.logger.error "Unable to send out text: " + $!.message
+        Rails.logger.error $!.backtrace
         render :json => { :success => false, :error => $!.message }
       end
     end
@@ -174,6 +175,25 @@ class TexterController < ApplicationController
     respond_to do |format|  
       format.js
     end
+  end
+  
+  def text_phone_number
+    @available_objects = current_account.get_object_definition_mappings
+  
+    @bulk_text_phone_number = BulkTextPhoneNumber.where(:account_id => current_account.id).first
+    
+    if @bulk_text_phone_number.blank?
+      @bulk_text_phone_number = BulkTextPhoneNumber.new 
+    elsif request.put?
+      if @bulk_text_phone_number.update_attributes params[:bulk_text_phone_number]
+        flash[:notice] = "Account updated."
+      else
+        flash[:alert] = "Account could not be updated."
+      end
+      
+      redirect_to settings_path
+    end
+  
   end
 
 protected

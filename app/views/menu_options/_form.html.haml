@@ -1,4 +1,4 @@
-= form_for [current_account, @menu_option] do |f| 
+= form_for [current_account, menu_option] do |f|
   %small= f.error_messages
   %small 
     = f.label :name
@@ -8,3 +8,5 @@
     = f.label :format
     = f.text_field :format
   = f.submit
+  
+  = params

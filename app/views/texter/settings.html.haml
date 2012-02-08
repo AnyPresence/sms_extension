@@ -8,14 +8,19 @@
         Please publish the application for more configuration options.
     %p
       API version: #{current_account.api_version}
-    = f.label :phone_number, "Phone number to text:"
+    = f.label :phone_number, "Default phone number to text:"
     %br
     = f.text_field :phone_number
-    %br
 
+    %br 
     - if !current_account.api_version.nil?
       %br
-      %small= link_to "Build outgoing text options", account_outgoing_text_options_path(current_account)
+      #display_bulk_text
+        hisdfasdfaf
+      %br
+      %small= link_to "Update bulk text phone number", text_phone_number_path(current_account)
+      %br
+      %small= link_to "Build outgoing text options", [current_account, :outgoing_text_options]
       %br
     %br
     = f.label :consume_phone_number, "Phone number to consume text:"

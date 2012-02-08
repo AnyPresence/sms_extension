@@ -1,0 +1,13 @@
+%small= link_to "Go back to settings", settings_path
+%br
+%br
+= form_for([current_account, @bulk_text_phone_number],:url => text_phone_number_path) do |f|
+  %small= f.error_messages
+  %small 
+    = f.label :name
+    = f.select :name, @available_objects
+  %br
+  %small
+    = f.label "Field with phone number"
+    = f.text_field :format
+  = f.submit

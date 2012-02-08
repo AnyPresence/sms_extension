@@ -2,13 +2,20 @@ class MenuOptionsController < ApplicationController
   before_filter :find_available_objects, :except => [:index, :destroy]
   
   def index
-    @menu_options = current_account.menu_options.all
+    @menu_options = current_account.menu_options.where(:type => params[:type])
   end
   
   def new
-    @menu_option = current_account.menu_options.build
-    
-    menu_options = current_account.menu_options.all
+    case params[:type]
+    when "OutgoingTextOption"
+      @menu_option = current_account.outgoing_text_options.build
+    when "BulkTextPhoneNumber"
+      @menu_option = BulkTextPhoneNumber.new
+    else
+      @menu_option = current_account.menu_options.build
+    end
+
+    menu_options = current_account.menu_options.where(:type => params[:type]).all
     menu_options.each do |x|
       @available_objects.delete(x.name)
     end
@@ -19,7 +26,17 @@ class MenuOptionsController < ApplicationController
   end
   
   def create
-    @menu_option = current_account.menu_options.build(params[:menu_option].merge!(:account => current_account))
+    case params[:type]
+    when "OutgoingTextOption"
+      @menu_option = current_account.menu_options.build(params[:outgoing_text_option].merge!(:account => current_account))
+    when "BulkTextPhoneNumber"
+      @menu_option = BulkTextPhoneNumber.new(params[:bulk_text_phone_number].merge!(:account => current_account))
+    else
+      @menu_option = current_account.menu_options.build(params[:menu_option].merge!(:account => current_account))
+    end
+
+    @menu_option.type = params[:type]
+
     if @menu_option.save
       flash[:notice] = "Menu option has been created."
       redirect_to [current_account, @menu_option]
@@ -31,6 +48,7 @@ class MenuOptionsController < ApplicationController
   
   def update
     @menu_option =  MenuOption.find(params[:id])
+    @menu_option.type = params[:type]
     if @menu_option.update_attributes(params[:menu_option])
       flash[:notice] = "Menu option has been updated."
       redirect_to [current_account, @menu_option]

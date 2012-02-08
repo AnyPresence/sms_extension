@@ -1,0 +1,2 @@
+class BulkTextPhoneNumber < MenuOption
+end

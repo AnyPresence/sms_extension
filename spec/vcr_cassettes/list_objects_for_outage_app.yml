@@ -2,8 +2,8 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :get
-    uri: http://localhost:5000/applications/4f204040772c96c4d3000006/api/versions/v10/objects.json
-    body: !!null 
+    uri: http://localhost:5000/applications/outage-reporter/api/versions/v4/objects.json
+    body: anypresence_auth=428d756983034bfe02c4aadd2837796ff775fa2e&application_id=outage-reporter&timestamp=2012-02-06%2016%3a02%3a12%20-0500&add_on_id=12345
     headers:
       content-type:
       - application/x-www-form-urlencoded
@@ -17,16 +17,18 @@
       x-ua-compatible:
       - IE=Edge
       etag:
-      - ! '"1efaad794d3c8c9ee606e9a3e7e4738d"'
+      - ! '"60e849557b44001310f0f7a7fd1ffce3"'
       cache-control:
       - max-age=0, private, must-revalidate
+      x-request-id:
+      - 89e20e9969d535f2e79a52b0cd274adf
       x-runtime:
-      - '0.686754'
+      - '0.994096'
       content-length:
-      - '97'
+      - '<%= body.length %>'
       server:
       - WEBrick/1.3.1 (Ruby/1.9.2/2011-07-09)
       date:
-      - Fri, 27 Jan 2012 17:50:58 GMT
+      - Mon, 06 Feb 2012 21:02:13 GMT
     body: ! '<%= body %>'
     http_version: '1.1'

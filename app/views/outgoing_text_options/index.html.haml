@@ -1,8 +1,0 @@
-%small= link_to "Go back to settings", settings_path
-%br
-%br
-- @outgoing_text_options.each do |option|
-  %small= link_to "#{option.name} - #{option.format}", account_outgoing_text_option_path(current_account, option)
-  %br
-%br
-%small= link_to "Add new outgoing text option", new_account_outgoing_text_option_path(current_account)

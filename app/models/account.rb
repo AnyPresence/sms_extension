@@ -12,6 +12,7 @@ class Account < ActiveRecord::Base
   
   has_many :menu_options, :dependent => :destroy
   has_many :outgoing_text_options, :dependent => :destroy
+  has_one :bulk_text_phone_number, :dependent => :destroy
   
   # Builds the message options that is available for the account.
   # For example, #0 for menu screen
@@ -19,7 +20,7 @@ class Account < ActiveRecord::Base
   #              #2 for information about objectA
   def text_message_options
     # Get menu options
-    menu_options = self.menu_options.all(:order => "name DESC")
+    menu_options = self.menu_options.where(:type => "MenuOption").all(:order => "name DESC")
     options = {}
     options["#0"] = ["menu",""]
     
@@ -86,6 +87,9 @@ class Account < ActiveRecord::Base
         attribute_names << field_definition["name"]
       end
     end
+    
+    MenuOption::build_liquid_drop_class(object_definition_name, parsed_json[0]["field_definitions"])
+    
     attribute_names
   end
   
@@ -101,15 +105,19 @@ class Account < ActiveRecord::Base
     object_names
   end
   
+  def object_instances_as_sms(object_name, format)
+    msg_for_client = object_instances(object_name, format)
+    out_message = Message::paginate_text(msg_for_client.join("\n"), TWILIO_SMS_CHAR_PAGE_SIZE)
+  end  
+  
   # Gets object instances.
   #
   # TODO: may want to sort in desc order to pick of last items.
-  def get_object_instances(object_name, format)
+  def object_instances(object_name, format)
     # Access the latest version.
     url = "#{api_host}/applications/#{application_id}/api/versions/latest/objects/#{object_name}/instances.json?order_desc=created_at"
-    
     time = Time.now
-    signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
+    signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], self.application_id, time)
     response = ConsumeSms::connect_to_api(url, signed_secret.merge(:add_on_id => self.extension_id))
     parsed_json = []
     case response
@@ -130,10 +138,9 @@ class Account < ActiveRecord::Base
     parsed_json.each do |x|
         break if count == NUM_ENTRIES
         count += 1
-        msg_for_client << "#{count}) " + MenuOption::parse_format_string(format, object_name, x).to_s
+        msg_for_client << MenuOption::parse_format_string(format, object_name, x).to_s
     end
-    
-    Message::paginate_text(msg_for_client.join("\n"), TWILIO_SMS_CHAR_PAGE_SIZE)
+    msg_for_client
   end
   
   def self.find_by_consume_phone_number(phone_number)
