@@ -27,8 +27,8 @@
       - if !current_account.consume_phone_number.nil?
         = f.text_field :consume_phone_number, :readonly => true
         %br
-        %br
-        = link_to "View/Update menu options", account_menu_options_path(current_account)
+        %h4
+          = link_to "View/Update menu options", account_menu_options_path(current_account)
         %br
       - else
         = f.text_field :consume_phone_number, :readonly => true, :value => "N/A"
@@ -42,7 +42,7 @@
       %br
       = f.text_field :api_host
       %br
-      = f.button :submit, "Submit!"
+      = f.button :submit, "Update Account"
 %br
 %br
 %br

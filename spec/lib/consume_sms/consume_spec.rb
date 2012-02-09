@@ -47,17 +47,5 @@ describe ConsumeSms::Consumer do
     @twilio_account.stub_chain(:incoming_phone_numbers, :list).and_return(twilio_owned_numbers)
     @consumer.find_available_purchased_phone_number(["9789445741", "9789999999"]).should be_nil
   end
-
-  describe "connect to api" do
-    it "should raise error when redirecting" do
-      response = Net::HTTPRedirection.new(nil, nil, nil)
-      ConsumeSms.stub(:connect_to_api).with(any_args()).and_return(response)
-      
-      message = Message.new
-      text_message_options = {"#1" => "cow"}
-      message.body = "#1"
-      expect {@consumer.consume_sms(message, text_message_options)}.should raise_error(ConsumeSms::GeneralTextMessageNotifierException)
-    end
-  end
   
 end

@@ -40,10 +40,7 @@ class Account < ActiveRecord::Base
 
   # Gets object definition metadata using API call.
   def get_object_definition_metadata
-    url = "#{api_host}/applications/#{application_id}/api/versions/#{api_version}/objects.json"
-
-    time = Time.now
-    response = ConsumeSms::connect_to_api(url, {:api_token => self.api_token, :add_on_id => self.extension_id})
+    response = ap_client(self.api_version).fetch_available_objects
 
     parsed_json = []
     case response
@@ -95,7 +92,6 @@ class Account < ActiveRecord::Base
   
   # Gets object definition names for an application
   def get_object_definition_mappings
-    consumer = ConsumeSms::Consumer.new(self)
     parsed_json = get_object_definition_metadata
 
     object_names = []

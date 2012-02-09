@@ -4,13 +4,12 @@ describe Account do
   describe "Build text message menu" do
     it "should know how to build menu options" do
       account = Factory.create(:account)
-      Factory.create(:menu_option, :account => account)
-      Factory.create(:menu_option, :name => 'department', :account => account)
+      options  = Factory.create(:menu_option, :name => 'department', :type => "MenuOption", :account => account)
       
       options = account.text_message_options
+      debugger
       options["#0"][0].should == "menu"
-      options["#1"][0].should == "outage"
-      options["#2"][0].should == "department"
+      options["#1"][0].should == "department"
     end
   end
   
@@ -37,10 +36,10 @@ describe Account do
       VCR.use_cassette('list_objects_for_outage_app', :erb => {:body => object_definition_mappings_response} ) do
         @account.api_version = "v4"
         object_names = @account.get_object_definition_metadata
-        object_names.should include({"name" => "Outage", "mapping" => "outage"})
+        debugger
+        object_names[0].should include({"name" => "Outage", "mapping" => "outage"})
       end
     end
-
   end
   
   describe "query for object instances" do
@@ -54,8 +53,8 @@ describe Account do
       @account = Factory.build(:account, :application_id => "outage-reporter")
         VCR.use_cassette('list_object_instances', :erb => {:body => get_object_instances} ) do
           @account.api_version = "v4"
-          outgoing_text_message = @account.get_object_instances("outage", "{{description}}")
-          outgoing_text_message[0].should =~ /Outage/
+          outgoing_text_message = @account.object_instances("outage", "{{description}}")
+          outgoing_text_message[0].should =~ /1 customer affected./
         end
     end
     
@@ -64,9 +63,9 @@ describe Account do
         VCR.use_cassette('list_object_instances', :erb => {:body => get_object_instances} ) do
           @account.api_version = "v4"
           outgoing_text_message = @account.object_instances("outage", "{{outage.description | upcase}}")
-          outgoing_text_message[0].should =~ /OUTAGE/
+          outgoing_text_message[0].should =~ /1 CUSTOMER AFFECTED./
           
-          outgoing_text_message = @account.object_instances("outage", "{% if outage.description == 'Outage' %} Howdy {% endif %}")
+          outgoing_text_message = @account.object_instances("outage", "{% if outage.description == '1 customer affected.' %} Howdy {% endif %}")
           outgoing_text_message[0].should =~ /Howdy/
         end
     end

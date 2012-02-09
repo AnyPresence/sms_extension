@@ -1,26 +1,9 @@
 module ConsumeSms
   class << self
-    def connect_to_api(url, *parameters)
-      uri = URI.parse(url)
-      http = Net::HTTP.new(uri.host, uri.port)
-    
-      response = nil
-      if uri.scheme == "https"
-        http.use_ssl = true
-        # Might want to use another solution here for SSL.
-        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      end
-      
-      request = Net::HTTP::Get.new(uri.request_uri)
-      request.set_form_data parameters[0] if !parameters.nil?
-      response = http.request request
-    end
-    
     def sign_secret(shared_secret_key, application_id, timestamp)
       anypresence_auth = Digest::SHA1.hexdigest("#{shared_secret_key}-#{application_id}-#{timestamp}")
       {:anypresence_auth => anypresence_auth, :application_id => application_id, :timestamp => timestamp.to_s}
     end
-    
   end
   
   class Consumer

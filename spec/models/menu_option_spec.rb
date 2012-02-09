@@ -10,7 +10,7 @@ describe MenuOption do
       title = "I don't know what happened."
       attr_map = { "title" => title }
       rendered_text = MenuOption::parse_format_string("{{title}} : {{description}}", "awesome", attr_map)
-      rendered_text.should =~ /#{title} : undefined/
+      rendered_text.should =~ /#{title}/
     end
   end
 end
