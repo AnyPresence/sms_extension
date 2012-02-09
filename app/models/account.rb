@@ -14,6 +14,12 @@ class Account < ActiveRecord::Base
   has_many :outgoing_text_options, :dependent => :destroy
   has_one :bulk_text_phone_number, :dependent => :destroy
   
+  # Build an AnypresenceExtension client.
+  def ap_client(*api_version)
+    version = api_version.nil? ? self.api_version : 'latest'
+    @ap_client ||= AnypresenceExtension::Client.new(self.api_host, self.api_token, self.application_id, version)
+  end
+  
   # Builds the message options that is available for the account.
   # For example, #0 for menu screen
   #              #1 for information about objectA (e.g. outage)
@@ -31,15 +37,13 @@ class Account < ActiveRecord::Base
     
     options
   end
-  
 
   # Gets object definition metadata using API call.
   def get_object_definition_metadata
     url = "#{api_host}/applications/#{application_id}/api/versions/#{api_version}/objects.json"
 
     time = Time.now
-    signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
-    response = ConsumeSms::connect_to_api(url, signed_secret.merge(:add_on_id => self.extension_id))
+    response = ConsumeSms::connect_to_api(url, {:api_token => self.api_token, :add_on_id => self.extension_id})
 
     parsed_json = []
     case response
@@ -60,12 +64,8 @@ class Account < ActiveRecord::Base
 
   # Gets field names using API call.
   def get_field_definition_mappings(object_definition_name)
-    url = "#{api_host}/applications/#{application_id}/api/versions/#{api_version}/objects/#{object_definition_name}.json"
-
-    time = Time.now
-    signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], application_id, time)
-    response = ConsumeSms::connect_to_api(url, signed_secret.merge(:add_on_id => self.extension_id))
-
+    response = ap_client(self.api_version).fetch_metadata(object_definition_name)
+    
     parsed_json = []
     case response
     when Net::HTTPSuccess
@@ -111,14 +111,10 @@ class Account < ActiveRecord::Base
   end  
   
   # Gets object instances.
-  #
-  # TODO: may want to sort in desc order to pick of last items.
   def object_instances(object_name, format)
     # Access the latest version.
-    url = "#{api_host}/applications/#{application_id}/api/versions/latest/objects/#{object_name}/instances.json?order_desc=created_at"
-    time = Time.now
-    signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], self.application_id, time)
-    response = ConsumeSms::connect_to_api(url, signed_secret.merge(:add_on_id => self.extension_id))
+    response = ap_client.fetch_data(object_name)
+
     parsed_json = []
     case response
     when Net::HTTPSuccess

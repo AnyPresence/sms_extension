@@ -2,45 +2,48 @@
   = flash[:notice]
   = flash[:alert]
 #consume_phone_number_region
-  = form_for(current_account, :url => settings_path) do |f|
+  = simple_form_for(current_account, :url => settings_path) do |f|
     - if current_account.api_version.nil?
-      %small
-        Please publish the application for more configuration options.
+      Please publish the application for more configuration options.
     %p
       API version: #{current_account.api_version}
-    = f.label :phone_number, "Default phone number to text:"
-    %br
-    = f.text_field :phone_number
-
-    %br 
-    - if !current_account.api_version.nil?
+    %div.options-floater
+      = f.label :phone_number, "Default phone number to text:"
       %br
-      #display_bulk_text
-        hisdfasdfaf
+      = f.text_field :phone_number
+      %br 
+      - if !current_account.api_version.nil?
+        %br
+        #display_bulk_text
+        %h4
+          = link_to "Update bulk text phone number", text_phone_number_path(current_account)
+        %h4
+          = link_to "Build outgoing text options", [current_account, :outgoing_text_options]
+        %br
+    %div.options-floater
       %br
-      %small= link_to "Update bulk text phone number", text_phone_number_path(current_account)
+      = f.label :consume_phone_number, "Phone number to consume text:"
       %br
-      %small= link_to "Build outgoing text options", [current_account, :outgoing_text_options]
+      - if !current_account.consume_phone_number.nil?
+        = f.text_field :consume_phone_number, :readonly => true
+        %br
+        %br
+        = link_to "View/Update menu options", account_menu_options_path(current_account)
+        %br
+      - else
+        = f.text_field :consume_phone_number, :readonly => true, :value => "N/A"
+        #generate_consume_phone_number_region
+          %p Enter area code to generate phone number to consume text:
+          = text_field_tag :area_code, params[:area_code], :size => 3
+          = link_to "Generate", generate_consume_phone_number_path, :remote => true
+    %div.options-floater  
+      %div.options-floater
+      = f.label :api_host, "AnyPresence host:"
       %br
-    %br
-    = f.label :consume_phone_number, "Phone number to consume text:"
-    %br
-    - if !current_account.consume_phone_number.nil?
-      = f.text_field :consume_phone_number, :readonly => true
+      = f.text_field :api_host
       %br
-      %br
-      %small= link_to "View/Update menu options", account_menu_options_path(current_account)
-      %br
-    - else
-      = f.text_field :consume_phone_number, :readonly => true, :value => "N/A"
-      #generate_consume_phone_number_region
-        %p Enter area code to generate phone number to consume text:
-        = text_field_tag :area_code, params[:area_code], :size => 3
-        %small= link_to "Generate", generate_consume_phone_number_path, :remote => true
-    %br
-    = f.label :api_host, "AnyPresence host:"
-    %br
-    = f.text_field :api_host
-    %br
-    = f.submit
+      = f.button :submit, "Submit!"
+%br
+%br
+%br
 %br

@@ -24,6 +24,7 @@ class TexterController < ApplicationController
         account.application_id = params[:application_id]
       end
       account.extension_id = params[:add_on_id]
+      account.api_token = params[:api_token]
       account.api_version = @api_version
       account.api_host = "#{ENV['CHAMELEON_HOST']}".strip.gsub(/\/+$/, '')
       
@@ -97,9 +98,11 @@ class TexterController < ApplicationController
   # This is the endpoint for when new applications are published
   def publish
     new_api_version = @api_version
+
     if new_api_version.nil?
        render :json => { :success => false } 
-    elsif current_account.api_version.nil? || new_api_version > current_account.api_version
+    elsif current_account.api_version.nil? || new_api_version[1..-1].to_i > current_account.api_version[1..-1].to_i
+      Rails.logger.info "new api version found: " + @api_version
       current_account.api_version = new_api_version
       current_account.save!
       

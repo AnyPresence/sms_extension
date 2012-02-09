@@ -1,3 +1,17 @@
+GIT
+  remote: git://github.com/chriseppstein/compass.git
+  revision: c81af69c69976e02f383b9b9e2820d120549e155
+  specs:
+    compass (0.12.rc.1.c81af69)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+
+PATH
+  remote: vendor/gems/anypresence_extension-0.0.1
+  specs:
+    anypresence_extension (0.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -43,6 +57,7 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.2.8)
       ffi (~> 1.0.6)
+    chunky_png (1.2.5)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
       railties (~> 3.1.0)
@@ -65,6 +80,7 @@ GEM
     factory_girl (2.3.2)
       activesupport
     ffi (1.0.11)
+    fssm (0.2.8.1)
     haml (3.1.3)
     hike (1.2.1)
     hpricot (0.8.6)
@@ -161,6 +177,9 @@ GEM
       ffi (~> 1.0.9)
       multi_json (~> 1.0.4)
       rubyzip
+    simple_form (1.5.2)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     sinatra (1.3.1)
       rack (~> 1.3, >= 1.3.4)
       rack-protection (~> 1.1, >= 1.1.2)
@@ -197,8 +216,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  anypresence_extension (= 0.0.1)!
   capybara
   coffee-rails (~> 3.1.1)
+  compass!
   database_cleaner
   devise
   dynamic_form
@@ -215,6 +236,7 @@ DEPENDENCIES
   rspec-rails (~> 2.5)
   ruby-debug19
   sass-rails (~> 3.1.5)
+  simple_form
   twilio-ruby
   uglifier (>= 1.0.3)
   vcr

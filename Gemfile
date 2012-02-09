@@ -8,11 +8,15 @@ gem 'rails', '3.1.3'
 gem 'redis'
 gem 'resque'
 gem 'twilio-ruby'
+gem "compass", :git => "git://github.com/chriseppstein/compass.git"
 gem 'devise'
 gem 'liquid'
 gem 'haml'
 gem 'hpricot'
 gem 'dynamic_form'
+gem "simple_form"
+gem 'anypresence_extension', '0.0.1', :path => 'vendor/gems/anypresence_extension-0.0.1'
+
 
 
 # Gems used only for assets and not required
