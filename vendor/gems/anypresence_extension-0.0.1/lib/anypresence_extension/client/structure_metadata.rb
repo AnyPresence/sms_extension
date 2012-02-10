@@ -1,12 +1,10 @@
+require 'anypresence_extension/metadata_resource'
+
 module AnypresenceExtension
   class Client
     module StructureMetadata
-      def fetch_metadata(object)
-        fetch("objects/#{object}.json")
-      end
-      
-      def fetch_available_objects
-        fetch("objects.json")
+      def fetch_metadata(object=nil)
+        @resource = MetadataResource.new(self, object)
       end
     end
   end

@@ -7,7 +7,7 @@ module AnypresenceExtension
     include AnypresenceExtension::Client::StructureMetadata
     include AnypresenceExtension::Client::Data
     
-    attr_reader :application_id, :api_version
+    attr_reader :application_id, :api_version, :resource
     
     def initialize(api_host, api_token, application_id, api_version='latest')
       @base_uri = api_host
@@ -18,6 +18,10 @@ module AnypresenceExtension
       setup_connection
     end
     
+    def fetch
+      get(@resource.uri).body
+    end
+    
 private
     # Perform some basic setup
     def setup_connection
@@ -26,10 +30,11 @@ private
     end
     
     # Actually fetch the resource via api calls
-    def fetch(uri)
+    def get(uri)
       url = "#{@base_uri}#{uri}"
       p url
       response = connect_to_api(url, {:api_token => @api_token})
+
       case response
       when Net::HTTPSuccess
         return response
@@ -40,7 +45,7 @@ private
       end
     end
     
-    # Connecto API and return a json response.
+    # Connect to API and return a json response.
     def connect_to_api(url, *parameters)
       uri = URI.parse(url)
       http = Net::HTTP.new(uri.host, uri.port)
