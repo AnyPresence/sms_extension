@@ -13,6 +13,7 @@ FactoryGirl.find_definitions
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 Dir[Rails.root.join("spec/lib/**/*.rb")].each {|f| require f}
+Dir[Rails.root.join("spec/workers/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
   # == Mock Framework
@@ -41,6 +42,19 @@ RSpec.configure do |config|
   
   # Gives you 'use_vcr_cassette' as a macro
   config.extend VCR::RSpec::Macros
+  
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end
 
 class Capybara::Server
