@@ -5,7 +5,7 @@
   = f.error_messages
 
   = f.label :name
-  = f.select :name, @available_objects
+  = f.select :name, @available_objects, {}, {:class => 'select-menu'}
   %br
 
   = f.label "Field with phone number"

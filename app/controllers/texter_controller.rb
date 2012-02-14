@@ -181,7 +181,7 @@ class TexterController < ApplicationController
   end
   
   def text_phone_number
-    @available_objects = current_account.get_object_definition_mappings
+    @available_objects = current_account.object_definition_mappings
   
     @bulk_text_phone_number = BulkTextPhoneNumber.where(:account_id => current_account.id).first
     

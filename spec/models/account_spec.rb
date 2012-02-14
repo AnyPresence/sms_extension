@@ -35,9 +35,14 @@ describe Account do
     it "should be able to find objects in the metadata" do
       VCR.use_cassette('list_objects_for_outage_app', :erb => {:body => object_definition_mappings_response} ) do
         @account.api_version = "v4"
-        object_names = @account.get_object_definition_metadata
-        debugger
+        object_names = @account.object_definition_metadata
         object_names[0].should include({"name" => "Outage", "mapping" => "outage"})
+      end
+    end
+    
+    it "should fail with 401 without an api_token" do
+      VCR.use_cassette('list_objects_for_outage_app_unauthorized') do
+        expect{ @account.object_definition_metadata }.to raise_error
       end
     end
   end

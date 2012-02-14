@@ -7,6 +7,7 @@ gem 'rails', '3.1.3'
 
 gem 'redis'
 gem 'resque'
+gem 'faraday'
 gem 'twilio-ruby'
 gem "compass", :git => "git://github.com/chriseppstein/compass.git"
 gem 'devise'

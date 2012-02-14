@@ -1,7 +1,7 @@
 = simple_form_for [current_account, menu_option] do |f|
   = f.error_messages
   = f.label :name
-  = f.select :name, @available_objects
+  = f.select :name, @available_objects, {}, {:class => 'select-menu'}
   %br
   
   = f.label :format
