@@ -79,6 +79,9 @@ module ConsumeSms
     end
     
     # Builds text message to send out.
+    #  +options+ is a hash that includes: +:from+, caller's phone number; +:to+, twilio phone number the caller sent the text to; and +body+. body of the text
+    #  +params+ are attributes for the object
+    #  +object_name+ is the object definition name
     def text(options={}, params, object_name)
       outgoing_text_option = @account.outgoing_text_options.where(:name => object_name).first
       # Find the format string from fields that were passed.

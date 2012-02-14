@@ -123,7 +123,7 @@ class TexterController < ApplicationController
         @consumer.text({:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => current_account.phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created"}, params, @object_definition_name.downcase)
         render :json => { :success => true }
       rescue
-        Rails.logger.error "Unable to send out text: " + $!.message
+        Rails.logger.error "Unable to send out text to : " + $!.message
         Rails.logger.error $!.backtrace
         render :json => { :success => false, :error => $!.message }
       end
