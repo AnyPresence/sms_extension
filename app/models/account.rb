@@ -45,8 +45,8 @@ class Account < ActiveRecord::Base
   end
   
   # Build an AnypresenceExtension client.
-  def ap_client(*api_version)
-    version = api_version.nil? ? self.api_version : 'latest'
+  def ap_client(*adhoc_api_version)
+    version = adhoc_api_version.empty? ? 'latest' : adhoc_api_version[0]
     @ap_client ||= AnypresenceExtension::Client.new(self.api_host, self.api_token, self.application_id, version)
   end
   
@@ -111,7 +111,7 @@ class Account < ActiveRecord::Base
   # Gets object instances.
   def object_instances(object_name, format)
     # Access the latest version.
-    response = ap_client.data(object_name).fetch
+    response = ap_client(self.api_version).data(object_name).fetch
 
     parsed_json = json_decode_response(ap_client.url, response)     
     

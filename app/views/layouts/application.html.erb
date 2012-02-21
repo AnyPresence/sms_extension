@@ -3,6 +3,8 @@
 <head>
   <title>ChameleonTextMessageNotifier</title>
   <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag (request.ssl? ? 'https' : 'http') + '://yui.yahooapis.com/combo?3.4.1/build/cssreset/reset-min.css&3.4.1/build/cssfonts/fonts-min.css&3.4.1/build/cssgrids/grids-min.css' %>
+  <%= stylesheet_link_tag (request.ssl? ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css' %>
   <%= chameleon_stylesheet_link %>
   <%= stylesheet_link_tag    "texter" %>
   <%= javascript_include_tag "application" %>

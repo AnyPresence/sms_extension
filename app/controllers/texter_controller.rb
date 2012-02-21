@@ -4,7 +4,7 @@ class TexterController < ApplicationController
   before_filter :authenticate_from_anypresence, :only => [:deprovision, :settings, :publish]
   
   # Normal Devise authentication logic
-  before_filter :authenticate_account!, :except => [:unauthorized, :provision, :consume, :generate_consume_phone_number]
+  before_filter :authenticate_account!, :except => [:unauthorized, :provision, :consume, :generate_consume_phone_number, :text_phone_number]
 
   before_filter :find_api_version, :only => [:provision, :text, :publish]
   before_filter :find_object_definition_name, :only => [:text]
@@ -92,7 +92,6 @@ class TexterController < ApplicationController
       
       redirect_to settings_path
     end
-
   end
   
   # This is the endpoint for when new applications are published
@@ -182,19 +181,28 @@ class TexterController < ApplicationController
   
   def text_phone_number
     @available_objects = current_account.object_definition_mappings
-  
     @bulk_text_phone_number = BulkTextPhoneNumber.where(:account_id => current_account.id).first
     
-    if @bulk_text_phone_number.blank?
-      @bulk_text_phone_number = BulkTextPhoneNumber.new 
-    elsif request.put?
-      if @bulk_text_phone_number.update_attributes params[:bulk_text_phone_number]
+    if request.post?
+      @bulk_text_phone_number = BulkTextPhoneNumber.new(params[:bulk_text_phone_number].merge!({:account => current_account, :type => 'BulkTextPhoneNumber'}))
+      
+      if @bulk_text_phone_number.save
         flash[:notice] = "Account updated."
       else
         flash[:alert] = "Account could not be updated."
       end
       
       redirect_to settings_path
+    elsif request.put?
+      if @bulk_text_phone_number.update_attributes(params[:bulk_text_phone_number].merge!({:account => current_account, :type => 'BulkTextPhoneNumber'}))
+        flash[:notice] = "Account updated."
+      else
+        flash[:alert] = "Account could not be updated."
+      end
+      
+      redirect_to settings_path
+    else
+      @bulk_text_phone_number = BulkTextPhoneNumber.new if @bulk_text_phone_number.blank?
     end
   
   end

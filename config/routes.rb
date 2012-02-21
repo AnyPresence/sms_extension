@@ -1,3 +1,6 @@
+require 'resque'
+require 'resque/server'
+
 ChameleonTextMessageNotifier::Application.routes.draw do
   
   post 'provision' => 'texter#provision'
@@ -8,9 +11,13 @@ ChameleonTextMessageNotifier::Application.routes.draw do
   match 'generate_consume_phone_number' => 'texter#generate_consume_phone_number'
   match 'settings' => 'texter#settings'
   match 'display_bulk_text' => 'texter#display_bulk_text'
+  post 'text_phone_number' => 'texter#text_phone_number'
   match 'text_phone_number' => 'texter#text_phone_number'
 
+
   root :to => 'texter#unauthorized'
+  
+  mount Resque::Server.new, :at => '/resque'
   
   devise_for :accounts
   devise_for :users
