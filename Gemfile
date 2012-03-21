@@ -42,6 +42,10 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+group :development do
+  gem 'heroku-rails', :git => 'git://github.com/sid137/heroku-rails.git'
+end
+
 group :test, :development do
   gem 'local-env'
   gem 'pg'

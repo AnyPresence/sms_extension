@@ -7,6 +7,13 @@ GIT
       fssm (>= 0.2.7)
       sass (~> 3.1)
 
+GIT
+  remote: git://github.com/sid137/heroku-rails.git
+  revision: b604bac843eec4f4e3f87c71124c0c7504fd6415
+  specs:
+    heroku-rails (0.3.2)
+      heroku (>= 1.11.0)
+
 PATH
   remote: vendor/gems/anypresence_extension-0.0.1
   specs:
@@ -87,6 +94,11 @@ GEM
     ffi (1.0.11)
     fssm (0.2.8.1)
     haml (3.1.4)
+    heroku (2.21.3)
+      launchy (>= 0.3.2)
+      netrc (~> 0.7.1)
+      rest-client (~> 1.6.1)
+      rubyzip
     hike (1.2.1)
     hpricot (0.8.6)
     i18n (0.6.0)
@@ -96,6 +108,8 @@ GEM
     json (1.6.5)
     jwt (0.1.4)
       json (>= 1.2.4)
+    launchy (2.1.0)
+      addressable (~> 2.2.6)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     liquid (2.3.0)
@@ -107,6 +121,7 @@ GEM
     mime-types (1.17.2)
     multi_json (1.0.4)
     multipart-post (1.1.4)
+    netrc (0.7.1)
     nokogiri (1.5.0)
     orm_adapter (0.0.6)
     pg (0.13.1)
@@ -148,6 +163,8 @@ GEM
       redis-namespace (~> 1.0.2)
       sinatra (>= 0.9.2)
       vegas (~> 0.1.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
       rspec-expectations (~> 2.8.0)
@@ -232,6 +249,7 @@ DEPENDENCIES
   factory_girl
   faraday
   haml
+  heroku-rails!
   hpricot
   jquery-rails
   liquid
