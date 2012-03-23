@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  application_id: MyString
+  api_host: MyString
+  api_token: MyString
+  api_version: MyString
+
+two:
+  application_id: MyString
+  api_host: MyString
+  api_token: MyString
+  api_version: MyString
