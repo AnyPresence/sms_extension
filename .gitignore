@@ -33,6 +33,7 @@ certificates/*
 .bundle.tddium*
 .tddium
 
+
 # ignore the mongoid folder
 mongoid
 
