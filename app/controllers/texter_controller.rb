@@ -100,7 +100,7 @@ class TexterController < ApplicationController
 
     if new_api_version.nil?
        render :json => { :success => false } 
-    elsif current_account.api_version.nil? || new_api_version[1..-1].to_i > current_account.api_version[1..-1].to_i
+    elsif current_account.api_version.nil? || new_api_version.to_i > current_account.api_version.to_i
       Rails.logger.info "new api version found: " + @api_version
       current_account.api_version = new_api_version
       current_account.save!
