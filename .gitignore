@@ -25,7 +25,6 @@ test/tmp
 test/version_tmp
 tmp
 pkg
-*.gem
 lib/bundler/man
 spec/reports
 .config
@@ -33,7 +32,6 @@ InstalledFiles
 certificates/*
 .bundle.tddium*
 .tddium
-vendor/gems/**/*
 
 # ignore the mongoid folder
 mongoid
