@@ -5,10 +5,14 @@
   = f.error_messages
 
   = f.label :name
-  = f.select :name, @available_objects, {}, {:class => 'select-menu'}
   %br
-
+  = f.select :name, @available_objects
+  %br
+  %br
+  %br
+  %br
   = f.label "Field with phone number"
+  %br
   = f.text_field :format
   %br
   = f.button :submit, "Submit!"
