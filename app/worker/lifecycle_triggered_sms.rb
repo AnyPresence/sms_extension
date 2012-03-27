@@ -18,9 +18,15 @@ class LifecycleTriggeredSms
       if count == ENV['MAX_OUTGOING_SMS_PER_LC_EVENT'].to_i
         return
       end
-      
-      ConsumeSms::Consumer.send_sms({:from => options['from'], :to => o.strip, :body => options['body']})
-      count += 1
+      Rails.logger.info "Sending text to: #{o.strip} , from: #{options['from']}"
+      next if o.strip.empty?
+      begin
+        ConsumeSms::Consumer.send_sms({:from => options['from'], :to => o.strip, :body => options['body']})
+        count += 1
+      rescue
+        Rails.logger.error $!
+        Rails.logger.error $!.backtrace.join("\n")
+      end
     end
   end
 end

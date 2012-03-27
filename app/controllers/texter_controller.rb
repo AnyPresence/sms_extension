@@ -113,7 +113,7 @@ class TexterController < ApplicationController
   
   # This is the endpoint for the web service our add on creates.
   def text
-    if current_account.phone_number.blank? || current_account.outgoing_text_options.blank?
+    if current_account.phone_number.blank? && current_account.outgoing_text_options.blank?
       Rails.logger.error "Not able to send text. The account is either missing a phone number to text to, or there are no outgoing text options."
       render :text => "Not yet set up!"
     else
