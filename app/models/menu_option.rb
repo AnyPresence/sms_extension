@@ -12,6 +12,7 @@ class MenuOption < ActiveRecord::Base
   #   Then the rendered text should be "Outage: Widespread Outage : Around D.C. area".
   def self.parse_format_string(format, object_name, decoded_json)
     klass = self.build_liquid_drop_class(object_name, decoded_json.keys)
+    Rails.logger.info "Decoded json: #{decoded_json.inspect}"
     # Set instance variables for klass from decoded json
     klass_instance = klass.new(decoded_json)
     

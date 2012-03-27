@@ -109,18 +109,36 @@ class Account < ActiveRecord::Base
   end  
   
   # Gets object instances.
-  def object_instances(object_name, format)
-    # Access the latest version.
-    response = ap_client(self.api_version).data(object_name).fetch
-
-    parsed_json = json_decode_response(ap_client.url, response)     
+  def object_instances(object_name, format, opts={})
+    # Accesses a page of the latest version.
+    response = ap_client(self.api_version).data(object_name)
     
     msg_for_client = []
     count = 0
-    parsed_json.each do |x|
-        break if count == NUM_ENTRIES
-        count += 1
-        msg_for_client << MenuOption::parse_format_string(format, object_name, x).to_s
+    current_page = 1
+    
+    max_entries = opts[:max_entries].nil? ? NUM_ENTRIES : opts[:max_entries]
+    
+    while true
+      response = ap_client.resource.fetch
+      if response.to_json.empty?
+        break
+      end
+      parsed_json = json_decode_response(ap_client.url, response)     
+
+     
+      parsed_json.each do |x|
+          break if (count == max_entries && opts[:query] != "all")
+          count += 1
+          Rails.logger.info "Parsed json: " + x.inspect
+          msg_for_client << MenuOption::parse_format_string(format, object_name, x).to_s
+      end
+      
+      if opts[:query] == "all"
+        ap_client.resource.next_page
+      else
+        break
+      end
     end
     msg_for_client
   end

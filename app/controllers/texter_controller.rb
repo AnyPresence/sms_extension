@@ -201,6 +201,11 @@ class TexterController < ApplicationController
       end
       
       redirect_to settings_path
+    elsif request.delete?
+      @bulk_text_phone_number.destroy
+      flash[:notice] = "Deleted bulk text option."
+      
+      redirect_to settings_path
     else
       @bulk_text_phone_number = BulkTextPhoneNumber.new if @bulk_text_phone_number.blank?
     end
