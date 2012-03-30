@@ -1,4 +1,5 @@
-= link_to "Go back to settings", settings_path
+%h4
+  = link_to "Go back to settings", settings_path
 %h4
   = flash[:notice]
   = flash[:alert]
@@ -12,10 +13,13 @@
       = k
       \- #{v[0]}
       %br
+      %br
 %br
 %br
 - @menu_options.each do |option|
   = link_to "#{option.name} - #{option.format}", [current_account, option]
   %br
 %br
-= link_to "Add new menu option", :action => "new", :controller => "menu_options", :type => params[:type]
+
+%h4
+  = link_to "Add new menu option", :action => "new", :controller => "menu_options", :type => params[:type]

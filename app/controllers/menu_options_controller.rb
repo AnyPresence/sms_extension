@@ -57,7 +57,7 @@ class MenuOptionsController < ApplicationController
     else
       param_name = :menu_option
     end
-    if @menu_option.update_attributes(params[param_name].merge(:type => params[:type]))
+    if @menu_option.update_attributes(params[param_name])
       flash[:notice] = "Menu option has been updated."
       redirect_to [current_account, @menu_option]
     else
