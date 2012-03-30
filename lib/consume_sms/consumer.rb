@@ -35,7 +35,6 @@ module ConsumeSms
     # Checks to see if we should provision a new phone number or use what is available.
     def provision_new_phone_number?(phone_number)
       used_numbers = Account::get_used_phone_numbers
-      used_numbers << phone_number
       if find_available_purchased_phone_number(used_numbers).nil?
         true
       else

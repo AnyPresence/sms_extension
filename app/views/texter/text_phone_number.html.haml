@@ -1,4 +1,5 @@
-= link_to "Go back to settings", settings_path
+%h2
+  = link_to "Go back to settings", settings_path
 %br
 %br
 = simple_form_for([current_account, @bulk_text_phone_number], :url => text_phone_number_path) do |f|
