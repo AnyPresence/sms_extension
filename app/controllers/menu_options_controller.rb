@@ -49,7 +49,16 @@ class MenuOptionsController < ApplicationController
   def update
     @menu_option =  MenuOption.find(params[:id])
     @menu_option.type = params[:type]
-    if @menu_option.update_attributes(params[:menu_option])
+    param_name = ""
+    case params[:type]
+    when "OutgoingTextOption"
+      param_name = :outgoing_text_option
+    when "BulkTextPhoneNumber"
+      param_name = :bulk_text_phone_number
+    else
+      param_name = :menu_option
+    end
+    if @menu_option.update_attributes(params[param_name])
       flash[:notice] = "Menu option has been updated."
       redirect_to [current_account, @menu_option]
     else
