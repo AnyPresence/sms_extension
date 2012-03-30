@@ -3,9 +3,8 @@
 %br
 %br
 #menu_option
-  %h3
-    = @menu_option.name
-    \- #{@menu_option.format}
+  = @menu_option.name
+  \- #{@menu_option.format}
 %br
 %h3
   = link_to "Edit", edit_account_menu_option_path(current_account, @menu_option)
