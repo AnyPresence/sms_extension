@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Greatest SMS extension"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
 
   s.add_development_dependency "activesupport"
   s.add_development_dependency "json"
