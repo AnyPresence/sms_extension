@@ -1,3 +1,4 @@
-module MenuOptionsHelper
-  
+module SmsExtension
+  module MenuOptionsHelper
+  end
 end

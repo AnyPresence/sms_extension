@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TexterController do
+describe SmsExtension::TexterController do
   
   def mock_twilio_client
     twilio_client = double('twilio')

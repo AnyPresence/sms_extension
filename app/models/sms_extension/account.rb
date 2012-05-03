@@ -3,8 +3,8 @@ module SmsExtension
     NUM_ENTRIES = 4
     TWILIO_SMS_CHAR_PAGE_SIZE = 150
       
-    devise :token_authenticatable, :rememberable, :trackable
-    before_save :ensure_authentication_token
+    #devise :token_authenticatable, :rememberable, :trackable
+    #before_save :ensure_authentication_token
   
     validates :application_id, :presence => true
     validates :consume_phone_number, :uniqueness => true

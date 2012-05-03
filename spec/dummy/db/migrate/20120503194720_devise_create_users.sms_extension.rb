@@ -1,7 +1,7 @@
 # This migration comes from sms_extension (originally 20120106040842)
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
-    create_table(:users) do |t|
+    create_table(:sms_extension_users) do |t|
       t.database_authenticatable :null => false
       t.recoverable
       t.rememberable
@@ -16,8 +16,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :users, :email,                :unique => true
-    add_index :users, :reset_password_token, :unique => true
+    add_index :sms_extension_users, :email,                :unique => true
+    add_index :sms_extension_users, :reset_password_token, :unique => true
     # add_index :users, :confirmation_token,   :unique => true
     # add_index :users, :unlock_token,         :unique => true
     # add_index :users, :authentication_token, :unique => true
