@@ -142,7 +142,7 @@ class TexterController < ApplicationController
         outbound_message = ""
         if !accounts.blank?
           begin
-            consumer = ConsumeSms::Consumer.new(accounts.first)
+            consumer = SmsExtension::ConsumeSms::Consumer.new(accounts.first)
             outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
           rescue
             Rails.logger.error "Not able to consume the text: " 
@@ -155,7 +155,7 @@ class TexterController < ApplicationController
         Rails.logger.info "Sending message to " + message.from + " : " + outbound_message.inspect
         outbound_message = [outbound_message] unless outbound_message.kind_of?(Array)
         outbound_message.each do |o|
-          ConsumeSms::Consumer.send_sms({:from => consume_phone_number, :to => message.from, :body => o.to_s})
+          SmsExtension::ConsumeSms::Consumer.send_sms({:from => consume_phone_number, :to => message.from, :body => o.to_s})
         end
         render :json => { :success => true }
       rescue
@@ -264,7 +264,7 @@ protected
 
   # Builds the +Consumer+ which accesses Twilio.
   def build_consumer
-    @consumer = ConsumeSms::Consumer.new(current_account)
+    @consumer = SmsExtension::ConsumeSms::Consumer.new(current_account)
   end
 
 end
