@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MenuOption do
+describe SmsExtension::MenuOption do
   describe "get menu options" do
     before(:each) do 
       @menu_option = Factory.build(:menu_option)

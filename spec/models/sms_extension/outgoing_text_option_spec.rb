@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe OutgoingTextOption do
+describe SmsExtension::OutgoingTextOption do
   before(:each) do 
     @outgoing_text_option = Factory.build(:outgoing_text_option)
   end

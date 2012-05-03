@@ -1,0 +1,332 @@
+  [1m[36m (234.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (196.7ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (48.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateAccounts (20120503194718)
+  [1m[36m (5.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateAccounts (20120503200823)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (158.8ms)[0m  [1mCREATE TABLE "sms_extension_accounts" ("id" serial primary key, "application_id" character varying(255), "phone_number" character varying(255), "field_name" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.8ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'accounts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (20.1ms)[0m  [1mCREATE UNIQUE INDEX "index_accounts_on_application_id" ON "accounts" ("application_id")[0m
+PG::Error: ERROR:  relation "accounts" does not exist
+: CREATE UNIQUE INDEX "index_accounts_on_application_id" ON "accounts" ("application_id")
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateAccounts (20120503200944)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (16.9ms)[0m  [1mCREATE TABLE "sms_extension_accounts" ("id" serial primary key, "application_id" character varying(255), "phone_number" character varying(255), "field_name" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.9ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'sms_extension_accounts_accounts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (22.7ms)[0m  [1mCREATE UNIQUE INDEX "index_sms_extension_accounts_accounts_on_application_id" ON "sms_extension_accounts_accounts" ("application_id")[0m
+PG::Error: ERROR:  relation "sms_extension_accounts_accounts" does not exist
+: CREATE UNIQUE INDEX "index_sms_extension_accounts_accounts_on_application_id" ON "sms_extension_accounts_accounts" ("application_id")
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateAccounts (20120503201030)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (73.9ms)[0m  [1mCREATE TABLE "sms_extension_accounts" ("id" serial primary key, "application_id" character varying(255), "phone_number" character varying(255), "field_name" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.8ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'sms_extension_accounts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (1.6ms)[0m  [1mCREATE UNIQUE INDEX "index_sms_extension_accounts_on_application_id" ON "sms_extension_accounts" ("application_id")[0m
+  [1m[35m (13.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120503201030')
+  [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMessages (20120503201031)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "sms_extension_messages" ("id" serial primary key, "SmsMessageSid" character varying(255), "AccountSid" character varying(255), "Body" character varying(255), "From" character varying(255), "To" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (23.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120503201031')
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to ChangeColumnNamesOnMessages (20120503201032)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "sms_extension_messages" RENAME COLUMN "SmsMessageSid" TO "sms_message_sid"[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "sms_extension_messages" RENAME COLUMN "AccountSid" TO "account_sid"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201032')[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+Migrating to AddConsumerPhoneNumberFieldOnAccounts (20120503201033)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "sms_extension_accounts" ADD COLUMN "consumer_phone_number" character varying(255)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201033')[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+Migrating to ChangeColumnNameOnMessages (20120503201034)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "sms_extension_messages" RENAME COLUMN "Body" TO "body"
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "sms_extension_messages" RENAME COLUMN "From" TO "from"[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "sms_extension_messages" RENAME COLUMN "To" TO "to"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201034')[0m
+  [1m[35m (1.1ms)[0m  COMMIT
+Migrating to ChangeColumnNameOnAccounts (20120503201035)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "sms_extension_accounts" RENAME COLUMN "consumer_phone_number" TO "consume_phone_number"
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201035')[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+Migrating to AddPermittedPhoneNumbersOnAccounts (20120503201036)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "sms_extension_accounts" ADD COLUMN "permitted_phone_numbers" text
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201036')[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+Migrating to CreateMenuOptions (20120503201037)
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (3.4ms)[0m  CREATE TABLE "sms_extension_menu_options" ("id" serial primary key, "name" character varying(255), "format" character varying(255), "account_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201037')[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+Migrating to AddApiVersionFieldOnAccounts (20120503201038)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "sms_extension_accounts" ADD COLUMN "api_version" character varying(255)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201038')[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+Migrating to CreateOutgoingTextOptions (20120503201039)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (17.7ms)[0m  CREATE TABLE "sms_extension_outgoing_text_options" ("id" serial primary key, "name" character varying(255), "format" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201039')[0m
+  [1m[35m (0.9ms)[0m  COMMIT
+Migrating to AddReferenceToAccountOnOutgoingTextOptions (20120503201040)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "sms_extension_outgoing_text_options" ADD COLUMN "account_id" integer
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201040')[0m
+  [1m[35m (0.7ms)[0m  COMMIT
+Migrating to AddExtensionIdFieldOnAccounts (20120503201041)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "sms_extension_accounts" ADD COLUMN "extension_id" character varying(255)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201041')[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+Migrating to AddApiHostToAccounts (20120503201042)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "sms_extension_accounts" ADD COLUMN "api_host" character varying(255)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201042')[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+Migrating to CreateBulkTextPhoneNumbers (20120503201043)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "sms_extension_bulk_text_phone_numbers" ("id" serial primary key, "name" character varying(255), "format" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201043')[0m
+  [1m[35m (1.2ms)[0m  COMMIT
+Migrating to AddAccountIdToBulkTextPhoneNumbers (20120503201044)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "sms_extension_bulk_text_phone_numbers" ADD COLUMN "account_id" integer
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201044')[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+Migrating to AddTypeStringToMenuOptions (20120503201045)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "sms_extension_menu_options" ADD COLUMN "type" character varying(255)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201045')[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+Migrating to AddApiTokenStringToAccounts (20120503201046)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "sms_extension_accounts" ADD COLUMN "api_token" character varying(255)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120503201046')[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mPK and serial sequence (56.1ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"sms_extension_accounts"'::regclass
+
+  [1m[36m (21.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'sms_extension_accounts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_sms_extension_accounts_on_application_id on sms_extension_accounts (0.4ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 48659
+ AND a.attnum IN (2)
+
+  [1m[36mPK and serial sequence (1.6ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"sms_extension_bulk_text_phone_numbers"'::regclass
+[0m
+  [1m[35m (0.7ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'sms_extension_bulk_text_phone_numbers'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mPK and serial sequence (1.5ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"sms_extension_menu_options"'::regclass
+[0m
+  [1m[35m (0.7ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'sms_extension_menu_options'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mPK and serial sequence (1.5ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"sms_extension_messages"'::regclass
+[0m
+  [1m[35m (0.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'sms_extension_messages'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mPK and serial sequence (1.5ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"sms_extension_outgoing_text_options"'::regclass
+[0m
+  [1m[35m (0.8ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'sms_extension_outgoing_text_options'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (229.4ms)[0m  DROP DATABASE IF EXISTS "sms_extension_test"
+  [1m[36m (1534.1ms)[0m  [1mCREATE DATABASE "sms_extension_test" ENCODING = 'utf8'[0m
+  [1m[35m (11.3ms)[0m  CREATE TABLE "sms_extension_accounts" ("id" serial primary key, "application_id" character varying(255), "phone_number" character varying(255), "field_name" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "consume_phone_number" character varying(255), "permitted_phone_numbers" text, "api_version" character varying(255), "extension_id" character varying(255), "api_host" character varying(255), "api_token" character varying(255)) 
+  [1m[36m (2.9ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'sms_extension_accounts'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX "index_sms_extension_accounts_on_application_id" ON "sms_extension_accounts" ("application_id")
+  [1m[36m (16.5ms)[0m  [1mCREATE TABLE "sms_extension_bulk_text_phone_numbers" ("id" serial primary key, "name" character varying(255), "format" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "account_id" integer) [0m
+  [1m[35m (35.8ms)[0m  CREATE TABLE "sms_extension_menu_options" ("id" serial primary key, "name" character varying(255), "format" character varying(255), "account_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "type" character varying(255)) 
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE "sms_extension_messages" ("id" serial primary key, "sms_message_sid" character varying(255), "account_sid" character varying(255), "body" character varying(255), "from" character varying(255), "to" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (4.6ms)[0m  CREATE TABLE "sms_extension_outgoing_text_options" ("id" serial primary key, "name" character varying(255), "format" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "account_id" integer) 
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (0.8ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (1.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (27.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503201046')[0m
+  [1m[35m (3.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120503201030')
+  [1m[36m (12.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503201031')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120503201032')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503201033')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120503201034')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503201035')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120503201036')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503201037')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120503201038')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503201039')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120503201040')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503201041')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120503201042')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503201043')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120503201044')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503201045')[0m

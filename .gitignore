@@ -5,6 +5,7 @@ bin/**
 vendor/bundle
 log/*
 spec/dummy/log/*
+spec/dummy/db/migrate/*
 tmp/*
 db/*.sqlite3
 public/system/*

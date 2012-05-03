@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Message do
+describe SmsExtension::Message do
   describe "messages exceeding 160 characters" do
     MAX_TEXT_LENGTH = 160
     

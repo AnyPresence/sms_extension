@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Account do
+describe SmsExtension::Account do
   describe "Build text message menu" do
     it "should know how to build menu options" do
       account = Factory.create(:account)
