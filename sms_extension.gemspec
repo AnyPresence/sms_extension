@@ -10,12 +10,12 @@ Gem::Specification.new do |s|
   s.authors     = ["Anypresence"]
   s.email       = ["fake@fake.local"]
   s.homepage    = ""
-  s.summary     = "SMS extension"
-  s.description = "Greatest SMS extension"
+  s.summary     = ""
+  s.description = ""
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
 
+  s.add_dependency "rails", "~> 3.2.3"
   s.add_development_dependency "activesupport"
   s.add_development_dependency "json"
   s.add_development_dependency "multi_json"
@@ -33,7 +33,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "webmock"
   s.add_development_dependency "vcr"
   s.add_development_dependency "ruby-debug19"
-  s.add_development_dependency "debugger", "~> 1.1.1"
-
-  s.add_development_dependency "sqlite3"
+  # s.add_dependency "jquery-rails"
 end

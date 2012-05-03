@@ -1,4 +1,5 @@
 *.rbc
+bin/**
 .sass-cache
 .bundle
 vendor/bundle

@@ -1,3 +1,4 @@
+# This migration comes from sms_extension (originally 20111222182647)
 class DeviseCreateAccounts < ActiveRecord::Migration
   def change
     create_table(:sms_extension_accounts) do |t|
