@@ -1,6 +1,10 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
+<<<<<<< HEAD
 require File.expand_path("../../spec/dummy/config/environment", __FILE__)
+=======
+require File.expand_path("../dummy/config/environment.rb",  __FILE__)
+>>>>>>> f5504eee77c1c4ee246a2190f69d9b74d06e69df
 require 'rspec/rails'
 require 'rspec/autorun'
 
