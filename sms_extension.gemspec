@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = SmsExtension::VERSION
   s.authors     = ["Anypresence"]
   s.email       = ["fake@fake.local"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of SmsExtension."
-  s.description = "TODO: Description of SmsExtension."
+  s.homepage    = ""
+  s.summary     = "SMS extension"
+  s.description = "Greatest SMS extension"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
