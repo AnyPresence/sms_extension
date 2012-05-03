@@ -1,2 +1,4 @@
-module TexterHelper
+module SmsExtension
+  module TexterHelper
+  end
 end

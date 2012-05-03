@@ -1,2 +1,4 @@
-module OutgoingTextOptionsHelper
+module SmsExtension
+  module OutgoingTextOptionsHelper
+  end
 end
