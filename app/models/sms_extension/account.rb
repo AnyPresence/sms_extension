@@ -1,10 +1,16 @@
 module SmsExtension
-  class Account < ActiveRecord::Base
+  class Account
+    include Mongoid::Document
+    include Mongoid::Timestamps
+    
+    field :phone_number, type: String
+    field :field_name, type: String
+    field :application_id, type: String
+    field :consume_phone_number, type: String
+    field :application_id, type: String
+    
     NUM_ENTRIES = 4
     TWILIO_SMS_CHAR_PAGE_SIZE = 150
-      
-    #devise :token_authenticatable, :rememberable, :trackable
-    #before_save :ensure_authentication_token
   
     validates :application_id, :presence => true
     validates :consume_phone_number, :uniqueness => true

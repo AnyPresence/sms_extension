@@ -1,3 +1,5 @@
+require 'sms_extension/consume_sms'
+
 module SmsExtension
   class TexterController < ApplicationController
 
@@ -231,7 +233,7 @@ module SmsExtension
   
     # A request is valid if it is both recent and was properly signed with our shared secret.
     def valid_request?
-      signed_secret = ConsumeSms::sign_secret(ENV['SHARED_SECRET'], params[:application_id], params[:timestamp])
+      signed_secret = SmsExtension::ConsumeSms::sign_secret(ENV['SHARED_SECRET'], params[:application_id], params[:timestamp])
       recent_request? && params[:anypresence_auth] == signed_secret[:anypresence_auth]
     end
   

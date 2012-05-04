@@ -6,7 +6,7 @@ FactoryGirl.define do
     extension_id "12345"
     
     after_build do |o|
-      outgoing_text_option =  Factory.build(:sms_extension_outgoing_text_option)
+      outgoing_text_option =  Factory.build(:outgoing_text_option)
       o.outgoing_text_options << outgoing_text_option
     end
   end
@@ -18,10 +18,10 @@ FactoryGirl.define do
     extension_id "12345"
     
     after_build do |o|
-      outgoing_text_option =  Factory.build(:sms_extension_outgoing_text_option)
+      outgoing_text_option =  Factory.build(:outgoing_text_option)
       o.outgoing_text_options << outgoing_text_option
       
-      menu_option = Factory.build(:sms_extension_menu_option)
+      menu_option = Factory.build(:menu_option)
       o.menu_options << menu_option
     end
   end

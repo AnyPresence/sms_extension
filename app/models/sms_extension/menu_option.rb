@@ -1,11 +1,18 @@
 module SmsExtension
-  class MenuOption < ActiveRecord::Base
+  class MenuOption
+    include Mongoid::Document
+    include Mongoid::Timestamps
+
+    field :option_name, type: String
+    field :option_format, type: String  
+    field :type, type: String   
+
     belongs_to :account
   
-    validates :name, :presence => true
-    validates :format, :presence => true
+    validates :option_name, :presence => true
+    validates :option_format, :presence => true
 
-    attr_accessible :name, :format
+    attr_accessible :option_name, :option_format
   
     # Parse format string from menu options
     # The input string uses the Liquid template format, e.g. "Outage: {{title}} : {{description}}".

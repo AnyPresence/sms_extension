@@ -7,7 +7,6 @@ describe SmsExtension::Account do
       options  = Factory.create(:menu_option, :name => 'department', :type => "MenuOption", :account => account)
       
       options = account.text_message_options
-      debugger
       options["#0"][0].should == "menu"
       options["#1"][0].should == "department"
     end

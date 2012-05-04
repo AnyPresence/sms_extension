@@ -6,6 +6,10 @@ source "http://rubygems.org"
 gemspec
 
 gem 'rspec-rails'
+gem "mongoid", "2.4.4"
+gem 'mongo', '= 1.3.1' 
+gem 'bson', '= 1.3.1' 
+gem 'bson_ext', '= 1.3.1'
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"

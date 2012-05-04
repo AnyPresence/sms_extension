@@ -19,8 +19,7 @@ describe SmsExtension::TexterController do
   describe 'GET settings' do
     before(:each) do
       # create an account for testing
-      @account = Factory.create(:account)
-      sign_in @account     
+      @account = FactoryGirl.create(:sms_extension_account)   
     end  
           
     it "should render settings with valid parameters" do
@@ -38,8 +37,7 @@ describe SmsExtension::TexterController do
   
   describe 'PUT settings' do
     before(:each) do
-      @account = Factory.create(:account)
-      sign_in @account     
+      @account = FactoryGirl.create(:account) 
     end  
           
     it "should update account with new phone number" do
@@ -70,13 +68,12 @@ describe SmsExtension::TexterController do
   
   describe "setup extensions" do
     before(:each) do
-      @account = Factory.build(:account)
+      @account = FactoryGirl.build(:sms_extension_account)
     end
     
     describe 'provision' do
       it "should update old account that exists already" do
-        @account0 = Factory.create(:account)
-        sign_in @account0
+        @account0 = FactoryGirl.create(:sms_extension_account)
         Account.where(:application_id => @account0.application_id).size.should == 1
         
         secure_parameters = generate_secure_parameters
@@ -128,8 +125,7 @@ describe SmsExtension::TexterController do
   
   describe "publish new api version" do 
     before(:each) do
-      @account = Factory.create(:account, :api_version => "v1")
-      sign_in @account
+      @account = FactoryGirl.create(:sms_extension_account, :api_version => "v1")
     end
   
     it "should use the new api version" do
@@ -152,8 +148,7 @@ describe SmsExtension::TexterController do
     
   describe 'perform text' do
     before(:each) do
-      @account = Factory.create(:fully_assembled_account) 
-      sign_in @account
+      @account = FactoryGirl.create(:fully_assembled_account) 
     end
 
     it "should text sucessfully when @object_definition_name is available" do
@@ -193,8 +188,7 @@ describe SmsExtension::TexterController do
     before(:each) do
       # create an account for testing
       @consume_phone_number = "6178613962"
-      @account = Factory.create(:account, {:consume_phone_number => @consume_phone_number})
-      sign_in @account
+      @account = FactoryGirl.create(:sms_extension_account, {:consume_phone_number => @consume_phone_number})
     end     
      
     it "should consume and text successfully" do

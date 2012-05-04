@@ -1,5 +1,14 @@
 module SmsExtension
-  class Message < ActiveRecord::Base
+  class Message
+    include Mongoid::Document
+    include Mongoid::Timestamps
+    
+    field :sms_message_sid, type: String
+    field :account_sid, type: String
+    field :body, type: String
+    field :from, type: String
+    field :to, type: String
+    
     validates_presence_of :from, :to
      
     attr_accessible :sms_message_sid, :account_sid, :body, :from, :to
