@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'sms_extension/consume_sms'
+require 'sms_extension/sms'
 
-describe SmsExtension::ConsumeSms::Consumer do
+describe SmsExtension::Sms::Consumer do
   
   def setup_twilio
     twilio_client = double('twilio_client')

@@ -330,3 +330,22 @@ Migrating to AddApiTokenStringToAccounts (20120503201046)
   [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503201043')[0m
   [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120503201044')
   [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120503201045')[0m
+MongoDB logging. Please note that logging negatively impacts performance and should be disabled for high-performance production apps.
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MONGODB sms_extension_development['system.namespaces'].find({})
+MONGODB sms_extension_development['$cmd'].find({:create=>"sms_extension_menu_options"})
+MONGODB sms_extension_development['sms_extension_menu_options'].find({:_type=>{"$in"=>["SmsExtension::BulkTextPhoneNumber"]}}).sort([[:_id, :asc]])
+MongoDB logging. Please note that logging negatively impacts performance and should be disabled for high-performance production apps.
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MongoDB logging. Please note that logging negatively impacts performance and should be disabled for high-performance production apps.
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MONGODB admin['$cmd'].find({:ismaster=>1})
+Saving...#<Outage _id: 4fa4321a772c960ecd000002, _type: nil>
+MongoDB logging. Please note that logging negatively impacts performance and should be disabled for high-performance production apps.
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MongoDB logging. Please note that logging negatively impacts performance and should be disabled for high-performance production apps.
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MONGODB admin['$cmd'].find({:ismaster=>1})

@@ -146,3 +146,1375 @@ Completed 500 Internal Server Error in 1ms
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
   [1m[35m (0.0ms)[0m  ROLLBACK
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  select current_database()
+  [1m[36m (1.6ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (68.7ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  select current_database()
+  [1m[36m (1.6ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (70.0ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  select current_database()
+  [1m[36m (1.6ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (14.9ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  select current_database()
+  [1m[36m (1.7ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (77.0ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  select current_database()
+  [1m[36m (1.6ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (92.6ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  select current_database()
+  [1m[36m (1.7ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (51.5ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  select current_database()
+  [1m[36m (1.7ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (31.8ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 4ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  select current_database()
+  [1m[36m (1.6ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (65.9ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 4ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  select current_database()
+  [1m[36m (1.7ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (63.5ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 4ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  select current_database()
+  [1m[36m (1.4ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (15.1ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 4ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  select current_database()
+  [1m[36m (1.6ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (14.8ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 5ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  select current_database()
+  [1m[36m (1.5ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (67.4ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 3ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  select current_database()
+  [1m[36m (1.5ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (35.4ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 4ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (1.2ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  select current_database()
+  [1m[36m (2.5ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (92.5ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 4ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (22.9ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  select current_database()
+  [1m[36m (10.5ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (56.7ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.6ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (71.8ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 20:59:19 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 20:59:19 UTC +00:00]]
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 1], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 2], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 3], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#provision as HTML
+  Parameters: {"application_id"=>"4f204040772c96c4d3000006", "anypresence_auth"=>"91d286f0e01e63ba0cf3629dca7612d19edf7d37", "timestamp"=>"1336078760"}
+Completed 500 Internal Server Error in 4ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#provision as HTML
+  Parameters: {"application_id"=>"5", "anypresence_auth"=>"91d286f0e01e63ba0cf3629dca7612d19edf7d37", "timestamp"=>"1336078760"}
+Completed 500 Internal Server Error in 3ms
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#provision as HTML
+  Parameters: {"application_id"=>"4f204040772c96c4d3000006", "anypresence_auth"=>"91d286f0e01e63ba0cf3629dca7612d19edf7d37", "timestamp"=>"1336078760"}
+Completed 500 Internal Server Error in 4ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 3ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", "v1"], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 4], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", "v1"], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 5], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.4ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000007"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 6], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "{{title}} : {{description}}"], ["name", "outage"], ["type", nil], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 6], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000007"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 7], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "{{title}} : {{description}}"], ["name", "outage"], ["type", nil], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 7], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000007"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 8], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "{{title}} : {{description}}"], ["name", "outage"], ["type", nil], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 8], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '6178613962' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", "6178613962"], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 9], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '6178613962' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", "6178613962"], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 10], ["created_at", Thu, 03 May 2012 20:59:20 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 20:59:20 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  select current_database()
+  [1m[36m (1.6ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (64.6ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.7ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (3.9ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 1], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 2], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 3], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#provision as HTML
+  Parameters: {"application_id"=>"4f204040772c96c4d3000006", "anypresence_auth"=>"eee0acd0ea62efacc7fd61cdac1a69a533cbe64d", "timestamp"=>"1336078843"}
+Completed 500 Internal Server Error in 2ms
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#provision as HTML
+  Parameters: {"application_id"=>"5", "anypresence_auth"=>"eee0acd0ea62efacc7fd61cdac1a69a533cbe64d", "timestamp"=>"1336078843"}
+Completed 500 Internal Server Error in 1ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#provision as HTML
+  Parameters: {"application_id"=>"4f204040772c96c4d3000006", "anypresence_auth"=>"eee0acd0ea62efacc7fd61cdac1a69a533cbe64d", "timestamp"=>"1336078843"}
+Completed 500 Internal Server Error in 1ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 2ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", "v1"], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 4], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", "v1"], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 5], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000007"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 6], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "{{title}} : {{description}}"], ["name", "outage"], ["type", nil], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 6], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000007"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 7], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "{{title}} : {{description}}"], ["name", "outage"], ["type", nil], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 7], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000007"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 8], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "{{title}} : {{description}}"], ["name", "outage"], ["type", nil], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 8], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '6178613962' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", "6178613962"], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 9], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '6178613962' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", "6178613962"], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 10], ["created_at", Thu, 03 May 2012 21:00:43 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:00:43 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  select current_database()
+  [1m[36m (1.7ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (53.7ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (1.1ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (3.9ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 1], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 2], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 3], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#provision as HTML
+  Parameters: {"application_id"=>"4f204040772c96c4d3000006", "anypresence_auth"=>"0e9e8804e3c80184ae0876092c0dc25069307030", "timestamp"=>"1336078939"}
+  [1m[35mSmsExtension::Account Load (0.6ms)[0m  SELECT "sms_extension_accounts".* FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."application_id" = '4f204040772c96c4d3000006' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.2ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", ""], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["extension_id", nil], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", nil], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 500 Internal Server Error in 59ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#provision as HTML
+  Parameters: {"application_id"=>"5", "anypresence_auth"=>"0e9e8804e3c80184ae0876092c0dc25069307030", "timestamp"=>"1336078939"}
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#provision as HTML
+  Parameters: {"application_id"=>"4f204040772c96c4d3000006", "anypresence_auth"=>"0e9e8804e3c80184ae0876092c0dc25069307030", "timestamp"=>"1336078939"}
+  [1m[36mSmsExtension::Account Load (0.5ms)[0m  [1mSELECT "sms_extension_accounts".* FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."application_id" = '4f204040772c96c4d3000006' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", ""], ["api_token", nil], ["api_version", "v1"], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["extension_id", nil], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", nil], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 6ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.4ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", "v1"], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 6], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", "v1"], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 7], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.2ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000007"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 8], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "{{title}} : {{description}}"], ["name", "outage"], ["type", nil], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 8], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000007"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 9], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "{{title}} : {{description}}"], ["name", "outage"], ["type", nil], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 9], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000007"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 10], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "{{title}} : {{description}}"], ["name", "outage"], ["type", nil], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 10], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.4ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '6178613962' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", "6178613962"], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 11], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '6178613962' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", "6178613962"], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 12], ["created_at", Thu, 03 May 2012 21:02:19 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:02:19 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "sms_extension_accounts" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" DISABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  select current_database()
+  [1m[36m (1.6ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'sms_extension_test'[0m
+  [1m[35m (77.6ms)[0m  TRUNCATE TABLE "sms_extension_accounts", "sms_extension_bulk_text_phone_numbers", "sms_extension_menu_options", "sms_extension_messages", "sms_extension_outgoing_text_options" RESTART IDENTITY CASCADE;
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "sms_extension_accounts" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_bulk_text_phone_numbers" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_menu_options" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_messages" ENABLE TRIGGER ALL;ALTER TABLE "sms_extension_outgoing_text_options" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (1.0ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (4.0ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 1], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by SmsExtension::TexterController#settings as HTML
+  Parameters: {"application_id"=>"4f204040772c96c4d3000006", "anypresence_auth"=>"9ef2b72d3f0e043fa8e3440db1b0e11d2c0059bb", "timestamp"=>"1336079006"}
+  [1m[35mSmsExtension::Account Load (21.9ms)[0m  SELECT "sms_extension_accounts".* FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."application_id" = '4f204040772c96c4d3000006' LIMIT 1
+Completed 500 Internal Server Error in 56ms
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 2], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by SmsExtension::TexterController#settings as HTML
+  Parameters: {"application_id"=>"4f204040772c96c4d3000006", "anypresence_auth"=>"9ef2b72d3f0e043fa8e3440db1b0e11d2c0059bb", "timestamp"=>"1336079006"}
+  [1m[35mSmsExtension::Account Load (0.3ms)[0m  SELECT "sms_extension_accounts".* FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."application_id" = '4f204040772c96c4d3000006' LIMIT 1
+Completed 500 Internal Server Error in 2ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 3], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#provision as HTML
+  Parameters: {"application_id"=>"4f204040772c96c4d3000006", "anypresence_auth"=>"9ef2b72d3f0e043fa8e3440db1b0e11d2c0059bb", "timestamp"=>"1336079006"}
+  [1m[35mSmsExtension::Account Load (0.4ms)[0m  SELECT "sms_extension_accounts".* FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."application_id" = '4f204040772c96c4d3000006' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.2ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", ""], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["extension_id", nil], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", nil], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 500 Internal Server Error in 5ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#provision as HTML
+  Parameters: {"application_id"=>"5", "anypresence_auth"=>"9ef2b72d3f0e043fa8e3440db1b0e11d2c0059bb", "timestamp"=>"1336079006"}
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by SmsExtension::TexterController#provision as HTML
+  Parameters: {"application_id"=>"4f204040772c96c4d3000006", "anypresence_auth"=>"9ef2b72d3f0e043fa8e3440db1b0e11d2c0059bb", "timestamp"=>"1336079006"}
+  [1m[36mSmsExtension::Account Load (0.4ms)[0m  [1mSELECT "sms_extension_accounts".* FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."application_id" = '4f204040772c96c4d3000006' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.2ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", ""], ["api_token", nil], ["api_version", "v1"], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["extension_id", nil], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", nil], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 5ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.4ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", "v1"], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 6], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SmsExtension::TexterController#publish as HTML
+  Parameters: {"application_id"=>"4f204040772c96c4d3000006", "anypresence_auth"=>"9ef2b72d3f0e043fa8e3440db1b0e11d2c0059bb", "timestamp"=>"1336079006"}
+  [1m[36mSmsExtension::Account Load (0.3ms)[0m  [1mSELECT "sms_extension_accounts".* FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."application_id" = '4f204040772c96c4d3000006' LIMIT 1[0m
+Completed 500 Internal Server Error in 2ms
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", "v1"], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 7], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000007"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 8], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "{{title}} : {{description}}"], ["name", "outage"], ["type", nil], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 8], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000007"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 9], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "{{title}} : {{description}}"], ["name", "outage"], ["type", nil], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 9], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SmsExtension::TexterController#text as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.3ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000007"], ["consume_phone_number", nil], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 10], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "{{title}} : {{description}}"], ["name", "outage"], ["type", nil], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 10], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSmsExtension::Account Exists (0.2ms)[0m  SELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '6178613962' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", "6178613962"], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["account_id", 11], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSmsExtension::Account Exists (0.3ms)[0m  [1mSELECT 1 FROM "sms_extension_accounts" WHERE "sms_extension_accounts"."consume_phone_number" = '6178613962' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sms_extension_accounts" ("api_host", "api_token", "api_version", "application_id", "consume_phone_number", "created_at", "extension_id", "field_name", "permitted_phone_numbers", "phone_number", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["api_host", "http://localhost:5000"], ["api_token", nil], ["api_version", nil], ["application_id", "4f204040772c96c4d3000006"], ["consume_phone_number", "6178613962"], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["extension_id", "12345"], ["field_name", nil], ["permitted_phone_numbers", nil], ["phone_number", "9789445741"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "sms_extension_menu_options" ("account_id", "created_at", "format", "name", "type", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["account_id", 12], ["created_at", Thu, 03 May 2012 21:03:26 UTC +00:00], ["format", "There's a new outage: {{description}}"], ["name", "outage"], ["type", "SmsExtension::OutgoingTextOption"], ["updated_at", Thu, 03 May 2012 21:03:26 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+MongoDB logging. Please note that logging negatively impacts performance and should be disabled for high-performance production apps.
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MongoDB logging. Please note that logging negatively impacts performance and should be disabled for high-performance production apps.
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MongoDB logging. Please note that logging negatively impacts performance and should be disabled for high-performance production apps.
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MongoDB logging. Please note that logging negatively impacts performance and should be disabled for high-performance production apps.
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MongoDB logging. Please note that logging negatively impacts performance and should be disabled for high-performance production apps.
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MONGODB admin['$cmd'].find({:ismaster=>1})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+Processing by SmsExtension::TexterController#publish as HTML
+Completed 500 Internal Server Error in 1ms
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
+MONGODB sms_extension_test['system.namespaces'].find({})
