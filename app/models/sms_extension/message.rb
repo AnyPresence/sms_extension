@@ -2,6 +2,7 @@ module SmsExtension
   class Message
     include Mongoid::Document
     include Mongoid::Timestamps
+    include SmsExtension::Common
     
     field :sms_message_sid, type: String
     field :account_sid, type: String
@@ -12,24 +13,6 @@ module SmsExtension
     validates_presence_of :from, :to
      
     attr_accessible :sms_message_sid, :account_sid, :body, :from, :to
-  
-    # Sends out the SMS.
-    def text
-      if current_account.phone_number.blank? && current_account.outgoing_text_options.blank?
-        Rails.logger.error "Not able to send text. The account is either missing a phone number to text to, or there are no outgoing text options."
-        render :text => "Not yet set up!"
-      else
-        begin
-          # The attributes of the object are in params, so we'll just pass that over
-          @consumer.text({:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => current_account.phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created"}, params, @object_definition_name.downcase)
-          render :json => { :success => true }
-        rescue
-          Rails.logger.error "Unable to send out text to : " + $!.message
-          Rails.logger.error $!.backtrace
-          render :json => { :success => false, :error => $!.message }
-        end
-      end
-    end
     
     # Strips the phone number prefix such as +1 from +16172345678.
     # Twilio does not currently support toll-free number texting; and texting internationally is in beta.

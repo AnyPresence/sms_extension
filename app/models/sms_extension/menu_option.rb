@@ -7,7 +7,7 @@ module SmsExtension
     field :option_format, type: String  
     field :type, type: String   
 
-    belongs_to :account
+    belongs_to :account, :class_name => "SmsExtension::Account"
   
     validates :option_name, :presence => true
     validates :option_format, :presence => true

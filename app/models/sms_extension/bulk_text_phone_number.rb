@@ -6,6 +6,6 @@ module SmsExtension
     field :option_name, type: String
     field :option_format, type: String
     
-    belongs_to :account
+    belongs_to :account, :class_name => "SmsExtension::Account"
   end
 end
