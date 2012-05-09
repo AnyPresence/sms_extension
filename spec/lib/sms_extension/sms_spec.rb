@@ -39,7 +39,7 @@ describe SmsExtension::Sms::Consumer do
       consume_options = [{:option_name => "outage", :option_format => "noo...outage!!"}, {:option_name => "store", :option_format => "stores!!"}]
       SmsExtension::Sms::config_account(:phone_number => "16178613962", :consume_phone_number => "16178613962", :field => "name", :menu_options => consume_options)
       SmsExtension::Account.all.size.should == 1
-      SmsExtension::Account.first.menu_options.all.size.should == 
+      SmsExtension::Account.first.menu_options.all.size.should == 2
     end
   
   end

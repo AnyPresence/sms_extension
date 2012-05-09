@@ -1,3 +1,5 @@
+require 'liquid'
+
 module SmsExtension
   class MenuOption
     include Mongoid::Document

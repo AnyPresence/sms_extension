@@ -7,15 +7,17 @@ module SmsExtension
 
     # Twilio sends a post to this endpoint
     def consume
-      message = Message.new(:sms_message_sid => params[:SmsMessageSid], :account_sid => params[:AccountSid], :body => params[:Body], :from => params[:From], :to => params[:To])
+      message = SmsExtension::Message.new(:sms_message_sid => params[:SmsMessageSid], :account_sid => params[:AccountSid], :body => params[:Body], :from => params[:From], :to => params[:To])
       Rails.logger.info "Received message: " + message.inspect
       if message.save
-        incoming_phone_number = Message::strip_phone_number_prefix(params[:From])
-        consume_phone_number = Message::strip_phone_number_prefix(params[:To])
-        accounts = Account.where("consume_phone_number like ?", "%#{consume_phone_number}")
+        incoming_phone_number = SmsExtension::Message::strip_phone_number_prefix(params[:From])
+        consume_phone_number = SmsExtension::Message::strip_phone_number_prefix(params[:To])
+        
+        accounts = SmsExtension::Account.where(:consume_phone_number => consume_phone_number)
       
         begin
           outbound_message = ""
+          debugger
           if !accounts.blank?
             begin
               consumer = SmsExtension::Sms::Consumer.new(accounts.first)

@@ -41,6 +41,8 @@ class OutagesController < ApplicationController
   # POST /outages.json
   def create
     @outage = Outage.new(params[:outage])
+    
+    debugger
 
     respond_to do |format|
       if @outage.save

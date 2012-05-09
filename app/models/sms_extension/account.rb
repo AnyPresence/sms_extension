@@ -24,13 +24,13 @@ module SmsExtension
     #              #2 for information about objectA
     def text_message_options
       # Get menu options
-      menu_options = self.menu_options.where(:type => "MenuOption").all(:order => "name DESC")
+      menu_options = self.menu_options.where(:type => "MenuOption").all.order_by([:name, :desc])
       options = {}
       options["#0"] = ["menu",""]
     
       menu_options.each_with_index do |option, index|
         i = index+1
-        options["#" + i.to_s] = [option.name, option.format]
+        options["#" + i.to_s] = [option.option_name, option.option_format]
       end
     
       options
