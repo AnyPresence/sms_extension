@@ -1,11 +1,23 @@
+require 'twilio-ruby'
+
 module SmsExtension
   module Sms
     include SmsExtension::Common
   
     # Creates the account.
     def self.config_account(config={})
-     account = SmsExtension::Account.new(config)
-     account.save!
+      if config.empty?
+        raise "Nothing to configure!"
+      end
+      account = SmsExtension::Account.new(config)
+      account.save!
+      menu_options = config[:menu_options] 
+      if !menu_options.nil?
+        menu_options.each do |m|
+          menu_option = account.menu_options.build(m)
+          menu_option.save
+        end
+      end
     end
     
     class Consumer
@@ -14,7 +26,7 @@ module SmsExtension
       end
     
       def twilio_account
-        @twilio_account ||= Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account 
+        @twilio_account ||= Twilio::REST::Client.new(ENV['SMS_EXTENSION.TWILIO_ACCOUNT_SID'], ENV['SMS_EXTENSION.TWILIO_AUTH_TOKEN']).account 
       end
     
       # Consumes the message and returns a message to send back to the client.
@@ -53,15 +65,27 @@ module SmsExtension
           #Resque.enqueue(LifecycleTriggeredSms, options, @account.id, object_name_with_phone_number, format)
         else
           # TODO: move this to resque as well.
-          twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => body)
+          begin
+            twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => body)
+          rescue
+            Rails.logger.error "Unable to send SMS..."
+            Rails.logger.error $!.backtrace.join("\n")
+            raise
+          end
         end
       end
     
       # Sends text.
       def self.send_sms(options={})
-        twilio_account = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']).account
-
-        twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => options[:body])
+        twilio_account = Twilio::REST::Client.new(ENV['SMS_EXTENSION.TWILIO_ACCOUNT_SID'], ENV['SMS_EXTENSION.TWILIO_AUTH_TOKEN']).account
+        
+        begin
+          twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => options[:body])
+        rescue
+          Rails.logger.error "Unable to send SMS..."
+          Rails.logger.error $!.backtrace.join("\n")
+          raise
+        end
       end
     end
   
