@@ -12,9 +12,9 @@ module SmsExtension
       if message.save
         incoming_phone_number = SmsExtension::Message::strip_phone_number_prefix(params[:From])
         consume_phone_number = SmsExtension::Message::strip_phone_number_prefix(params[:To])
-        
-        accounts = SmsExtension::Account.where(:consume_phone_number => consume_phone_number)
       
+        accounts = SmsExtension::Account.where(:consume_phone_number => consume_phone_number)
+    
         begin
           outbound_message = ""
           debugger

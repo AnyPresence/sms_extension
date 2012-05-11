@@ -11,7 +11,28 @@ Gem::Specification.new do |s|
   s.email       = ["fake@fake.local"]
   s.homepage    = ""
   s.summary     = ""
-  s.description = ""
+  s.description = <<RUBY
+  {
+    "type": "RailsEngineGem",
+    "name": "SMS Extension",
+    "model_configuration": {
+      "included_module": "SmsExtension::ModelMessager",
+      "lifecyle_hooks": {
+        "send_sms": ["after_save", "after_destroy"]
+      },
+      "required_configuration": {
+        "outgoing_phone_number": {
+          "type": "String",
+          "description": "Phone number for sending outgoing SMS."
+        },
+        "message_format": {
+          "type": "String",
+          "description": "The template for the text message..."
+        }
+      }
+    }
+  }
+RUBY
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 

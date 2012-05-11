@@ -3,24 +3,24 @@ module SmsExtension
     include Mongoid::Document
     include Mongoid::Timestamps
     include SmsExtension::Common
-    
+  
     field :sms_message_sid, type: String
     field :account_sid, type: String
     field :body, type: String
     field :from, type: String
     field :to, type: String
-    
+  
     validates_presence_of :from, :to
-     
+   
     attr_accessible :sms_message_sid, :account_sid, :body, :from, :to
-    
+  
     # Strips the phone number prefix such as +1 from +16172345678.
     # Twilio does not currently support toll-free number texting; and texting internationally is in beta.
     def self.strip_phone_number_prefix(phone_number)
       num = phone_number.strip
       num[-10..-1] if num.size >= 10
     end
-  
+
     # Paginates text if they exceed max_text_length.
     # If the max_text_length is 150, then a 200 char text should have
     # 2 pages where the 1st page ends with "... (1/2)" and the second page
@@ -46,6 +46,6 @@ module SmsExtension
 
       pages
     end
-    
+  
   end
 end

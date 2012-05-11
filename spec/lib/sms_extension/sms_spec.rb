@@ -15,12 +15,8 @@ describe SmsExtension::Sms::Consumer do
   end
   
   it "should succeed when sending with correct parameters" do
-    twilio_account =double('twilio')
-    twilio_client = double('account')
-    Twilio::REST::Client.should_receive(:new).with(any_args()).and_return(twilio_client)
-
-    twilio_client.stub(:account).and_return(twilio_account)
-    twilio_account.stub_chain(:sms, :messages, :create).with(any_args()).and_return(true)
+    setup_twilio
+    @twilio_account.stub_chain(:sms, :messages, :create).with(any_args()).and_return(true)
     
     SmsExtension::Sms::Consumer.send_sms(:from => "19786314489", :to => "19789445741", :body => "hello world")
   end
@@ -42,6 +38,43 @@ describe SmsExtension::Sms::Consumer do
       SmsExtension::Account.first.menu_options.all.size.should == 2
     end
   
+  end
+  
+  describe "text" do
+    before(:each) do
+      @account = FactoryGirl.create(:sms_extension_account)
+    end
+    
+    def params
+      %q({"title":"Cleveland Abbe House","description":"1 customer affected.","latitude":"38.901444","longitude":"-77.046167","created_at":"2012-02-01"})
+    end
+    
+    it "should know how to text" do
+      setup_twilio
+      format = "hello world" 
+      @twilio_account.stub_chain(:sms, :messages, :create).with do |arg|
+        arg[:body].should eq(format)
+      end
+      
+      consumer = SmsExtension::Sms::Consumer.new(@account)
+      parsed_json = ActiveSupport::JSON.decode(params)
+      options = {:from => "16178613962", :to => "16178613962"}
+      consumer.text(options, parsed_json, "outage", format)
+    end
+    
+    it "should know how to text with interpolated variables" do
+      setup_twilio
+      format = "hello, {{title}}" 
+      @twilio_account.stub_chain(:sms, :messages, :create).with do |arg|
+        arg[:body].should eq("hello, Cleveland Abbe House")
+      end
+      
+      consumer = SmsExtension::Sms::Consumer.new(@account)
+      parsed_json = ActiveSupport::JSON.decode(params)
+      options = {:from => "16178613962", :to => "16178613962"}
+      consumer.text(options, parsed_json, "outage", format)
+    end
+    
   end
 
 end

@@ -10,12 +10,12 @@ module SmsExtension
     field :type, type: String   
 
     belongs_to :account, :class_name => "SmsExtension::Account"
-  
+
     validates :option_name, :presence => true
     validates :option_format, :presence => true
 
     attr_accessible :option_name, :option_format
-  
+
     # Parse format string from menu options
     # The input string uses the Liquid template format, e.g. "Outage: {{title}} : {{description}}".
     # 'title' and 'description' are attributes for the 'outage' object.
@@ -26,13 +26,13 @@ module SmsExtension
       Rails.logger.info "Decoded json: #{decoded_json.inspect}"
       # Set instance variables for klass from decoded json
       klass_instance = klass.new(decoded_json)
-    
+  
       vars = klass_instance.instance_variables.map {|v| v.to_s[1..-1] }
       liquid_hash = {}
       vars.each do |v|
         liquid_hash[v] = klass_instance.send v
       end
-    
+  
       liquid_hash[object_name.downcase] = klass_instance
       Liquid::Template.parse(format).render(liquid_hash)
     end
@@ -45,7 +45,7 @@ module SmsExtension
             instance_variable_set("@#{k}", v)
           end
         end
-      
+    
         fields.each do |field|
           define_method("#{field}=") do |arg|
             instance_variable_set("@#{field}", arg)
@@ -57,6 +57,6 @@ module SmsExtension
       end
       klass
     end
-  
+
   end
 end
