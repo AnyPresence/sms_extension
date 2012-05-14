@@ -4,11 +4,12 @@
   %br
   = f.select :name, @available_objects
   %br
-  %br
   - if menu_option.kind_of?(OutgoingTextOption)
     = f.label :phone_number_field
     = f.text_field :phone_number_field
-  %br
+  - if menu_option.instance_of?(MenuOption)
+    = f.label :display_name
+    = f.text_field :display_name
   %br
   = f.label :format
   %br

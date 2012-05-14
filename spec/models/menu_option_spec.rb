@@ -13,4 +13,5 @@ describe MenuOption do
       rendered_text.should =~ /#{title}/
     end
   end
+  
 end

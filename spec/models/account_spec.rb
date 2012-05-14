@@ -7,9 +7,17 @@ describe Account do
       options  = Factory.create(:menu_option, :name => 'department', :type => "MenuOption", :account => account)
       
       options = account.text_message_options
-      debugger
       options["#0"][0].should == "menu"
       options["#1"][0].should == "department"
+    end
+    
+    it "should know how to build menu options with display name" do
+      account = Factory.create(:account)
+      options  = Factory.create(:menu_option, :name => 'department', :display_name => "scooby scooby doo", :type => "MenuOption", :account => account)
+      
+      options = account.text_message_options
+      options["#0"][0].should == "menu"
+      options["#1"][0].should == "scooby scooby doo"
     end
   end
   
