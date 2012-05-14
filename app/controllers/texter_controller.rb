@@ -118,8 +118,15 @@ class TexterController < ApplicationController
       render :text => "Not yet set up!"
     else
       begin
+        outgoing_text_option = current_account.outgoing_text_options.where(:name => @object_definition_name.downcase).first
+        phone_number = current_account.phone_number
+        unless outgoing_text_option.blank?
+          new_phone_number = MenuOption::parse_format_string(outgoing_text_option.phone_number_field,  @object_definition_name, params)
+          raise ConsumeSms::GeneralTextMessageNotifierException, "Unable to obtain phone number to send sms to." if (phone_number.blank? && new_phone_number.blank?)
+          phone_number = new_phone_number unless new_phone_number.blank? 
+        end
         # The attributes of the object are in params, so we'll just pass that over
-        @consumer.text({:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => current_account.phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created"}, params, @object_definition_name.downcase)
+        @consumer.text({:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created"}, params, @object_definition_name.downcase)
         render :json => { :success => true }
       rescue
         Rails.logger.error "Unable to send out text to : " + $!.message
@@ -184,7 +191,8 @@ class TexterController < ApplicationController
     @bulk_text_phone_number = BulkTextPhoneNumber.where(:account_id => current_account.id).first
     
     if request.post?
-      @bulk_text_phone_number = BulkTextPhoneNumber.new(params[:bulk_text_phone_number].merge!({:account => current_account, :type => 'BulkTextPhoneNumber'}))
+      @bulk_text_phone_number = BulkTextPhoneNumber.new(params[:bulk_text_phone_number].merge!(:type => 'BulkTextPhoneNumber'))
+      @bulk_text_phone_number.account = current_account
       
       if @bulk_text_phone_number.save
         flash[:notice] = "Account updated."

@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
     method: :get
-    uri: http://localhost:5000/applications/outage-reporter/api/versions/latest/objects.json?api_token=
+    uri: http://localhost:5000/applications/outage-reporter/api/versions/4/objects.json?api_token=
     body: !!null 
     headers:
       accept:

@@ -134,12 +134,12 @@ describe TexterController do
   
     it "should use the new api version" do
       secure_parameters = generate_secure_parameters
-      request.env['X_AP_API_VERSION'] = 'v2'
+      request.env['X_AP_API_VERSION'] = '2'
       post :publish, :application_id => secure_parameters[:application_id], :anypresence_auth => secure_parameters[:anypresence_auth], :timestamp => secure_parameters[:timestamp]
        
       parsed_body = JSON.parse(response.body)
       parsed_body["success"].should == true
-      subject.current_account.api_version.should == "v2"
+      subject.current_account.api_version.should == "2"
     end
     
     it "should display error without api_version as post parameter" do
@@ -181,11 +181,54 @@ describe TexterController do
       parsed_body["success"].should == false      
     end
     
-    it "should text unsucessfully without phone number" do
-      subject.current_account.phone_number = nil;
-      post :text
-      response.body.should == "Not yet set up!"
+    it "should text unsuccessfully with outgoing text option that has no phone number field defined" do
+      @account = Factory.create(:fully_assembled_account_where_outgoing_text_option_has_phone_number, :phone_number => nil)
+      sign_in @account
+      
+      controller.should_receive(:find_object_definition_name)
+      controller.instance_variable_set(:@object_definition_name, 'incomingcontact')
+      
+      expect {
+        post :text, {"title"=>"test", "latitude"=>"", "longitude"=>""}
+      }.should raise_error(ConsumeSms::GeneralTextMessageNotifierException)
+
     end
+    
+    it "should text with new phone number field" do
+      @account = Factory.create(:fully_assembled_account_where_outgoing_text_option_has_phone_number, :phone_number => nil)
+      sign_in @account
+      ConsumeSms::Consumer.any_instance.should_receive(:text).with do |arg|
+        arg[:to].should eq "1234"
+      end
+      
+      controller.should_receive(:find_object_definition_name)
+      controller.instance_variable_set(:@object_definition_name, 'incomingcontact')
+  
+      post :text, {"title"=>"test", "phone_number" => "1234"}
+    end
+    
+    it "should text successfully with outgoing text option that has a phone number field defined" do
+      @account = Factory.create(:fully_assembled_account_where_outgoing_text_option_has_phone_number)
+      sign_in @account
+      
+      twilio_client = mock_twilio_client
+      twilio_account = mock_twilio_account
+      subject.current_account.phone_number = "+16178613962" # a state rejection number
+      Twilio::REST::Client.should_receive(:new).with(any_args()).and_return(twilio_client)
+
+      twilio_client.stub(:account).and_return(twilio_account)
+      sms = double('sms')
+      twilio_account.stub_chain(:sms,:messages,:create).and_return(sms)
+      
+      controller.should_receive(:find_object_definition_name)
+      controller.instance_variable_set(:@object_definition_name, 'incomingcontact')
+      
+      post :text, {"title"=>"test", "phone_number" => "1234"}
+      
+      parsed_body = JSON.parse(response.body)
+      parsed_body["success"].should == true
+    end
+    
          
   end
   

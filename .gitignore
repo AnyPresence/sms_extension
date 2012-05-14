@@ -12,6 +12,7 @@ config/local-env.yml
 .DS_Store
 *.tmproj
 tmtags
+bin/*
 *~
 \#*
 .\#*

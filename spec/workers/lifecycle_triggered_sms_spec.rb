@@ -9,7 +9,7 @@ describe LifecycleTriggeredSms do
       phone_numbers = []
       (1..random_number).each do |n|
         p = double(String)
-        p.stub(:strip)
+        p.stub(:strip).and_return("1234")
         phone_numbers << p
       end
       

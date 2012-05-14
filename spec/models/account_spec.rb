@@ -34,7 +34,7 @@ describe Account do
     
     it "should be able to find objects in the metadata" do
       VCR.use_cassette('list_objects_for_outage_app', :erb => {:body => object_definition_mappings_response} ) do
-        @account.api_version = "v4"
+        @account.api_version = "4"
         object_names = @account.object_definition_metadata
         object_names[0].should include({"name" => "Outage", "mapping" => "outage"})
       end
@@ -57,7 +57,7 @@ describe Account do
     it "should be able to find object instances" do 
       @account = Factory.build(:account, :application_id => "outage-reporter")
         VCR.use_cassette('list_object_instances', :erb => {:body => get_object_instances} ) do
-          @account.api_version = "v4"
+          @account.api_version = "4"
           outgoing_text_message = @account.object_instances("outage", "{{description}}")
           outgoing_text_message[0].should =~ /1 customer affected./
         end
@@ -66,7 +66,7 @@ describe Account do
     it "should be able to use existing liquid filters" do 
       @account = Factory.build(:account, :application_id => "outage-reporter")
         VCR.use_cassette('list_object_instances', :erb => {:body => get_object_instances} ) do
-          @account.api_version = "v4"
+          @account.api_version = "4"
           outgoing_text_message = @account.object_instances("outage", "{{outage.description | upcase}}")
           outgoing_text_message[0].should =~ /1 CUSTOMER AFFECTED./
           

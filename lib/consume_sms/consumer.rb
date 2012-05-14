@@ -95,6 +95,7 @@ module ConsumeSms
         Resque.enqueue(LifecycleTriggeredSms, options, @account.id, object_name_with_phone_number, format)
       else
         # TODO: move this to resque as well.
+        
         twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => body)
       end
     end

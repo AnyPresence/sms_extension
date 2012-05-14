@@ -18,7 +18,7 @@ class LifecycleTriggeredSms
       if count == ENV['MAX_OUTGOING_SMS_PER_LC_EVENT'].to_i
         return
       end
-     
+
       next if o.strip.empty?
       begin
         Rails.logger.info "Sending text to: #{o.strip} , from: #{options['from']}"
