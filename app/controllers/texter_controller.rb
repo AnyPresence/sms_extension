@@ -126,7 +126,9 @@ class TexterController < ApplicationController
           phone_number = new_phone_number unless new_phone_number.blank? 
         end
         # The attributes of the object are in params, so we'll just pass that over
-        @consumer.text({:from => ENV['TWILIO_FROM_SMS_NUMBER'], :to => phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created"}, params, @object_definition_name.downcase)
+        from_phone_number = ENV['TWILIO_FROM_SMS_NUMBER']
+        from_phone_number = current_account.consume_phone_number unless current_account.consume_phone_number.blank?
+        @consumer.text({:from => from_phone_number, :to => phone_number, :body => "#{params[current_account.field_name] || 'unknown'} was created"}, params, @object_definition_name.downcase)
         render :json => { :success => true }
       rescue
         Rails.logger.error "Unable to send out text to : " + $!.message

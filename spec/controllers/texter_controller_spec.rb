@@ -182,8 +182,8 @@ describe TexterController do
     end
     
     it "should text unsuccessfully with outgoing text option that has no phone number field defined" do
-      @account = Factory.create(:fully_assembled_account_where_outgoing_text_option_has_phone_number, :phone_number => nil)
-      sign_in @account
+      account = Factory.create(:fully_assembled_account_where_outgoing_text_option_has_phone_number, :phone_number => nil)
+      sign_in account
       
       controller.should_receive(:find_object_definition_name)
       controller.instance_variable_set(:@object_definition_name, 'incomingcontact')
@@ -195,10 +195,25 @@ describe TexterController do
     end
     
     it "should text with new phone number field" do
-      @account = Factory.create(:fully_assembled_account_where_outgoing_text_option_has_phone_number, :phone_number => nil)
-      sign_in @account
+      account = Factory.create(:fully_assembled_account_where_outgoing_text_option_has_phone_number, :phone_number => nil)
+      sign_in account
       ConsumeSms::Consumer.any_instance.should_receive(:text).with do |arg|
         arg[:to].should eq "1234"
+        arg[:from].should eq ENV["TWILIO_FROM_SMS_NUMBER"]
+      end
+      
+      controller.should_receive(:find_object_definition_name)
+      controller.instance_variable_set(:@object_definition_name, 'incomingcontact')
+  
+      post :text, {"title"=>"test", "phone_number" => "1234"}
+    end
+    
+    it "should text with a from number that matches the incoming sms number" do
+      account = Factory.create(:fully_assembled_account_where_outgoing_text_option_has_phone_number, {:consume_phone_number => "31415", :phone_number => nil})
+      sign_in account
+      ConsumeSms::Consumer.any_instance.should_receive(:text).with do |arg|
+        arg[:to].should eq "1234"
+        arg[:from].should eq account.consume_phone_number
       end
       
       controller.should_receive(:find_object_definition_name)
@@ -208,8 +223,8 @@ describe TexterController do
     end
     
     it "should text successfully with outgoing text option that has a phone number field defined" do
-      @account = Factory.create(:fully_assembled_account_where_outgoing_text_option_has_phone_number)
-      sign_in @account
+      account = Factory.create(:fully_assembled_account_where_outgoing_text_option_has_phone_number)
+      sign_in account
       
       twilio_client = mock_twilio_client
       twilio_account = mock_twilio_account

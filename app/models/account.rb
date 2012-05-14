@@ -62,7 +62,8 @@ class Account < ActiveRecord::Base
     
     menu_options.each_with_index do |option, index|
       i = index+1
-      options["#" + i.to_s] = [option.name, option.format]
+      name = option.display_name.blank? ? option.name : option.display_name
+      options["#" + i.to_s] = [name, option.format]
     end
     
     options
