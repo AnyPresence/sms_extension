@@ -5,7 +5,7 @@
   = f.select :name, @available_objects
   %br
   %br
-  - if menu_option.kind_of? OutgoingTextOption
+  - if menu_option.kind_of?(OutgoingTextOption)
     = f.label :phone_number_field
     = f.text_field :phone_number_field
   %br
