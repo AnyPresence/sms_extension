@@ -48,4 +48,25 @@ describe ConsumeSms::Consumer do
     end
 
   end
+  
+  describe "consume" do 
+    before(:each) do
+      @account = Factory.build(:account)
+      @consumer = ConsumeSms::Consumer.new(@account)
+    end
+    
+    it "should know how to send sms back after consuming sms" do
+      account = Factory.create(:account)
+      options  = Factory.create(:menu_option, :name => 'department', :display_name => "scooby dooby doo", :type => "MenuOption", :account => account)
+      
+      options = account.text_message_options
+      options["#0"][0].should == "menu"
+      options["#1"][0].should == "scooby dooby doo"
+      
+      message = double('message')
+      message.stub(:body).and_return("#1")
+      Account.any_instance.stub(:object_instances_as_sms).with("department", anything()).and_return(true)
+      sms_to_send = @consumer.consume_sms(message, options)
+    end
+  end
 end

@@ -18,6 +18,7 @@ describe Account do
       options = account.text_message_options
       options["#0"][0].should == "menu"
       options["#1"][0].should == "scooby scooby doo"
+      options["#1"][1].should == "department"
     end
   end
   
