@@ -1,5 +1,5 @@
 class Account < ActiveRecord::Base
-  NUM_ENTRIES = 4
+  NUM_ENTRIES = ENV["MAX_OUTGOING_SMS_ENTRIES_FOR_CONSUMING_SMS"].nil? ? 4 : ENV["MAX_OUTGOING_SMS_ENTRIES_FOR_CONSUMING_SMS"].to_i
   TWILIO_SMS_CHAR_PAGE_SIZE = 150
       
   devise :token_authenticatable, :rememberable, :trackable
