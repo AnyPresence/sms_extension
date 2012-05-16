@@ -68,7 +68,7 @@ module ConsumeSms
         keys = text_message_options.keys
         info_message = ""
         keys.each do |x|
-          info_message << "#{x} for #{text_message_options[x][0]}\n"
+          info_message << "#{x} - #{text_message_options[x][0]}\n"
         end
       
         return info_message
