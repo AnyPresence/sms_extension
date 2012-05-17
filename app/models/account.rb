@@ -58,12 +58,18 @@ class Account < ActiveRecord::Base
     # Get menu options
     menu_options = self.menu_options.where(:type => "MenuOption").all(:order => "name DESC")
     options = {}
-    options["#0"] = ["menu","", ""]
+    options["HELP"] = ["for options","", ""]
     
+    i = 1
     menu_options.each_with_index do |option, index|
-      i = index+1
+      key = option.display_key
       name = option.display_name.blank? ? option.name : option.display_name
-      options["#" + i.to_s] = [name, option.name, option.format]
+      if key.blank?
+        options["#" + i.to_s] = [name, option.name, option.format]
+        i = i+1
+      else
+        options[key.upcase] = [name, option.name, option.format]
+      end
     end
     
     options

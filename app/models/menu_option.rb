@@ -4,7 +4,7 @@ class MenuOption < ActiveRecord::Base
   validates :name, :presence => true
   validates :format, :presence => true
 
-  attr_accessible :name, :format, :phone_number_field, :display_name
+  attr_accessible :name, :format, :phone_number_field, :display_name, :display_key
   
   # Parse format string from menu options
   # The input string uses the Liquid template format, e.g. "Outage: {{title}} : {{description}}".

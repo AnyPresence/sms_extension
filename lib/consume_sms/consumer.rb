@@ -62,13 +62,14 @@ module ConsumeSms
     
     # Consumes the message and returns a message to send back to the client.
     def consume_sms(message, text_message_options)
-      object_name = text_message_options[message.body.strip] ? text_message_options[message.body.strip][1] : nil
-      format = !object_name.nil? ? text_message_options[message.body.strip][2] : ""
-      if message.body.strip == "#0" || object_name.nil?
+      key = message.body.strip.upcase
+      object_name = text_message_options[key] ? text_message_options[key][1] : nil
+      format = !object_name.nil? ? text_message_options[key][2] : ""
+      if key == "#0" || object_name.nil?
         keys = text_message_options.keys
         info_message = ""
         keys.each do |x|
-          info_message << "#{x} - #{text_message_options[x][0]}\n"
+          info_message << "Type #{x} #{text_message_options[x][0]}\n"
         end
       
         return info_message

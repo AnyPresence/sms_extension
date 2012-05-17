@@ -154,7 +154,8 @@ class TexterController < ApplicationController
             consumer = ConsumeSms::Consumer.new(accounts.first)
             outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
           rescue
-            Rails.logger.error "Not able to consume the text: " 
+            Rails.logger.error "Not able to consume the text. "
+            Rails.logger.error $!.backtrace.join("\n") 
             outbound_message = "Unable to obtain data at this time. Please try again later."
           end
         else

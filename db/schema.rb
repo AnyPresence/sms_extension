@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514204129) do
+ActiveRecord::Schema.define(:version => 20120517181335) do
 
   create_table "accounts", :force => true do |t|
     t.datetime "remember_created_at"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20120514204129) do
     t.string   "type"
     t.string   "phone_number_field"
     t.string   "display_name"
+    t.string   "display_key"
   end
 
   create_table "messages", :force => true do |t|

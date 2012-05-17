@@ -7,7 +7,7 @@ describe Account do
       options  = Factory.create(:menu_option, :name => 'department', :type => "MenuOption", :account => account)
       
       options = account.text_message_options
-      options["#0"][0].should == "menu"
+      options["HELP"][0].should == "for options"
       options["#1"][0].should == "department"
     end
     
@@ -16,7 +16,6 @@ describe Account do
       options  = Factory.create(:menu_option, :name => 'department', :display_name => "scooby scooby doo", :type => "MenuOption", :account => account)
       
       options = account.text_message_options
-      options["#0"][0].should == "menu"
       options["#1"][0].should == "scooby scooby doo"
       options["#1"][1].should == "department"
     end
