@@ -65,7 +65,7 @@ module ConsumeSms
       key = message.body.strip.upcase
       object_name = text_message_options[key] ? text_message_options[key][1] : nil
       format = !object_name.nil? ? text_message_options[key][2] : ""
-      if key == "#0" || object_name.nil?
+      if key == "#0" || key == "HELP" || object_name.nil?
         keys = text_message_options.keys
         info_message = ""
         keys.each do |x|
