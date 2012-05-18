@@ -24,13 +24,13 @@ class Message < ActiveRecord::Base
     while remaining_str.size >= stop_length
       page_content = message[0..stop_length]
       pages[page_count] = page_content
-      pages[page_count] << "... (#{page_count+1}/#{total_page_size})"
+      #pages[page_count] << "... (#{page_count+1}/#{total_page_size})"
       page_count = page_count + 1
       remaining_str = message[(stop_length+1)..-1]
     end
     if !remaining_str.empty?
       pages[page_count] = remaining_str
-      pages[page_count] << " (#{page_count+1}/#{total_page_size})"
+      #pages[page_count] << " (#{page_count+1}/#{total_page_size})"
     end
 
     pages
