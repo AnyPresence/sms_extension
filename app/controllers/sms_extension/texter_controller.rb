@@ -1,4 +1,4 @@
-require 'sms_extension/sms'
+require 'ap/sms_extension/sms'
 
 module SmsExtension
   class TexterController < ApplicationController

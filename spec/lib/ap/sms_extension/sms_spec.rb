@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'sms_extension/sms'
+require 'ap/sms_extension/sms'
 
-describe SmsExtension::Sms::Consumer do
+describe AP::SmsExtension::Sms::Consumer do
   
   def setup_twilio
     twilio_client = double('twilio_client')
@@ -11,31 +11,31 @@ describe SmsExtension::Sms::Consumer do
   end
   
   it "should fail when sending without 'from' number" do
-    expect { SmsExtension::Sms::Consumer.send_sms }.should raise_error
+    expect { AP::SmsExtension::Sms::Consumer.send_sms }.should raise_error
   end
   
   it "should succeed when sending with correct parameters" do
     setup_twilio
     @twilio_account.stub_chain(:sms, :messages, :create).with(any_args()).and_return(true)
     
-    SmsExtension::Sms::Consumer.send_sms(:from => "19786314489", :to => "19789445741", :body => "hello world")
+    AP::SmsExtension::Sms::Consumer.send_sms(:from => "19786314489", :to => "19789445741", :body => "hello world")
   end
   
   describe "configure" do 
     it "should configure unsuccessfully without parameters" do
-      expect { SmsExtension::Sms::config_account }.should raise_error
+      expect { AP::SmsExtension::Sms::config_account }.should raise_error
     end
     
     it "should configure successfully with parameters" do
-      SmsExtension::Sms::config_account(:phone_number => "16178613962", :consume_phone_number => "16178613962")
-      SmsExtension::Account.all.size.should == 1
+      AP::SmsExtension::Sms::config_account(:phone_number => "16178613962", :consume_phone_number => "16178613962")
+      ::SmsExtension::Account.all.size.should == 1
     end
     
     it "should configure successfully with menu option parameters for incoming sms" do
       consume_options = [{:option_name => "outage", :option_format => "noo...outage!!"}, {:option_name => "store", :option_format => "stores!!"}]
-      SmsExtension::Sms::config_account(:phone_number => "16178613962", :consume_phone_number => "16178613962", :field => "name", :menu_options => consume_options)
-      SmsExtension::Account.all.size.should == 1
-      SmsExtension::Account.first.menu_options.all.size.should == 2
+      AP::SmsExtension::Sms::config_account(:phone_number => "16178613962", :consume_phone_number => "16178613962", :field => "name", :menu_options => consume_options)
+      ::SmsExtension::Account.all.size.should == 1
+      ::SmsExtension::Account.first.menu_options.all.size.should == 2
     end
   
   end
@@ -56,7 +56,7 @@ describe SmsExtension::Sms::Consumer do
         arg[:body].should eq(format)
       end
       
-      consumer = SmsExtension::Sms::Consumer.new(@account)
+      consumer = AP::SmsExtension::Sms::Consumer.new(@account)
       parsed_json = ActiveSupport::JSON.decode(params)
       options = {:from => "16178613962", :to => "16178613962"}
       consumer.text(options, parsed_json, "outage", format)
@@ -69,7 +69,7 @@ describe SmsExtension::Sms::Consumer do
         arg[:body].should eq("hello, Cleveland Abbe House")
       end
       
-      consumer = SmsExtension::Sms::Consumer.new(@account)
+      consumer = AP::SmsExtension::Sms::Consumer.new(@account)
       parsed_json = ActiveSupport::JSON.decode(params)
       options = {:from => "16178613962", :to => "16178613962"}
       consumer.text(options, parsed_json, "outage", format)
