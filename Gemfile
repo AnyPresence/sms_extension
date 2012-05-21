@@ -10,6 +10,7 @@ gem "mongoid", "2.4.4"
 gem 'mongo', '= 1.3.1' 
 gem 'bson', '= 1.3.1' 
 gem 'bson_ext', '= 1.3.1'
+gem 'actionpack'
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"

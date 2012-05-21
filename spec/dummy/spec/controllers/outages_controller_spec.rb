@@ -19,6 +19,13 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe OutagesController do
+  
+  def setup_twilio
+    twilio_client = double('twilio_client')
+    Twilio::REST::Client.stub(:new).with(any_args()).and_return(twilio_client)
+    @twilio_account = double('twilio_account')
+    twilio_client.stub(:account).and_return(@twilio_account) 
+  end
 
   # This should return the minimal set of attributes required to create a valid
   # Outage. As you add validations to Outage, be sure to
@@ -67,6 +74,11 @@ describe OutagesController do
 
   describe "POST create" do
     describe "with valid params" do
+      before(:each) do 
+        setup_twilio
+        @twilio_account.stub_chain(:sms, :messages, :create).and_return(true)
+      end
+      
       it "creates a new Outage" do
         expect {
           post :create, {:outage => valid_attributes}, valid_session
@@ -104,6 +116,11 @@ describe OutagesController do
 
   describe "PUT update" do
     describe "with valid params" do
+      before(:each) do
+        setup_twilio
+        @twilio_account.stub_chain(:sms, :messages, :create).and_return(true)
+      end
+      
       it "updates the requested outage" do
         outage = Outage.create! valid_attributes
         # Assuming there are no other outages in the database, this

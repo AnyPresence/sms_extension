@@ -7,20 +7,19 @@ module SmsExtension
 
     # Twilio sends a post to this endpoint
     def consume
-      message = SmsExtension::Message.new(:sms_message_sid => params[:SmsMessageSid], :account_sid => params[:AccountSid], :body => params[:Body], :from => params[:From], :to => params[:To])
+      message = ::SmsExtension::Message.new(:sms_message_sid => params[:SmsMessageSid], :account_sid => params[:AccountSid], :body => params[:Body], :from => params[:From], :to => params[:To])
       Rails.logger.info "Received message: " + message.inspect
       if message.save
         incoming_phone_number = SmsExtension::Message::strip_phone_number_prefix(params[:From])
         consume_phone_number = SmsExtension::Message::strip_phone_number_prefix(params[:To])
       
-        accounts = SmsExtension::Account.where(:consume_phone_number => consume_phone_number)
+        accounts = ::SmsExtension::Account.where(:consume_phone_number => consume_phone_number)
     
         begin
           outbound_message = ""
-          debugger
           if !accounts.blank?
             begin
-              consumer = SmsExtension::Sms::Consumer.new(accounts.first)
+              consumer = AP::SmsExtension::Sms::Consumer.new(accounts.first)
               outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
             rescue
               Rails.logger.error "Not able to consume the text: " 
@@ -33,7 +32,7 @@ module SmsExtension
           Rails.logger.info "Sending message to " + message.from + " : " + outbound_message.inspect
           outbound_message = [outbound_message] unless outbound_message.kind_of?(Array)
           outbound_message.each do |o|
-            SmsExtension::Sms::Consumer.send_sms({:from => consume_phone_number, :to => message.from, :body => o.to_s})
+            AP::SmsExtension::Sms::Consumer.send_sms({:from => consume_phone_number, :to => message.from, :body => o.to_s})
           end
           render :json => { :success => true }
         rescue
@@ -47,7 +46,7 @@ module SmsExtension
   protected
     # Builds the +Consumer+ which accesses Twilio.
     def build_consumer
-      @consumer = SmsExtension::Sms::Consumer.new(current_account)
+      @consumer = AP::SmsExtension::Sms::Consumer.new(current_account)
     end
 
   end

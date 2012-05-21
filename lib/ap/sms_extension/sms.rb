@@ -33,8 +33,8 @@ module AP
         # sends text
         object = class_name.constantize.find(object_id)
         object_name = class_name.downcase
-        consumer = SmsExtension::Sms::Consumer(::SmsExtension::Account.first)
-        consumer.text(options, params, object_name, format)
+        consumer = AP::SmsExtension::Sms::Consumer.new(::SmsExtension::Account.first)
+        consumer.text(options, object.attributes, object_name, format)
       end
   
       class Consumer

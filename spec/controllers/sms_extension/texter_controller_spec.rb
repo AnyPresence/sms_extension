@@ -20,7 +20,6 @@ describe SmsExtension::TexterController do
       SmsExtension::Message.any_instance.stub(:save).and_return(true)
       twilio_client = mock_twilio_client
       twilio_account = mock_twilio_account
-      #current_account.phone_number = "+19783194410" # a state rejection number
       
       Twilio::REST::Client.should_receive(:new).with(any_args()).and_return(twilio_client)
 
@@ -29,9 +28,7 @@ describe SmsExtension::TexterController do
       twilio_account.stub_chain(:sms, :messages, :create).and_return(sms)
       
       post :consume, :SmsMessageSid => '1234', :AccountSid => '1234', :Body => '#1', :From => '+19783194410', :To => @consume_phone_number
-      
       parsed_body = JSON.parse(response.body)
-      debugger
       parsed_body["success"].should == true
     end
     

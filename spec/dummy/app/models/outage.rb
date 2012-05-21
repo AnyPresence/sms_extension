@@ -1,7 +1,7 @@
 class Outage
   include Mongoid::Document
   include Mongoid::Timestamps
-  include SmsExtension::Sms
+  include AP::SmsExtension::Sms
   
   # Field definitions
   
@@ -18,7 +18,7 @@ class Outage
   def save
     super
     Rails.logger.info "sending sms. object id: #{self.id}"
-    sms_perform({:from => "16178613962", :from => "16178613962"}, self.id, "there's an outage!! {{title}}")
+    sms_perform({:from => "16178613962", :to => "16178613962"}, self.class.name, self.id, "there's an outage!! {{title}}")
   end
   
 end
