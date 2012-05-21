@@ -12,6 +12,7 @@ public/system/*
 coverage/
 config/heroku.yml
 config/local-env.yml
+spec/dummy/config/local-env.yml
 .DS_Store
 *.tmproj
 tmtags
