@@ -5,16 +5,26 @@ module SmsExtension
     include Mongoid::Document
     include Mongoid::Timestamps
   
+    # Phone number to send text out to
     field :phone_number, type: String
+    
+    # From phone number that sends out the text
+    field :from_phone_number, type: String
+    
     field :field_name, type: String
+    
+    # Phone number to consume text
     field :consume_phone_number, type: String
+    
+    # Outgoing message formatted parsed by Liquid template
+    field :outgoing_message_format, type: String
   
     NUM_ENTRIES = 4
     TWILIO_SMS_CHAR_PAGE_SIZE = 150
 
     validates :consume_phone_number, :uniqueness => true
 
-    attr_accessible :phone_number, :field_name, :consume_phone_number
+    attr_accessible :phone_number, :field_name, :consume_phone_number, :from_phone_number, :outgoing_message_format
 
     has_many :menu_options, :class_name => "SmsExtension::MenuOption", :dependent => :destroy
     has_many :outgoing_text_options, :class_name => "SmsExtension::OutgoingTextOption", :dependent => :destroy

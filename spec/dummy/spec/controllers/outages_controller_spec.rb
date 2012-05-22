@@ -77,6 +77,8 @@ describe OutagesController do
       before(:each) do 
         setup_twilio
         @twilio_account.stub_chain(:sms, :messages, :create).and_return(true)
+        
+        @account = FactoryGirl.create(:sms_extension_account, :outgoing_message_format => "ooops {{title}}")
       end
       
       it "creates a new Outage" do
@@ -119,6 +121,8 @@ describe OutagesController do
       before(:each) do
         setup_twilio
         @twilio_account.stub_chain(:sms, :messages, :create).and_return(true)
+        
+        @account = FactoryGirl.create(:sms_extension_account, :outgoing_message_format => "ooops {{title}}")
       end
       
       it "updates the requested outage" do

@@ -13,8 +13,15 @@ module AP
         if config.empty?
           raise "Nothing to configure!"
         end
-        account = ::SmsExtension::Account.new(config)
-        account.save!
+        account = nil
+        if !::SmsExtension::Account.all.blank?
+          account = ::SmsExtension::Account.first
+          account.update_attributes(config)
+        else
+          account = ::SmsExtension::Account.new(config)
+          account.save!
+        end
+
         menu_options = config[:menu_options] 
         if !menu_options.nil?
           menu_options.each do |m|
@@ -29,12 +36,20 @@ module AP
       #  +params+ are attributes for the object
       #  +object_name+ is the object definition name
       #  +format+ is the liquid text string to send
-      def sms_perform(options, class_name, object_id, format)
+      #def sms_perform(options, class_name, object_id, format)
         # sends text
-        object = class_name.constantize.find(object_id)
-        object_name = class_name.downcase
-        consumer = AP::SmsExtension::Sms::Consumer.new(::SmsExtension::Account.first)
-        consumer.text(options, object.attributes, object_name, format)
+      #  object = class_name.constantize.find(object_id)
+      #  object_name = class_name.downcase
+      #  consumer = AP::SmsExtension::Sms::Consumer.new(::SmsExtension::Account.first)
+      #  consumer.text(options, object.attributes, object_name, format)
+      #end
+      def sms_perform(object_instance, options={})
+        account = ::SmsExtension::Account.first
+        consumer = AP::SmsExtension::Sms::Consumer.new(account)
+        options[:to] ||= account.phone_number
+        options[:outgoing_message_format] ||= account.outgoing_message_format
+        options[:from] ||= (account.from_phone_number.blank? ? account.from_phone_number : ENV['SMS_EXTENSION.TWILIO_FROM_SMS_NUMBER'])
+        consumer.text(options, object_instance.attributes, object_instance.class.name, account.outgoing_message_format)
       end
   
       class Consumer

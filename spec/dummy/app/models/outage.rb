@@ -18,7 +18,8 @@ class Outage
   def save
     super
     Rails.logger.info "sending sms. object id: #{self.id}"
-    sms_perform({:from => "16178613962", :to => "16178613962"}, self.class.name, self.id, "there's an outage!! {{title}}")
+    #sms_perform({:from => "16178613962", :to => "16178613962"}, self.class.name, self.id, "there's an outage!! {{title}}")
+    sms_perform(self)
   end
   
 end

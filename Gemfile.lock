@@ -3,6 +3,7 @@ PATH
   specs:
     sms_extension (0.0.1)
       rails (~> 3.2.2)
+      twilio-ruby
 
 GEM
   remote: http://rubygems.org/

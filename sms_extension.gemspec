@@ -56,5 +56,6 @@ RUBY
   s.add_development_dependency "webmock"
   s.add_development_dependency "vcr"
   s.add_development_dependency "ruby-debug19"
-  # s.add_dependency "jquery-rails"
+  
+  s.add_dependency "twilio-ruby"
 end
