@@ -7,8 +7,9 @@ module AP
 
       # Creates the account.
       # +config+ configuration properties should contain:
-      #          :phone_number 
-      #
+      #          :phone_number, 
+      #          :from_phone_number, 
+      #          :outgoing_message_format      
       def self.config_account(config={})
         if config.empty?
           raise "Nothing to configure!"
@@ -32,17 +33,8 @@ module AP
       end
   
       # Builds text message to send out.
-      #  +options+ is a hash that includes: +:from+, caller's phone number; +:to+, twilio phone number the caller sent the text to; and +body+. body of the text
-      #  +params+ are attributes for the object
-      #  +object_name+ is the object definition name
-      #  +format+ is the liquid text string to send
-      #def sms_perform(options, class_name, object_id, format)
-        # sends text
-      #  object = class_name.constantize.find(object_id)
-      #  object_name = class_name.downcase
-      #  consumer = AP::SmsExtension::Sms::Consumer.new(::SmsExtension::Account.first)
-      #  consumer.text(options, object.attributes, object_name, format)
-      #end
+      #  +object_instance+ is the object instance
+      #  +options+ is a hash that includes: +:from+, caller's phone number; +:to+, twilio phone number to send the text to
       def sms_perform(object_instance, options={})
         account = ::SmsExtension::Account.first
         consumer = AP::SmsExtension::Sms::Consumer.new(account)
