@@ -8,7 +8,7 @@ gem 'rails', '3.1.3'
 gem 'redis'
 gem 'resque'
 gem 'faraday'
-gem 'twilio-ruby'
+gem 'twilio-ruby', '3.6.0'
 gem "compass", :git => "git://github.com/chriseppstein/compass.git"
 gem 'devise'
 gem 'liquid'
@@ -16,6 +16,7 @@ gem 'haml'
 gem 'hpricot'
 gem 'dynamic_form'
 gem "simple_form"
+gem 'multi_json'
 gem 'anypresence_extension', '0.0.1', :path => 'vendor/gems/anypresence_extension-0.0.1'
 
 
