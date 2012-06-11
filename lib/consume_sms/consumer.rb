@@ -20,10 +20,10 @@ module ConsumeSms
     def provision_new_phone_number(phone_number, sms_consume_url)
       begin
         #twilio_account.incoming_phone_numbers.create({:phone_number => phone_number, :sms_url => sms_consume_url})
-        twilio_account.incoming_phone_numbers.buy(phone_number)
+        twilio_account.incoming_phone_numbers.create(:phone_number => phone_number)
         update_sms_url(phone_number)
       rescue => e
-        Rails.logger.error "Unable to provision number: " + phone_number + " , sms_url: " + sms_consume_url
+        Rails.logger.error "Unable to provision number: " + phone_number + " , sms_url: " + sms_consume_url + ". " + e.message
         Rails.logger.error e.backtrace.join("\n")
         raise e
       end
