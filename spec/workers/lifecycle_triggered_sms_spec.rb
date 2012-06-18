@@ -5,6 +5,7 @@ describe LifecycleTriggeredSms do
     def generate_phone_numbers(max)
       @account = Factory.create(:account)
       r = Random.new
+      max = 5 if max < 5
       random_number = r.rand(5..max)
       phone_numbers = []
       (1..random_number).each do |n|
