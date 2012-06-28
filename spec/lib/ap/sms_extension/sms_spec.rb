@@ -55,6 +55,16 @@ describe AP::SmsExtension::Sms::Consumer do
       %q({"title":"Cleveland Abbe House","description":"1 customer affected.","latitude":"38.901444","longitude":"-77.046167","created_at":"2012-02-01"})
     end
     
+    it "should know how to create an instance of Twilio" do
+      @account.twilio_account_sid = "1234"
+      @account.twilio_auth_token = "5678"
+      consumer = AP::SmsExtension::Sms::Consumer.new(@account)
+      twilio_account = double('twilio_account')
+      Twilio::REST::Client.should_receive(:new).with(@account.twilio_account_sid, @account.twilio_auth_token).and_return(twilio_account)
+      twilio_account.stub(:account)
+      consumer.twilio_account
+    end
+    
     it "should know how to text" do
       setup_twilio
       format = "hello world" 
