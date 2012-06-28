@@ -18,13 +18,19 @@ module SmsExtension
     
     # Outgoing message formatted parsed by Liquid template
     field :outgoing_message_format, type: String
+    
+    # Twilio account sid
+    field :twilio_account_sid, type: String
+    
+    # Twilio auth token
+    field :twilio_auth_token, type: String
   
     NUM_ENTRIES = 4
     TWILIO_SMS_CHAR_PAGE_SIZE = 150
 
     validates :consume_phone_number, :uniqueness => true
 
-    attr_accessible :phone_number, :field_name, :consume_phone_number, :from_phone_number, :outgoing_message_format
+    attr_accessible :phone_number, :field_name, :consume_phone_number, :from_phone_number, :outgoing_message_format, :twilio_account_sid, :twilio_auth_token
 
     has_many :menu_options, :class_name => "SmsExtension::MenuOption", :dependent => :destroy
     has_many :outgoing_text_options, :class_name => "SmsExtension::OutgoingTextOption", :dependent => :destroy

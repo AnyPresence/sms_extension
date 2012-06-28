@@ -14,9 +14,13 @@ module AP
         if config.empty?
           raise "Nothing to configure!"
         end
+        # Override the twilio account setting if these environment variables are set.
+        config[:twilio_account_sid] = ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'] unless ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'].nil?
+        config[:twilio_auth_token] = ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN'] unless ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN'].nil?
+
         account = nil
         if !::SmsExtension::Account.all.blank?
-          account = ::SmsExtension::Account.first
+          account = ::SmsExtension::Account.first          
           account.update_attributes(config)
         else
           account = ::SmsExtension::Account.new(config)
@@ -53,7 +57,7 @@ module AP
         end
   
         def twilio_account
-          @twilio_account ||= Twilio::REST::Client.new(ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'], ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN']).account 
+          @twilio_account ||= Twilio::REST::Client.new(@account [:twilio_account_sid],@account [:twilio_auth_token]).account 
         end
   
         # Consumes the message and returns a message to send back to the client.
@@ -98,7 +102,18 @@ module AP
   
         # Sends text.
         def self.send_sms(options={})
-          twilio_account = Twilio::REST::Client.new(ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'], ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN']).account
+          account = ::SmsExtension::Account.first
+          twilio_account_sid = nil
+          twilio_auth_token = nil
+          unless account.blank?
+            twilio_account_sid = account.twilio_account_sid
+            twilio_auth_token = account.twilio_auth_token
+          end
+          
+          twilio_account_sid ||= ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID']
+          twilio_auth_token ||= ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN'] 
+          
+          twilio_account = Twilio::REST::Client.new(twilio_account_sid, twilio_auth_token).account
       
           begin
             twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => options[:body])

@@ -27,8 +27,14 @@ describe AP::SmsExtension::Sms::Consumer do
     end
     
     it "should configure successfully with parameters" do
+      ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'] = "1234" 
+      ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN'] = "5678"
       AP::SmsExtension::Sms::config_account(:phone_number => "16178613962", :consume_phone_number => "16178613962")
       ::SmsExtension::Account.all.size.should == 1
+      
+      account = ::SmsExtension::Account.first
+      account.twilio_account_sid.should_not be_nil
+      account.twilio_auth_token.should_not be_nil
     end
     
     it "should configure successfully with menu option parameters for incoming sms" do
