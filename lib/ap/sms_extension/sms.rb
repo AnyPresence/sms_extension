@@ -40,7 +40,7 @@ module AP
         consumer = AP::SmsExtension::Sms::Consumer.new(account)
         options[:to] ||= account.phone_number
         options[:outgoing_message_format] ||= account.outgoing_message_format
-        options[:from] ||= (account.from_phone_number.blank? ? account.from_phone_number : ENV['SMS_EXTENSION.TWILIO_FROM_SMS_NUMBER'])
+        options[:from] ||= (!account.from_phone_number.blank? ? account.from_phone_number : ENV['SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER'])
         if account.outgoing_message_format.blank?
           raise "Please configure the extension first."
         end
@@ -53,7 +53,7 @@ module AP
         end
   
         def twilio_account
-          @twilio_account ||= Twilio::REST::Client.new(ENV['SMS_EXTENSION.TWILIO_ACCOUNT_SID'], ENV['SMS_EXTENSION.TWILIO_AUTH_TOKEN']).account 
+          @twilio_account ||= Twilio::REST::Client.new(ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'], ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN']).account 
         end
   
         # Consumes the message and returns a message to send back to the client.
@@ -86,8 +86,7 @@ module AP
           else
             body = ::SmsExtension::MenuOption::parse_format_string(format, object_name, params)
           end
-      
-          # TODO: move this to resque as well.
+
           begin
             twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => body)
           rescue
@@ -99,7 +98,7 @@ module AP
   
         # Sends text.
         def self.send_sms(options={})
-          twilio_account = Twilio::REST::Client.new(ENV['SMS_EXTENSION.TWILIO_ACCOUNT_SID'], ENV['SMS_EXTENSION.TWILIO_AUTH_TOKEN']).account
+          twilio_account = Twilio::REST::Client.new(ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'], ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN']).account
       
           begin
             twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => options[:body])

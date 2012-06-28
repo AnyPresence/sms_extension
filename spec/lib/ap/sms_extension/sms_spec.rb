@@ -75,6 +75,17 @@ describe AP::SmsExtension::Sms::Consumer do
       consumer.text(options, parsed_json, "outage", format)
     end
     
+    it "should use SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER for from number if it's not set on account" do
+      ENV['SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER'] = "1234"
+      ::SmsExtension::Account.any_instance.stub(:from_phone_number).and_return(nil)
+      thing = double('thing')
+      thing.stub(:attributes).and_return({:fake => "fake"})
+      options = {}
+      AP::SmsExtension::Sms::Consumer.any_instance.stub(:text).and_return(true)
+      Class.new.extend(AP::SmsExtension::Sms).sms_perform(thing, options)
+      options[:from].should eq(ENV['SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER'])
+    end
+    
   end
 
 end
