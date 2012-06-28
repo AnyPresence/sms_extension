@@ -57,7 +57,7 @@ module AP
         end
   
         def twilio_account
-          @twilio_account ||= Twilio::REST::Client.new(@account [:twilio_account_sid],@account [:twilio_auth_token]).account 
+          @twilio_account ||= Twilio::REST::Client.new(@account[:twilio_account_sid], @account[:twilio_auth_token]).account 
         end
   
         # Consumes the message and returns a message to send back to the client.
