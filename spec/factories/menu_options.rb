@@ -1,7 +1,7 @@
 FactoryGirl.define do
-  factory :menu_option do
-    name 'outage'
-    format '{{title}} : {{description}}'
+  factory :menu_option, :class => SmsExtension::MenuOption do
+    option_name 'outage'
+    option_format '{{title}} : {{description}}'
   end
   
   factory :menu_option_with_display_name do

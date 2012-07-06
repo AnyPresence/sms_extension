@@ -1,0 +1,11 @@
+development:
+  host: localhost
+  database: sms_extension_development
+
+test:
+  host: localhost
+  database: sms_extension_test
+
+production:
+  host: localhost
+  database: sms_extension_production

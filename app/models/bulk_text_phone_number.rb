@@ -1,2 +1,0 @@
-class BulkTextPhoneNumber < MenuOption
-end
