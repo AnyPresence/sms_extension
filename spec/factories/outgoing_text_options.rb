@@ -4,7 +4,7 @@ FactoryGirl.define do
     option_format "There's a new outage: {{description}}"
   end
   
-  factory :outgoing_text_option_with_phone_number_field, :class => OutgoingTextOption do
+  factory :outgoing_text_option_with_phone_number_field, :class => SmsExtension::OutgoingTextOption do
     name 'incomingcontact'
     phone_number_field "{{phone_number}}"
     format "There's a new outage: {{description}}"
