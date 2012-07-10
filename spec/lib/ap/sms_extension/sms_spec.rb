@@ -103,8 +103,6 @@ describe AP::SmsExtension::Sms::Consumer do
     end
     
     it "should use values passed into hash if it's provided" do
-      ENV['SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER'] = "1234"
-      ::SmsExtension::Account.any_instance.stub(:from_phone_number).and_return(nil)
       thing = double('thing')
       thing.stub(:attributes).and_return({:fake => "fake"})
       options = {:from => "1234", :to => "5678", :outgoing_message_format => "hotdog"}
