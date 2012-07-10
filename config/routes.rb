@@ -1,6 +1,4 @@
 SmsExtension::Engine.routes.draw do
   match 'settings' => 'texter#settings'
-
-  root :to => 'texter#unauthorized'
-
+  match 'consume' => 'texter#consume'
 end

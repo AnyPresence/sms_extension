@@ -48,7 +48,7 @@ module AP
         if account.outgoing_message_format.blank?
           raise "Please configure the extension first."
         end
-        consumer.text(options, object_instance.attributes, object_instance.class.name, account.outgoing_message_format)
+        consumer.text(options, object_instance.attributes, object_instance.class.name, options[:outgoing_message_format])
       end
   
       class Consumer
