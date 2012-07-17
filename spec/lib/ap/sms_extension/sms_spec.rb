@@ -52,7 +52,7 @@ describe AP::SmsExtension::Sms::Consumer do
     end
     
     def params
-      %q({"title":"Cleveland Abbe House","description":"1 customer affected.","latitude":"38.901444","longitude":"-77.046167","created_at":"2012-02-01"})
+      %q({"title":"Cleveland Abbe House","phone_number":"1234567","description":"1 customer affected.","latitude":"38.901444","longitude":"-77.046167","created_at":"2012-02-01"})
     end
     
     it "should know how to create an instance of Twilio" do
@@ -74,11 +74,11 @@ describe AP::SmsExtension::Sms::Consumer do
       
       consumer = AP::SmsExtension::Sms::Consumer.new(@account)
       parsed_json = ActiveSupport::JSON.decode(params)
-      options = {:from => "16178613962", :to => "16178613962"}
+      options = {:from_phone_number => "16178613962", :phone_number => "16178613962"}
       consumer.text(options, parsed_json, "outage", format)
     end
     
-    it "should know how to text with interpolated variables" do
+    it "should know how to text with interpolated variables in message" do
       setup_twilio
       format = "hello, {{title}}" 
       @twilio_account.stub_chain(:sms, :messages, :create).with do |arg|
@@ -87,8 +87,23 @@ describe AP::SmsExtension::Sms::Consumer do
       
       consumer = AP::SmsExtension::Sms::Consumer.new(@account)
       parsed_json = ActiveSupport::JSON.decode(params)
-      options = {:from => "16178613962", :to => "16178613962"}
+      options = {:from_phone_number => "16178613962", :phone_number => "16178613962"}
       consumer.text(options, parsed_json, "outage", format)
+    end
+    
+    it "should know how to interpolate variables in phone number fields" do
+      setup_twilio
+      from_phone_number = "{{phone_number}}"
+      phone_number = "{{phone_number}} kungfu"
+      @twilio_account.stub_chain(:sms, :messages, :create).with do |arg|
+        arg[:from].should eq("1234567")
+        arg[:to].should eq("1234567 kungfu")
+      end
+      
+      consumer = AP::SmsExtension::Sms::Consumer.new(@account)
+      parsed_json = ActiveSupport::JSON.decode(params)
+      options = {:from_phone_number => from_phone_number, :phone_number => phone_number}
+      consumer.text(options, parsed_json, "outage", "something")
     end
     
     it "should use SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER for from number if it's not set on account" do

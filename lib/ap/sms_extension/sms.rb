@@ -93,8 +93,11 @@ module AP
             body = ::SmsExtension::MenuOption::parse_format_string(format, object_name, params)
           end
 
+          from_phone_number = ::SmsExtension::MenuOption::parse_format_string(options[:from_phone_number], object_name, params)
+          phone_number = ::SmsExtension::MenuOption::parse_format_string(options[:phone_number], object_name, params)
+
           begin
-            twilio_account.sms.messages.create(:from => options[:from_phone_number], :to => options[:phone_number], :body => body)
+            twilio_account.sms.messages.create(:from => from_phone_number, :to => phone_number, :body => body)
           rescue
             Rails.logger.error "Unable to send SMS..."
             Rails.logger.error $!.backtrace.join("\n")
