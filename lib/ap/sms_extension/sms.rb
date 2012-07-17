@@ -14,6 +14,7 @@ module AP
         if config.empty?
           raise "Nothing to configure!"
         end
+        config = HashWithIndifferentAccess.new(config)
         # Override the twilio account setting if these environment variables are set.
         config[:twilio_account_sid] = ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'] unless ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'].nil?
         config[:twilio_auth_token] = ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN'] unless ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN'].nil?
@@ -42,6 +43,7 @@ module AP
       def sms_perform(object_instance, options={})
         account = ::SmsExtension::Account.first
         consumer = AP::SmsExtension::Sms::Consumer.new(account)
+        options = HashWithIndifferentAccess.new(options)
         options[:phone_number] ||= account.phone_number
         options[:outgoing_message_format] ||= account.outgoing_message_format
         options[:from_phone_number] ||= (!account.from_phone_number.blank? ? account.from_phone_number : ENV['SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER'])

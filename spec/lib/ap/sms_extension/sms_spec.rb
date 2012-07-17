@@ -96,16 +96,17 @@ describe AP::SmsExtension::Sms::Consumer do
       ::SmsExtension::Account.any_instance.stub(:from_phone_number).and_return(nil)
       thing = double('thing')
       thing.stub(:attributes).and_return({:fake => "fake"})
-      options = {}
-      AP::SmsExtension::Sms::Consumer.any_instance.stub(:text).and_return(true)
+      options = HashWithIndifferentAccess.new
+      AP::SmsExtension::Sms::Consumer.any_instance.should_receive(:text).with do |arg|
+        arg[:from_phone_number].should eq(ENV['SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER'])
+      end
       Class.new.extend(AP::SmsExtension::Sms).sms_perform(thing, options)
-      options[:from_phone_number].should eq(ENV['SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER'])
     end
     
     it "should use 'outgoing message format' passed into hash if it's provided" do
       thing = double('thing')
       thing.stub(:attributes).and_return({:fake => "fake"})
-      options = {:from_phone_number => "1234", :phone_number => "5678", :outgoing_message_format => "hotdog"}
+      options = HashWithIndifferentAccess.new({:from_phone_number => "1234", :phone_number => "5678", :outgoing_message_format => "hotdog"})
       AP::SmsExtension::Sms::Consumer.any_instance.should_receive(:text).with(options, anything(), anything(), "hotdog").and_return(true)
       Class.new.extend(AP::SmsExtension::Sms).sms_perform(thing, options)
     end
