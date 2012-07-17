@@ -42,9 +42,9 @@ module AP
       def sms_perform(object_instance, options={})
         account = ::SmsExtension::Account.first
         consumer = AP::SmsExtension::Sms::Consumer.new(account)
-        options[:to] ||= account.phone_number
+        options[:phone_number] ||= account.phone_number
         options[:outgoing_message_format] ||= account.outgoing_message_format
-        options[:from] ||= (!account.from_phone_number.blank? ? account.from_phone_number : ENV['SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER'])
+        options[:from_phone_number] ||= (!account.from_phone_number.blank? ? account.from_phone_number : ENV['SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER'])
         if account.outgoing_message_format.blank?
           raise "Please configure the extension first."
         end
@@ -92,7 +92,7 @@ module AP
           end
 
           begin
-            twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => body)
+            twilio_account.sms.messages.create(:from => options[:from_phone_number], :to => options[:phone_number], :body => body)
           rescue
             Rails.logger.error "Unable to send SMS..."
             Rails.logger.error $!.backtrace.join("\n")
@@ -116,7 +116,7 @@ module AP
           twilio_account = Twilio::REST::Client.new(twilio_account_sid, twilio_auth_token).account
       
           begin
-            twilio_account.sms.messages.create(:from => options[:from], :to => options[:to], :body => options[:body])
+            twilio_account.sms.messages.create(:from => options[:from_phone_number], :to => options[:phone_number], :body => options[:body])
           rescue
             Rails.logger.error "Unable to send SMS..."
             Rails.logger.error $!.backtrace.join("\n")
