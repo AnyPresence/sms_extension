@@ -2,7 +2,6 @@ FactoryGirl.define do
   factory :sms_extension_account, :class => SmsExtension::Account do
     phone_number "9789445741"
     from_phone_number "9789445741"
-    outgoing_message_format 'sending out sms'
     
     after_build do |o|
       outgoing_text_option =  FactoryGirl.build(:outgoing_text_option)
