@@ -47,9 +47,6 @@ module AP
         options[:phone_number] ||= account.phone_number
         options[:outgoing_message_format] ||= account.outgoing_message_format
         options[:from_phone_number] ||= (!account.from_phone_number.blank? ? account.from_phone_number : ENV['SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER'])
-        if account.outgoing_message_format.blank?
-          raise "Please configure the extension first."
-        end
         consumer.text(options, object_instance.attributes, object_instance.class.name, options[:outgoing_message_format])
       end
   
