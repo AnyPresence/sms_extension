@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
         "fire_method": "sms_perform",
         "parameters": ["required_configuration"],
         "lifecyle_hooks": {
-          "send_sms": ["after_save", "after_destroy"]
+          "sms_perform": ["after_save", "after_destroy"]
         },
         "required_configuration": {
           "from_phone_number": {

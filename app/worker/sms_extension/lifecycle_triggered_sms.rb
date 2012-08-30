@@ -13,8 +13,6 @@ class SmsExtension::LifecycleTriggeredSms
     
     phone_numbers = [phone_numbers] unless phone_numbers.kind_of?(Array)
     
-    debugger
-    
     count = 0
     phone_numbers.each do |o|
       if count == ENV['SMS_EXTENSION.MAX_OUTGOING_SMS_PER_LC_EVENT'].to_i
