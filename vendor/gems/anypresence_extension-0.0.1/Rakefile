@@ -1,4 +1,0 @@
-require 'rails/all'
-require "bundler/gem_tasks"
-
-
