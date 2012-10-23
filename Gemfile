@@ -5,12 +5,14 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
+ruby '1.9.3'
+
 gem 'rspec-rails'
-gem "mongoid", "2.4.4"
-gem 'mongo', '= 1.3.1' 
-gem 'bson', '= 1.3.1' 
-gem 'bson_ext', '= 1.3.1'
+gem 'mongoid', '~> 3.0.6'
+#gem 'mongo', '= 1.3.1' 
 gem 'actionpack'
+
+gem 'debugger'
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"

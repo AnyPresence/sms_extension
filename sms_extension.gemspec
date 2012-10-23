@@ -49,7 +49,7 @@ RUBY
   s.add_dependency "rails", "~> 3.2.8"
   s.add_dependency "json"
   s.add_dependency "multi_json"
-  s.add_dependency "mongoid", ">= 2.4.4"
+  s.add_dependency "mongoid", "~> 3.0.6"
   s.add_dependency "twilio-ruby"
   s.add_dependency "liquid"
   s.add_dependency "local-env"
@@ -66,5 +66,5 @@ RUBY
   s.add_development_dependency "factory_girl", "= 3.3.0"
   s.add_development_dependency "webmock"
   s.add_development_dependency "vcr"
-  s.add_development_dependency "ruby-debug19"
+  s.add_development_dependency "debugger"
 end

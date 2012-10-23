@@ -45,6 +45,7 @@ describe OutagesController do
     it "assigns all outages as @outages" do
       outage = Outage.create! valid_attributes
       get :index, {}, valid_session
+      
       assigns(:outages).should eq([outage])
     end
   end
@@ -52,6 +53,7 @@ describe OutagesController do
   describe "GET show" do
     it "assigns the requested outage as @outage" do
       outage = Outage.create! valid_attributes
+      
       get :show, {:id => outage.to_param}, valid_session
       assigns(:outage).should eq(outage)
     end
