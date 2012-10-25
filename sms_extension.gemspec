@@ -8,41 +8,10 @@ Gem::Specification.new do |s|
   s.name        = "sms_extension"
   s.version     = SmsExtension::VERSION
   s.authors     = ["Anypresence"]
-  s.email       = ["fake@fake.local"]
-  s.homepage    = ""
+  s.email       = ["info@anypresence.com"]
+  s.homepage    = "http://www.anypresence.com/"
   s.summary     = ""
-  s.description =  <<RUBY
-    {
-      "type": "RailsEngineGem",
-      "name": "SMS Integration",
-      "filename": "sms_extension",
-      "version": "0.0.1",
-      "mount_name": "SmsExtension::Engine",
-      "mount_endpoint": "/sms_extension",
-      "model_configuration": {
-        "included_module": "AP::SmsExtension::Sms",
-        "fire_method": "sms_perform",
-        "parameters": ["required_configuration"],
-        "lifecyle_hooks": {
-          "sms_perform": ["after_save", "after_destroy"]
-        },
-        "required_configuration": {
-          "from_phone_number": {
-            "type": "String",
-            "description": "From phone number."
-          },
-          "phone_number": {
-            "type": "String",
-            "description": "Phone number for sending outgoing SMS."
-          },
-          "outgoing_message_format": {
-            "type": "String",
-            "description": "The template for the text message..."
-          }
-        }
-      }
-    }
-RUBY
+  s.description = "SMS integration for apps generated using AnyPresence's solution."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
