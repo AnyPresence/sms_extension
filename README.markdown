@@ -8,11 +8,6 @@ message can be set using Liquid template's variable interpolation scheme, e.g.
 "outage at {{outage.zipcode}}" may evaluate to "outage at 02115" if "zipcode" is a valid attribute on an 
 outage object definition.
 
-Note: It will only work with the non-rails3 api version of the platform.
-
-## Installation
-
-### Resque
 This extension uses resque. 
 
 Start it with:
