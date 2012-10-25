@@ -1,8 +1,6 @@
 TWILIO_ACCOUNT_SID: asdfasdf
 TWILIO_AUTH_TOKEN: fdsafdsa
-TWILIO_FROM_SMS_NUMBER: "19783194410"
+TWILIO_FROM_SMS_NUMBER: "some_number"
 CHAMELEON_HOST: "http://localhost:5000/"
 SMS_CONSUME_URL: "http://chameleon-addon-tmn11.herokuapp.com/consume/"
-AUTH_TOKEN: extra_secret
-SHARED_SECRET: secret
 MAX_OUTGOING_SMS_PER_LC_EVENT: "5"
