@@ -18,7 +18,7 @@ describe AP::SmsExtension::Sms::Consumer do
     setup_twilio
     @twilio_account.stub_chain(:sms, :messages, :create).with(any_args()).and_return(true)
     
-    AP::SmsExtension::Sms::Consumer.send_sms(:from => "19786314489", :to => "19789445741", :body => "hello world")
+    AP::SmsExtension::Sms::Consumer.send_sms(:from => "13392192167", :to => "13392192167", :body => "hello world")
   end
   
   describe "configure" do 
@@ -29,7 +29,7 @@ describe AP::SmsExtension::Sms::Consumer do
     it "should configure successfully with parameters" do
       ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'] = "1234" 
       ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN'] = "5678"
-      AP::SmsExtension::Sms::config_account(:phone_number => "16178613962", :consume_phone_number => "16178613962")
+      AP::SmsExtension::Sms::config_account(:phone_number => "13392192167", :consume_phone_number => "13392192167")
       ::SmsExtension::Account.all.size.should == 1
       
       account = ::SmsExtension::Account.first
@@ -39,7 +39,7 @@ describe AP::SmsExtension::Sms::Consumer do
     
     it "should configure successfully with menu option parameters for incoming sms" do
       consume_options = [{:option_name => "outage", :option_format => "noo...outage!!"}, {:option_name => "store", :option_format => "stores!!"}]
-      AP::SmsExtension::Sms::config_account(:phone_number => "16178613962", :consume_phone_number => "16178613962", :field => "name", :menu_options => consume_options)
+      AP::SmsExtension::Sms::config_account(:phone_number => "13392192167", :consume_phone_number => "13392192167", :field => "name", :menu_options => consume_options)
       ::SmsExtension::Account.all.size.should == 1
       ::SmsExtension::Account.first.menu_options.all.size.should == 2
     end
@@ -74,7 +74,7 @@ describe AP::SmsExtension::Sms::Consumer do
       
       consumer = AP::SmsExtension::Sms::Consumer.new(@account)
       parsed_json = ActiveSupport::JSON.decode(params)
-      options = {:from_phone_number => "16178613962", :phone_number => "16178613962"}
+      options = {:from_phone_number => "13392192167", :phone_number => "13392192167"}
       consumer.text(options, parsed_json, "outage", format)
     end
     
@@ -87,7 +87,7 @@ describe AP::SmsExtension::Sms::Consumer do
       
       consumer = AP::SmsExtension::Sms::Consumer.new(@account)
       parsed_json = ActiveSupport::JSON.decode(params)
-      options = {:from_phone_number => "16178613962", :phone_number => "16178613962"}
+      options = {:from_phone_number => "13392192167", :phone_number => "13392192167"}
       consumer.text(options, parsed_json, "outage", format)
     end
     

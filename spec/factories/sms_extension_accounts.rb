@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :sms_extension_account, :class => SmsExtension::Account do
-    phone_number "9789445741"
-    from_phone_number "9789445741"
+    phone_number "3392192167"
+    from_phone_number "3392192167"
     
     after_build do |o|
       outgoing_text_option =  FactoryGirl.build(:outgoing_text_option)
@@ -10,7 +10,7 @@ FactoryGirl.define do
   end
   
   factory :fully_assembled_account, :class => SmsExtension::Account do
-    phone_number "9789445741"
+    phone_number "3392192167"
     
     after_build do |o|
       outgoing_text_option =  FactoryGirl.build(:outgoing_text_option)
