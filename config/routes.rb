@@ -1,4 +1,6 @@
 SmsExtension::Engine.routes.draw do
-  match 'settings' => 'texter#settings'
   match 'consume' => 'texter#consume'
+  get 'settings' => 'texter#index'
+  
+  root :to => "texter#index"
 end

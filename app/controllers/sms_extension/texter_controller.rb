@@ -1,9 +1,13 @@
 require 'ap/sms_extension/sms'
+require_dependency "sms_extension/application_controller"
 
 module SmsExtension
   class TexterController < ApplicationController
 
     before_filter :build_consumer, :only => [:settings, :text, :generate_consume_phone_number]
+    
+    def index
+    end
 
     # Twilio sends a post to this endpoint
     def consume
