@@ -88,11 +88,11 @@ module AP
             # Find the format string from fields that were passed.
             body = outgoing_text_option.build_text(object_name, params)
           else
-            body = ::SmsExtension::MenuOption::parse_format_string(format, object_name, params)
+            body = format
           end
 
-          from_phone_number = ::SmsExtension::MenuOption::parse_format_string(options[:from_phone_number], object_name, params)
-          phone_number = ::SmsExtension::MenuOption::parse_format_string(options[:phone_number], object_name, params)
+          from_phone_number = options[:from_phone_number]
+          phone_number = options[:phone_number]
 
           begin
             twilio_account.sms.messages.create(:from => from_phone_number, :to => phone_number, :body => body)
@@ -101,6 +101,7 @@ module AP
             Rails.logger.error $!.backtrace.join("\n")
             raise
           end
+          ::SmsExtension::Message.create(:from => from_phone_number, :to => phone_number, :body => body)
         end
   
         # Sends text.

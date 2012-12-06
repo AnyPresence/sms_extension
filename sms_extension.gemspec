@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency "liquid"
   s.add_dependency "local-env"
   s.add_dependency "faraday"
+  s.add_dependency "kaminari", '~> 0.14.1'
 
   s.add_dependency "haml"
   s.add_dependency "hpricot"

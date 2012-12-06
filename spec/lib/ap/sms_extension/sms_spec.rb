@@ -78,34 +78,6 @@ describe AP::SmsExtension::Sms::Consumer do
       consumer.text(options, parsed_json, "outage", format)
     end
     
-    it "should know how to text with interpolated variables in message" do
-      setup_twilio
-      format = "hello, {{title}}" 
-      @twilio_account.stub_chain(:sms, :messages, :create).with do |arg|
-        arg[:body].should eq("hello, Cleveland Abbe House")
-      end
-      
-      consumer = AP::SmsExtension::Sms::Consumer.new(@account)
-      parsed_json = ActiveSupport::JSON.decode(params)
-      options = {:from_phone_number => "13392192167", :phone_number => "13392192167"}
-      consumer.text(options, parsed_json, "outage", format)
-    end
-    
-    it "should know how to interpolate variables in phone number fields" do
-      setup_twilio
-      from_phone_number = "{{phone_number}}"
-      phone_number = "{{phone_number}} kungfu"
-      @twilio_account.stub_chain(:sms, :messages, :create).with do |arg|
-        arg[:from].should eq("1234567")
-        arg[:to].should eq("1234567 kungfu")
-      end
-      
-      consumer = AP::SmsExtension::Sms::Consumer.new(@account)
-      parsed_json = ActiveSupport::JSON.decode(params)
-      options = {:from_phone_number => from_phone_number, :phone_number => phone_number}
-      consumer.text(options, parsed_json, "outage", "something")
-    end
-    
     it "should use SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER for from number if it's not set on account" do
       ENV['SMS_EXTENSION_TWILIO_FROM_SMS_NUMBER'] = "1234"
       ::SmsExtension::Account.any_instance.stub(:from_phone_number).and_return(nil)

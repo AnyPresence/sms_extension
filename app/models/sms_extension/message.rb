@@ -3,6 +3,8 @@ module SmsExtension
     include Mongoid::Document
     include Mongoid::Timestamps
     include SmsExtension::Common
+    
+    paginates_per 10
   
     field :sms_message_sid, type: String
     field :account_sid, type: String

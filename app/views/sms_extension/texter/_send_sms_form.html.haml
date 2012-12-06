@@ -1,0 +1,10 @@
+%h1 SendSms
+= simple_form_for(@message, :url => send_sms_path) do |f|
+  = f.error :base
+  = f.error_notification
+  = f.input :from
+  = f.input :to
+  = f.input :body
+
+  %br
+  = f.button :submit, "Send SMS"

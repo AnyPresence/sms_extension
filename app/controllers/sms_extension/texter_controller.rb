@@ -7,6 +7,32 @@ module SmsExtension
     before_filter :build_consumer, :only => [:settings, :text, :generate_consume_phone_number]
     
     def index
+      @messages = ::SmsExtension::Message.all.page(params[:page])
+    end
+    
+    def sms
+      @message = ::SmsExtension::Message.new
+    end
+    
+    def send_sms
+      status = false
+      begin
+        @message = ::SmsExtension::Message.new(params[:message])
+        @message.save!
+        ::AP::SmsExtension::Sms::Consumer.send_sms({:from_phone_number => @message.from, :phone_number => @message.to, :body => @message.body})
+        status = true
+      rescue
+        Rails.logger.error "Unable to send message. #{$!}"
+        status = false
+      end
+      
+      respond_to do |format|
+        if status
+          format.html { redirect_to settings_path }
+        else
+          format.html { render 'sms' }
+        end
+      end  
     end
 
     # Twilio sends a post to this endpoint
