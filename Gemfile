@@ -9,8 +9,8 @@ ruby '1.9.3'
 
 gem 'rspec-rails'
 gem 'mongoid', '~> 3.0.6'
-#gem 'mongo', '= 1.3.1' 
 gem 'actionpack'
+gem 'kaminari', '~> 0.14.1'
 
 gem 'debugger'
 

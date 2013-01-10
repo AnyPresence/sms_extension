@@ -166,6 +166,7 @@ DEPENDENCIES
   debugger
   factory_girl (= 3.3.0)
   jquery-rails
+  kaminari (~> 0.14.1)
   mongoid (~> 3.0.6)
   rspec
   rspec-rails
