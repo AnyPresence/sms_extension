@@ -1,0 +1,47 @@
+{
+  "type": "ServiceInstance::RailsEngineGem",
+  "name": "SMS Notifier",
+  "filename": "sms_extension",
+  "version": "0.0.2",
+  "description": "",
+  "mount_name": "SmsExtension::Engine",
+  "mount_endpoint": "/sms_extension",
+  "model_configuration": {
+    "included_module": "AP::SmsExtension::Sms",
+    "fire_method": "sms_perform",
+    "parameters": ["required_configuration"],
+    "lifecyle_hooks": {
+      "send_sms": ["after_save", "after_create", "after_update", "after_destroy"]
+    },
+    "required_configuration": {
+      "twilio_account_sid": {
+        "type": "String",
+        "description": "Twilio account sid."
+      },
+      "twilio_auth_token": {
+        "type": "String",
+        "description": "Twilio account auth token."
+      }
+    },
+    "incoming_configuration": {
+      "menu_option": {
+        "type": "String",
+        "description": "Incoming sms"
+      }
+    },
+    "object_definition_level_configuration": {
+      "from_phone_number": {
+        "type": "String",
+        "description": "From phone number."
+      },
+      "phone_number": {
+        "type": "String",
+        "description": "Phone number for sending outgoing SMS."
+      },
+      "outgoing_message_format": {
+        "type": "String",
+        "description": "The template for the text message..."
+      }
+    }
+  }
+}

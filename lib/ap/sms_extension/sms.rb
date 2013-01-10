@@ -36,6 +36,10 @@ module AP
           end
         end
       end
+      
+      def self.json_config
+        @@json ||= ActiveSupport::JSON.decode(File.read("#{File.dirname(__FILE__)}/../../../manifest.json"))
+      end
   
       # Builds text message to send out.
       #  +object_instance+ is the object instance
