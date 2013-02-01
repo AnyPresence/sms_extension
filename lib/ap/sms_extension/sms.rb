@@ -5,19 +5,24 @@ module AP
     module Sms
       include ::SmsExtension::Common
 
-      # Creates the account.
-      # +config+ configuration properties should contain:
-      #          :phone_number, 
-      #          :from_phone_number, 
-      #          :outgoing_message_format      
+      # Configures SMS.
       def self.config_account(config={})
-        if config.empty?
-          raise "Nothing to configure!"
-        end
         config = HashWithIndifferentAccess.new(config)
         # Override the twilio account setting if these environment variables are set.
-        config[:twilio_account_sid] = ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'] unless ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'].nil?
-        config[:twilio_auth_token] = ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN'] unless ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN'].nil?
+        if !ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'].blank?
+          twilio_account_sid = ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID']
+        else
+          twilio_account_sid = ENV['AP_SMS_NOTIFIER_TWILIO_ACCOUNT_SID']
+        end
+        
+        if !ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN'].blank?
+          twilio_auth_token = ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN']
+        else
+          twilio_auth_token = ENV['AP_SMS_NOTIFIER_TWILIO_AUTH_TOKEN']
+        end
+        
+        config[:twilio_account_sid] = twilio_account_sid
+        config[:twilio_auth_token] = twilio_auth_token
 
         account = nil
         if !::SmsExtension::Account.all.blank?
@@ -118,8 +123,21 @@ module AP
             twilio_auth_token = account.twilio_auth_token
           end
           
-          twilio_account_sid ||= ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID']
-          twilio_auth_token ||= ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN'] 
+          if twilio_account_sid.blank?
+            if !ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID'].blank?
+              twilio_account_sid = ENV['SMS_EXTENSION_TWILIO_ACCOUNT_SID']
+            else
+              twilio_account_sid = ENV['AP_SMS_NOTIFIER_TWILIO_ACCOUNT_SID']
+            end
+          end
+          
+          if twilio_auth_token.blank?
+            if !ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN'].blank?
+              twilio_auth_token = ENV['SMS_EXTENSION_TWILIO_AUTH_TOKEN']
+            else
+              twilio_auth_token = ENV['AP_SMS_NOTIFIER_TWILIO_AUTH_TOKEN']
+            end
+          end
           
           twilio_account = Twilio::REST::Client.new(twilio_account_sid, twilio_auth_token).account
       

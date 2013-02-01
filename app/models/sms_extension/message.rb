@@ -1,3 +1,5 @@
+require 'kaminari'
+
 module SmsExtension
   class Message
     include Mongoid::Document

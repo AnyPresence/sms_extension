@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sms_extension (0.0.2)
+    sms_extension (0.0.4)
       dynamic_form
       faraday
       haml
