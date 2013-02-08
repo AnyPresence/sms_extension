@@ -1,22 +1,26 @@
-%h1 Sms Extension Settings
-%h1 Messages
-.container
-  %br
-  = link_to "Send SMS", sms_path
-  = paginate @messages
-  %table
-    %tbody
-      %tr 
-        %th time
-        %th from
-        %th to
-        %th message
-        - @messages.each do |message|
-          %tr
-            %td= message.updated_at
-            %td= message.from
-            %td= message.to
-            %td= message.body
+.text-info
+  %h3 Sms Extension Settings
+  %h3 Messages
+
+%br
+= link_to "Send SMS", sms_path
+%br
+%br
+= paginate @messages
+
+%table.table.table-striped
+  %tbody
+    %tr 
+      %th time
+      %th from
+      %th to
+      %th message
+      - @messages.each do |message|
+        %tr
+          %td= message.updated_at
+          %td= message.from
+          %td= message.to
+          %td= message.body
 
 
 

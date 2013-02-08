@@ -1,6 +1,5 @@
-module SmsExtension
-  class ApplicationController < ActionController::Base
-    before_filter :authenticate_admin!
-  end
+class SmsExtension::ApplicationController < ApplicationController
+  layout "layouts/admin"
+  
+  before_filter :authenticate_admin!
 end
-
