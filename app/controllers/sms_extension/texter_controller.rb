@@ -22,7 +22,9 @@ module SmsExtension
         ::AP::SmsExtension::Sms::Consumer.send_sms({:from_phone_number => @message.from, :phone_number => @message.to, :body => @message.body})
         status = true
       rescue
-        Rails.logger.error "Unable to send message. #{$!}"
+        error_msg = "Unable to send message: #{$!}"
+        Rails.logger.error(error_msg)
+        @message.errors[:base] << error_msg
         status = false
       end
       
