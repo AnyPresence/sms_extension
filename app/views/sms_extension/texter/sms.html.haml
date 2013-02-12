@@ -1,3 +1,16 @@
-= link_to "Back to SMS Extension settings", settings_path
+%ul.breadcrumb
+  %li
+    = link_to 'Home', main_app.admin_root_path
+    %span.divider /
+  %li
+    = link_to 'Extensions', main_app.admin_extensions_path
+    %span.divider /
+  %li
+    = link_to 'SMS', settings_path
+    %span.divider /
+  %li Send SMS
+
+.page-header
+  %h1 Send SMS
 
 = render :partial => 'send_sms_form'

@@ -1,26 +1,39 @@
-.text-info
-  %h3 Sms Extension Settings
-  %h3 Messages
+%ul.breadcrumb
+  %li
+    = link_to 'Home', main_app.admin_root_path
+    %span.divider /
+  %li
+    = link_to 'Extensions', main_app.admin_extensions_path
+    %span.divider /
+  %li.active SMS
 
-%br
-= link_to "Send SMS", sms_path
-%br
-%br
+.alert.alert-info.clearfix
+  %h1 SMS Messages
+  %p Manage SMS messages.
+
+%hr
+
+= link_to sms_path, class: 'btn btn-large btn-primary' do
+  Send SMS
+  %i.icon-circle-arrow-right
+
+%hr
+
 = paginate @messages
-
-%table.table.table-striped
-  %tbody
-    %tr 
-      %th time
-      %th from
-      %th to
-      %th message
+- if @messages.size == 0
+  .alert No SMS messages yet.
+- else
+  %table.table.table-striped
+    %thead
+      %tr
+        %th From
+        %th To
+        %th Message
+        %th Time
+    %tbody
       - @messages.each do |message|
         %tr
-          %td= message.updated_at
           %td= message.from
           %td= message.to
           %td= message.body
-
-
-
+          %td= message.updated_at
