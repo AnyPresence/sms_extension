@@ -1,6 +1,5 @@
 {
   "type": "ServiceInstance::RailsEngineGem",
-  "name": "SMS Notifier",
   "version": "0.0.7",
   "description": "",
   "mount_endpoint": "/sms_extension",
@@ -10,10 +9,7 @@
   "model_configuration": {
     "included_module": "AP::SmsExtension::Sms",
     "fire_method": "sms_perform",
-    "parameters": ["required_configuration"],
-    "lifecyle_hooks": {
-      "send_sms": ["after_save", "after_create", "after_update", "after_destroy"]
-    },
+    "lifecyle_hooks": ["after_save", "after_create", "after_update", "after_destroy"]
     "configuration_prefix": "AP",
     "required_configuration": {
       "twilio_account_sid": {
