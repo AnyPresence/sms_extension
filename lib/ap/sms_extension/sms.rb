@@ -106,7 +106,7 @@ module AP
           begin
             twilio_account.sms.messages.create(:from => from_phone_number, :to => phone_number, :body => body)
           rescue
-            Rails.logger.error "Unable to send SMS..."
+            Rails.logger.error "Unable to send SMS...: #{$!.message}"
             Rails.logger.error $!.backtrace.join("\n")
             raise
           end
@@ -144,7 +144,7 @@ module AP
           begin
             twilio_account.sms.messages.create(:from => options[:from_phone_number], :to => options[:phone_number], :body => options[:body])
           rescue
-            Rails.logger.error "Unable to send SMS..."
+            Rails.logger.error "Unable to send SMS...: #{$!.message}"
             Rails.logger.error $!.backtrace.join("\n")
             raise
           end
