@@ -5,7 +5,6 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-ruby '1.9.3'
 
 gem 'rspec-rails'
 gem 'mongoid', '~> 3.0.6'
@@ -18,7 +17,7 @@ gem 'sass-rails', '3.2.5'
 gem 'compass-rails', '1.0.3'
 gem 'kaminari', '~> 0.14.1'
 
-gem 'debugger'
+gem 'debugger', '~> 1.5.0'
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
