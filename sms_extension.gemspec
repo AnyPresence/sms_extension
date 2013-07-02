@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.8"
   s.add_dependency "json"
   s.add_dependency "multi_json"
-  s.add_dependency "mongoid", "~> 3.0.6"
+  s.add_dependency "mongoid", '~> 3.1'
   s.add_dependency "twilio-ruby"
   s.add_dependency "liquid"
   s.add_dependency "local-env"
@@ -36,5 +36,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "factory_girl", "= 3.3.0"
   s.add_development_dependency "webmock"
   s.add_development_dependency "vcr"
-  s.add_development_dependency "debugger"
+  s.add_development_dependency "debugger", '~> 1.5.0'
 end

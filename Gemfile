@@ -7,7 +7,7 @@ gemspec
 
 
 gem 'rspec-rails'
-gem 'mongoid', '~> 3.0.6'
+gem 'mongoid', '~> 3.1'
 gem 'actionpack'
 gem 'haml', '3.1.7'
 gem 'coffee-rails', '~> 3.2.1'
