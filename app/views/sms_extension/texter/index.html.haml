@@ -1,21 +1,21 @@
 %ul.breadcrumb
   %li
     = link_to 'Home', main_app.admin_root_path
-    %span.divider /
+    
   %li
     = link_to 'Extensions', main_app.admin_extensions_path
-    %span.divider /
+    
   %li.active SMS
 
-.alert.alert-info.clearfix
+.page-header
   %h1 SMS Messages
   %p Manage SMS messages.
 
 %hr
 
-= link_to sms_path, class: 'btn btn-large btn-primary' do
+= link_to sms_path, class: 'btn btn-lg btn-primary' do
   Send SMS
-  %i.icon-circle-arrow-right
+  %i.fa.fa-arrow-circle-o-right
 
 %hr
 
