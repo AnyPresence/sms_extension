@@ -5,15 +5,17 @@ module SmsExtension
   class TexterController < ApplicationController
 
     before_filter :build_consumer, :only => [:settings, :text, :generate_consume_phone_number]
-    
+
+    ERROR_MESSAGE_ADVICE = "Unable to send message. Please check that you have a valid Twilio account/sid set on the platform.".freeze
+
     def index
       @messages = ::SmsExtension::Message.all.page(params[:page])
     end
-    
+
     def sms
       @message = ::SmsExtension::Message.new
     end
-    
+
     def send_sms
       status = false
       begin
@@ -22,19 +24,18 @@ module SmsExtension
         ::AP::SmsExtension::Sms::Consumer.send_sms({:from_phone_number => @message.from, :phone_number => @message.to, :body => @message.body})
         status = true
       rescue
-        error_msg = "Unable to send message: #{$!}"
-        Rails.logger.error(error_msg)
-        @message.errors[:base] << error_msg
+        Rails.logger.error("Unable to send message: #{$!}")
+        @message.errors[:base] << ERROR_MESSAGE_ADVICE
         status = false
       end
-      
+
       respond_to do |format|
         if status
           format.html { redirect_to settings_path }
         else
           format.html { render 'sms' }
         end
-      end  
+      end
     end
 
     # Twilio sends a post to this endpoint
@@ -44,9 +45,9 @@ module SmsExtension
       if message.save
         incoming_phone_number = SmsExtension::Message::strip_phone_number_prefix(params[:From])
         consume_phone_number = SmsExtension::Message::strip_phone_number_prefix(params[:To])
-      
+
         accounts = ::SmsExtension::Account.where(:consume_phone_number => consume_phone_number)
-    
+
         begin
           outbound_message = ""
           if !accounts.blank?
@@ -54,7 +55,7 @@ module SmsExtension
               consumer = AP::SmsExtension::Sms::Consumer.new(accounts.first)
               outbound_message = consumer.consume_sms(message, accounts.first.text_message_options)
             rescue
-              Rails.logger.error "Not able to consume the text: " 
+              Rails.logger.error "Not able to consume the text: "
               outbound_message = "Unable to obtain data at this time. Please try again later."
             end
           else
